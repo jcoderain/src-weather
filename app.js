@@ -49,7 +49,11 @@ function applyLanguage() {
     if (lang === currentLang) btn.classList.add("active");
     else btn.classList.remove("active");
   });
+
+  // ✅ 언어 바꿀 때 status 문구도 다시 렌더
+  renderStatus();
 }
+
 
 function windDirectionToText(deg) {
   if (deg === null || deg === undefined) return "-";
@@ -164,10 +168,23 @@ function renderAllCourses() {
   });
 }
 
+function renderStatus() {
+  // 아직 데이터가 없으면 "로딩 중" 문구
+  if (!LAST_DATA) {
+    statusEl.innerHTML = `<p>${uiText.statusLoading[currentLang]}</p>`;
+    return;
+  }
+
+  // 데이터가 있으면 코스 개수 기준 문구
+  const courses = LAST_DATA.courses || [];
+  const text = uiText.statusLoaded(courses.length)[currentLang];
+  statusEl.innerHTML = `<p>${text}</p>`;
+}
+
 async function init() {
   try {
     applyLanguage();
-    statusEl.innerHTML = `<p>${uiText.statusLoading[currentLang]}</p>`;
+    renderStatus(); // ✅ 처음에도 함수로 렌더
 
     const resp = await fetch(`${JSON_URL}?t=${Date.now()}`, {
       cache: "no-store",
@@ -179,10 +196,7 @@ async function init() {
     const data = await resp.json();
     LAST_DATA = data;
 
-    const courses = data.courses || [];
-    const statusText = uiText.statusLoaded(courses.length)[currentLang];
-    statusEl.innerHTML = `<p>${statusText}</p>`;
-
+    renderStatus();   // ✅ 데이터 받은 뒤에도 다시 호출
     renderAllCourses();
   } catch (err) {
     console.error("[weather-init-error]", err);
