@@ -299,9 +299,12 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
 
     # --- 종합 러닝 지수 ---
     run_score = round(
-        temp_score * 0.5 + wind_score * 0.3 + (100 if recent_rain == 0 else 70) * 0.2
+        temp_score * 0.5 +   # 온도 50%
+        wind_score * 0.3 +   # 바람 30%
+        (100 if recent_rain == 0 else 70) * 0.2  # 노면 20%
     )
     run_score = max(0, min(100, run_score))
+
 
     if run_score >= 80:
         advice_short_ko = "러닝하기 아주 좋은 컨디션입니다 😄"
