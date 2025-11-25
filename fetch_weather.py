@@ -335,10 +335,8 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
 
     return {
         "id": course.id,
-        # 위치 이름: 한/영 둘 다
         "name_ko": course.name_ko,
         "name_en": course.name_en,
-        # 호환용: 기본 name은 한글로
         "name": course.name_ko,
         "updated_at": current["time"],
         "temperature": float(current["temperature_2m"]),
@@ -352,13 +350,15 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         "temp_score": temp_score,
         "wind_score": wind_score,
         "wet_score": None,
-        "tags_ko": [temp_tag_ko, wind_tag_ko, wet_tag_ko],
-        "tags_en": [temp_tag_en, wind_tag_en, wet_tag_en],
+        # ✅ 태그에는 온도 + 바람만 넣고, 노면은 위 배지에서만 표현
+        "tags_ko": [temp_tag_ko, wind_tag_ko],
+        "tags_en": [temp_tag_en, wind_tag_en],
         "advice_short_ko": advice_short_ko,
         "advice_short_en": advice_short_en,
         "advice_detail_ko": advice_detail_ko,
         "advice_detail_en": advice_detail_en,
     }
+
 
 
 # === 4. JSON 파일로 저장 ===
