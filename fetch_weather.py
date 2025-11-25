@@ -1,5 +1,4 @@
-import json  # ✅ 이 줄 추가
-
+import json
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
@@ -8,13 +7,14 @@ from typing import List, Dict, Any
 import requests
 
 
-
 # === 1. 러닝 코스 정의 ===
+
 
 @dataclass
 class Course:
     id: str
-    name: str
+    name_ko: str
+    name_en: str
     lat: float
     lon: float
 
@@ -22,73 +22,85 @@ class Course:
 COURSES: List[Course] = [
     Course(
         id="seoho-park",
-        name="서호공원",
+        name_ko="서호공원",
+        name_en="Seoho Park",
         lat=37.280325,
         lon=126.990396,
     ),
     Course(
         id="youth-center",
-        name="청소년문화센터",
+        name_ko="청소년문화센터",
+        name_en="Youth Culture Center",
         lat=37.274248,
         lon=127.034519,
     ),
     Course(
         id="gwanggyo-lake-park",
-        name="광교호수공원",
+        name_ko="광교호수공원",
+        name_en="Gwanggyo Lake Park",
         lat=37.283439,
         lon=127.065989,
     ),
     Course(
         id="skku",
-        name="성균관대학교",
+        name_ko="성균관대학교",
+        name_en="Sungkyunkwan Univ. (Suwon)",
         lat=37.293788,
         lon=126.974365,
     ),
     Course(
         id="woncheon-stream-sindong",
-        name="원천리천(신동)",
+        name_ko="원천리천(신동)",
+        name_en="Woncheon Stream (Sindong)",
         lat=37.248469,
-        lon=127.041965,  # 1127 → 127로 수정
+        lon=127.041965,
     ),
     Course(
         id="paldalsan-hwaseong",
-        name="팔달산(수원화성, 행궁동)",
+        name_ko="팔달산(수원화성, 행궁동)",
+        name_en="Paldalsan Fortress Area",
         lat=37.277614,
         lon=127.010650,
     ),
     Course(
         id="suwon-stream",
-        name="수원천",
+        name_ko="수원천",
+        name_en="Suwoncheon Stream",
         lat=37.266571,
         lon=127.015022,
     ),
     Course(
         id="gwanggyo-mountain",
-        name="광교산",
+        name_ko="광교산",
+        name_en="Gwanggyo Mountain",
         lat=37.328633,
         lon=127.038172,
     ),
     Course(
         id="suwon-worldcup",
-        name="수원월드컵경기장",
+        name_ko="수원월드컵경기장",
+        name_en="Suwon World Cup Stadium",
         lat=37.286545,
         lon=127.036871,
     ),
     Course(
         id="dongtan-yeoul-park",
-        name="동탄여울공원",
+        name_ko="동탄여울공원",
+        name_en="Dongtan Yeoul Park",
         lat=37.198689,
         lon=127.086609,
     ),
     Course(
         id="yeongheung-forest-park",
-        name="영흥숲공원",
+        name_ko="영흥숲공원",
+        name_en="Yeongheung Forest Park",
         lat=37.261067,
         lon=127.070470,
     ),
     Course(
         id="majung-park",
-        name="마중공원",
+        name_ko="마중공원",
+        name_en="Majung Park",
         lat=37.236832,
         lon=127.020592,
     ),
@@ -137,6 +149,7 @@ def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
 
 
 # === 3. 러닝용으로 요약 + 한/영 텍스트 생성 ===
+
 
 def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, Any]:
     current = raw["current"]
@@ -285,7 +298,9 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         wind_comment_en = "Very strong wind. It feels much colder and fatigue may build up faster."
 
     # --- 종합 러닝 지수 ---
-    run_score = round(temp_score * 0.5 + wind_score * 0.3 + (100 if recent_rain == 0 else 70) * 0.2)
+    run_score = round(
+        temp_score * 0.5 + wind_score * 0.3 + (100 if recent_rain == 0 else 70) * 0.2
+    )
     run_score = max(0, min(100, run_score))
 
     if run_score >= 80:
@@ -320,7 +335,11 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
 
     return {
         "id": course.id,
-        "name": course.name,
+        # 위치 이름: 한/영 둘 다
+        "name_ko": course.name_ko,
+        "name_en": course.name_en,
+        # 호환용: 기본 name은 한글로
+        "name": course.name_ko,
         "updated_at": current["time"],
         "temperature": float(current["temperature_2m"]),
         "apparent_temperature": apparent,
@@ -332,7 +351,7 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         "run_score": run_score,
         "temp_score": temp_score,
         "wind_score": wind_score,
-        "wet_score": None,  # 필요하면 위에서 별도 wet_score 계산해서 넣어도 됨
+        "wet_score": None,
         "tags_ko": [temp_tag_ko, wind_tag_ko, wet_tag_ko],
         "tags_en": [temp_tag_en, wind_tag_en, wet_tag_en],
         "advice_short_ko": advice_short_ko,
@@ -344,11 +363,12 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
 
 # === 4. JSON 파일로 저장 ===
 
+
 def main() -> None:
     results: List[Dict[str, Any]] = []
 
     for course in COURSES:
-        print(f"[INFO] Fetching weather for {course.name} ({course.lat}, {course.lon})")
+        print(f"[INFO] Fetching weather for {course.name_ko} ({course.lat}, {course.lon})")
         raw = fetch_open_meteo_kma(course)
         summary = summarize_course_weather(course, raw)
         results.append(summary)

@@ -1,13 +1,15 @@
 {
-  "generated_at": "2025-11-26T01:45:10.043055",
+  "generated_at": "2025-11-26T01:48:44.617752",
   "courses": [
     {
       "id": "seoho-park",
+      "name_ko": "서호공원",
+      "name_en": "Seoho Park",
       "name": "서호공원",
-      "updated_at": "2025-11-26T01:30",
+      "updated_at": "2025-11-26T01:45",
       "temperature": 3.2,
       "apparent_temperature": 0.3,
-      "wind_speed": 6.8,
+      "wind_speed": 6.5,
       "wind_direction": 314.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -37,8 +39,10 @@
     },
     {
       "id": "youth-center",
+      "name_ko": "청소년문화센터",
+      "name_en": "Youth Culture Center",
       "name": "청소년문화센터",
-      "updated_at": "2025-11-26T01:30",
+      "updated_at": "2025-11-26T01:45",
       "temperature": 3.4,
       "apparent_temperature": 0.4,
       "wind_speed": 7.6,
@@ -71,6 +75,8 @@
     },
     {
       "id": "gwanggyo-lake-park",
+      "name_ko": "광교호수공원",
+      "name_en": "Gwanggyo Lake Park",
       "name": "광교호수공원",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.3,
@@ -105,6 +111,8 @@
     },
     {
       "id": "skku",
+      "name_ko": "성균관대학교",
+      "name_en": "Sungkyunkwan Univ. (Suwon)",
       "name": "성균관대학교",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.0,
@@ -139,6 +147,8 @@
     },
     {
       "id": "woncheon-stream-sindong",
+      "name_ko": "원천리천(신동)",
+      "name_en": "Woncheon Stream (Sindong)",
       "name": "원천리천(신동)",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.5,
@@ -173,6 +183,8 @@
     },
     {
       "id": "paldalsan-hwaseong",
+      "name_ko": "팔달산(수원화성, 행궁동)",
+      "name_en": "Paldalsan Fortress Area",
       "name": "팔달산(수원화성, 행궁동)",
       "updated_at": "2025-11-26T01:45",
       "temperature": 2.8,
@@ -207,6 +219,8 @@
     },
     {
       "id": "suwon-stream",
+      "name_ko": "수원천",
+      "name_en": "Suwoncheon Stream",
       "name": "수원천",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.4,
@@ -241,6 +255,8 @@
     },
     {
       "id": "gwanggyo-mountain",
+      "name_ko": "광교산",
+      "name_en": "Gwanggyo Mountain",
       "name": "광교산",
       "updated_at": "2025-11-26T01:45",
       "temperature": 1.1,
@@ -275,6 +291,8 @@
     },
     {
       "id": "suwon-worldcup",
+      "name_ko": "수원월드컵경기장",
+      "name_en": "Suwon World Cup Stadium",
       "name": "수원월드컵경기장",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.5,
@@ -309,6 +327,8 @@
     },
     {
       "id": "dongtan-yeoul-park",
+      "name_ko": "동탄여울공원",
+      "name_en": "Dongtan Yeoul Park",
       "name": "동탄여울공원",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.3,
@@ -343,6 +363,8 @@
     },
     {
       "id": "yeongheung-forest-park",
+      "name_ko": "영흥숲공원",
+      "name_en": "Yeongheung Forest Park",
       "name": "영흥숲공원",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.2,
@@ -377,6 +399,8 @@
     },
     {
       "id": "majung-park",
+      "name_ko": "마중공원",
+      "name_en": "Majung Park",
       "name": "마중공원",
       "updated_at": "2025-11-26T01:45",
       "temperature": 3.3,

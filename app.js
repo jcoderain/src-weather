@@ -7,25 +7,25 @@ const appTitleEl = document.getElementById("app-title");
 const appSubtitleEl = document.getElementById("app-subtitle");
 const courseListTitleEl = document.getElementById("course-list-title");
 
-// ✅ 절대 경로 + 캐시 방지용 쿼리 붙일 예정
+// 절대 경로 + 캐시 방지
 const JSON_URL =
   "https://jcoderain.github.io/src-weather/data/suwon_weather.json";
 
 const uiText = {
   appTitle: {
-    ko: "SRC 러너 날씨",
-    en: "SRC Runner Weather",
+    ko: "SRC 날씨",
+    en: "SRC Weather",
   },
   appSubtitle: {
-    ko: "수원 러너들을 위한 현재 컨디션",
-    en: "Current conditions for Suwon runners",
+    ko: "SRC 러너들을 위한 현재 컨디션",
+    en: "Current conditions for SRC runners",
   },
   courseListTitle: {
     ko: "코스별 현재 상황",
     en: "Current conditions by course",
   },
   statusLoading: {
-    ko: "수원 러너용 날씨 데이터를 불러오는 중…",
+    ko: "SRC 러너용 날씨 데이터를 불러오는 중…",
     en: "Loading weather data for Suwon runners…",
   },
   statusLoaded: (count) => ({
@@ -75,6 +75,12 @@ function renderCourseCard(info) {
   const div = document.createElement("div");
   div.className = "course-card";
 
+  // ✅ 이름도 언어에 따라 선택
+  const displayName =
+    currentLang === "ko"
+      ? info.name_ko || info.name
+      : info.name_en || info.name;
+
   const windText =
     info.wind_speed != null
       ? `${windDirectionToText(info.wind_direction)} ${info.wind_speed.toFixed(
@@ -100,7 +106,7 @@ function renderCourseCard(info) {
 
   div.innerHTML = `
     <div class="course-title">
-      <span>${info.name}</span>
+      <span>${displayName}</span>
       <span class="${badgeClass(wetBadge.level)}">${wetText}</span>
     </div>
     <div class="course-meta">
@@ -154,7 +160,6 @@ async function init() {
     applyLanguage();
     statusEl.innerHTML = `<p>${uiText.statusLoading[currentLang]}</p>`;
 
-    // ✅ 절대 URL + 캐시 방지 쿼리
     const resp = await fetch(`${JSON_URL}?t=${Date.now()}`, {
       cache: "no-store",
     });
