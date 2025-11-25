@@ -18,8 +18,8 @@ const uiText = {
     en: "SRC Weather",
   },
   appSubtitle: {
-    ko: "SRC 러너들을 위한 현재 컨디션",
-    en: "Current conditions for SRC runners",
+    ko: "SRC 러너들을 위한 현재 코스 컨디션",
+    en: "Current course conditions for SRC runners",
   },
   courseListTitle: {
     ko: "코스별 현재 상황",
