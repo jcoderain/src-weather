@@ -1,16 +1,16 @@
 {
-  "generated_at": "2025-11-25T22:15:50.791012",
+  "generated_at": "2025-11-25T23:15:04.473811",
   "courses": [
     {
       "id": "seoho-park",
       "name_ko": "서호공원",
       "name_en": "Seoho Park",
       "name": "서호공원",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.2,
-      "apparent_temperature": -0.1,
-      "wind_speed": 2.9,
-      "wind_direction": 124.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.2,
+      "apparent_temperature": 0.6,
+      "wind_speed": 4.3,
+      "wind_direction": 30.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -18,35 +18,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 64,
-      "temp_score": 40,
-      "wind_score": 80,
+      "run_score": 68,
+      "temp_score": 60,
+      "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
-        "춥다",
-        "약한 바람",
+        "조금 쌀쌀함",
+        "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
-        "Cold",
-        "Light breeze",
+        "A bit chilly",
+        "Moderate wind",
         "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 약한 바람입니다. 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended. Light breeze, little impact on running. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "youth-center",
       "name_ko": "청소년문화센터",
       "name_en": "Youth Culture Center",
       "name": "청소년문화센터",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.1,
-      "apparent_temperature": -0.0,
-      "wind_speed": 1.4,
-      "wind_direction": 69.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 2.9,
+      "apparent_temperature": 0.4,
+      "wind_speed": 4.3,
+      "wind_direction": 15.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -54,35 +54,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 80,
+      "run_score": 68,
       "temp_score": 60,
-      "wind_score": 100,
+      "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "바람 거의 없음",
+        "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Calm",
+        "Moderate wind",
         "Dry surface"
       ],
-      "advice_short_ko": "러닝하기 아주 좋은 컨디션입니다 😄",
-      "advice_short_en": "Great conditions for running 😄",
-      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Almost no wind, good for maintaining pace. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_short_en": "Decent conditions for running 🙂",
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "gwanggyo-lake-park",
       "name_ko": "광교호수공원",
       "name_en": "Gwanggyo Lake Park",
       "name": "광교호수공원",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.2,
-      "apparent_temperature": -0.4,
-      "wind_speed": 4.3,
-      "wind_direction": 283.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.1,
+      "apparent_temperature": 0.4,
+      "wind_speed": 5.4,
+      "wind_direction": 354.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -90,35 +90,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 58,
-      "temp_score": 40,
+      "run_score": 68,
+      "temp_score": 60,
       "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
-        "춥다",
+        "조금 쌀쌀함",
         "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
-        "Cold",
+        "A bit chilly",
         "Moderate wind",
         "Dry surface"
       ],
-      "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
-      "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_short_en": "Decent conditions for running 🙂",
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "skku",
       "name_ko": "성균관대학교",
       "name_en": "Sungkyunkwan Univ. (Suwon)",
       "name": "성균관대학교",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.1,
-      "apparent_temperature": -0.6,
-      "wind_speed": 5.4,
-      "wind_direction": 148.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.0,
+      "apparent_temperature": 0.4,
+      "wind_speed": 4.7,
+      "wind_direction": 52.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -126,35 +126,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 58,
-      "temp_score": 40,
+      "run_score": 68,
+      "temp_score": 60,
       "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
-        "춥다",
+        "조금 쌀쌀함",
         "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
-        "Cold",
+        "A bit chilly",
         "Moderate wind",
         "Dry surface"
       ],
-      "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
-      "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_short_en": "Decent conditions for running 🙂",
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "woncheon-stream-sindong",
       "name_ko": "원천리천(신동)",
       "name_en": "Woncheon Stream (Sindong)",
       "name": "원천리천(신동)",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.2,
-      "apparent_temperature": -0.3,
-      "wind_speed": 3.6,
-      "wind_direction": 342.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.0,
+      "apparent_temperature": 0.5,
+      "wind_speed": 4.3,
+      "wind_direction": 26.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -162,35 +162,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 64,
-      "temp_score": 40,
-      "wind_score": 80,
+      "run_score": 68,
+      "temp_score": 60,
+      "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
-        "춥다",
-        "약한 바람",
+        "조금 쌀쌀함",
+        "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
-        "Cold",
-        "Light breeze",
+        "A bit chilly",
+        "Moderate wind",
         "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 약한 바람입니다. 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended. Light breeze, little impact on running. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "paldalsan-hwaseong",
       "name_ko": "팔달산(수원화성, 행궁동)",
       "name_en": "Paldalsan Fortress Area",
       "name": "팔달산(수원화성, 행궁동)",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 1.8,
-      "apparent_temperature": -0.6,
-      "wind_speed": 2.9,
-      "wind_direction": 107.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 2.5,
+      "apparent_temperature": -0.0,
+      "wind_speed": 3.6,
+      "wind_direction": 32.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -198,35 +198,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 64,
-      "temp_score": 40,
+      "run_score": 74,
+      "temp_score": 60,
       "wind_score": 80,
       "wet_score": null,
       "tags_ko": [
-        "춥다",
+        "조금 쌀쌀함",
         "약한 바람",
         "노면 건조"
       ],
       "tags_en": [
-        "Cold",
+        "A bit chilly",
         "Light breeze",
         "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 약한 바람입니다. 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended. Light breeze, little impact on running. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 약한 바람입니다. 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Light breeze, little impact on running. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "suwon-stream",
       "name_ko": "수원천",
       "name_en": "Suwoncheon Stream",
       "name": "수원천",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.4,
-      "apparent_temperature": 0.1,
-      "wind_speed": 2.9,
-      "wind_direction": 107.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.1,
+      "apparent_temperature": 0.7,
+      "wind_speed": 3.6,
+      "wind_direction": 32.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -258,11 +258,11 @@
       "name_ko": "광교산",
       "name_en": "Gwanggyo Mountain",
       "name": "광교산",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 0.3,
-      "apparent_temperature": -2.9,
-      "wind_speed": 6.1,
-      "wind_direction": 279.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 1.1,
+      "apparent_temperature": -2.3,
+      "wind_speed": 7.6,
+      "wind_direction": 320.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -294,11 +294,11 @@
       "name_ko": "수원월드컵경기장",
       "name_en": "Suwon World Cup Stadium",
       "name": "수원월드컵경기장",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.1,
-      "apparent_temperature": -0.2,
-      "wind_speed": 2.9,
-      "wind_direction": 338.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.2,
+      "apparent_temperature": 0.6,
+      "wind_speed": 4.3,
+      "wind_direction": 9.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -306,35 +306,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 64,
-      "temp_score": 40,
-      "wind_score": 80,
+      "run_score": 68,
+      "temp_score": 60,
+      "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
-        "춥다",
-        "약한 바람",
+        "조금 쌀쌀함",
+        "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
-        "Cold",
-        "Light breeze",
+        "A bit chilly",
+        "Moderate wind",
         "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 약한 바람입니다. 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended. Light breeze, little impact on running. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "dongtan-yeoul-park",
       "name_ko": "동탄여울공원",
       "name_en": "Dongtan Yeoul Park",
       "name": "동탄여울공원",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.5,
-      "apparent_temperature": 0.4,
-      "wind_speed": 1.8,
-      "wind_direction": 324.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.3,
+      "apparent_temperature": 0.9,
+      "wind_speed": 4.3,
+      "wind_direction": 40.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -342,35 +342,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 80,
+      "run_score": 68,
       "temp_score": 60,
-      "wind_score": 100,
+      "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "바람 거의 없음",
+        "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Calm",
+        "Moderate wind",
         "Dry surface"
       ],
-      "advice_short_ko": "러닝하기 아주 좋은 컨디션입니다 😄",
-      "advice_short_en": "Great conditions for running 😄",
-      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Almost no wind, good for maintaining pace. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_short_en": "Decent conditions for running 🙂",
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "yeongheung-forest-park",
       "name_ko": "영흥숲공원",
       "name_en": "Yeongheung Forest Park",
       "name": "영흥숲공원",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 1.9,
-      "apparent_temperature": -0.3,
-      "wind_speed": 1.8,
-      "wind_direction": 69.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 2.6,
+      "apparent_temperature": 0.1,
+      "wind_speed": 4.3,
+      "wind_direction": 25.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -378,35 +378,35 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 70,
-      "temp_score": 40,
-      "wind_score": 100,
+      "run_score": 68,
+      "temp_score": 60,
+      "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
-        "춥다",
-        "바람 거의 없음",
+        "조금 쌀쌀함",
+        "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
-        "Cold",
-        "Calm",
+        "A bit chilly",
+        "Moderate wind",
         "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended. Almost no wind, good for maintaining pace. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     },
     {
       "id": "majung-park",
       "name_ko": "마중공원",
       "name_en": "Majung Park",
       "name": "마중공원",
-      "updated_at": "2025-11-26T07:15",
-      "temperature": 2.6,
-      "apparent_temperature": 0.4,
-      "wind_speed": 2.5,
-      "wind_direction": 316.0,
+      "updated_at": "2025-11-26T08:15",
+      "temperature": 3.2,
+      "apparent_temperature": 0.8,
+      "wind_speed": 4.3,
+      "wind_direction": 36.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -414,24 +414,24 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 74,
+      "run_score": 68,
       "temp_score": 60,
-      "wind_score": 80,
+      "wind_score": 60,
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "약한 바람",
+        "다소 강한 바람",
         "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Light breeze",
+        "Moderate wind",
         "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 약한 바람입니다. 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Light breeze, little impact on running. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
+      "advice_detail_ko": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but fine for running. Light layering works well. Moderate wind. It may feel cooler than the actual temperature. Dry surface, low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual."
     }
   ]
 }
