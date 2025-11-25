@@ -1,11 +1,32 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <title>Suwon Run Weather</title>
+  <meta charset="utf-8" />
+  <title>SRC 러너 날씨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>수원 러너용 날씨 페이지 준비중 ⚙️</h1>
-  <p>여기에 곧 Open-Meteo + KMA 데이터가 들어갑니다.</p>
+  <header class="app-header">
+    <h1>SRC 러너 날씨</h1>
+    <p class="subtitle">수원 러너들을 위한 현재 컨디션</p>
+  </header>
+
+  <main class="content">
+    <section id="status" class="card">
+      <p>날씨 데이터를 불러오는 중입니다…</p>
+    </section>
+
+    <section id="course-list" class="card">
+      <h2>코스별 현재 상황</h2>
+      <div id="courses"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>Powered by Open-Meteo KMA · jcoderain</small>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
