@@ -1,13 +1,13 @@
 {
-  "generated_at": "2025-11-25T15:18:26.431257",
+  "generated_at": "2025-11-25T15:43:50.216463",
   "courses": [
     {
       "id": "seoho-park",
       "name": "서호공원",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.7,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.5,
       "apparent_temperature": 0.5,
-      "wind_speed": 8.6,
+      "wind_speed": 7.9,
       "wind_direction": 301,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -15,15 +15,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 62,
+      "temp_score": 60,
+      "wind_score": 40,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 강한 편입니다. 맞바람 구간에서는 페이스 조절이 필요합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "youth-center",
       "name": "청소년문화센터",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.8,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.7,
       "apparent_temperature": 0.5,
-      "wind_speed": 9.4,
+      "wind_speed": 9.0,
       "wind_direction": 298,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -31,13 +41,23 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 58,
+      "temp_score": 60,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "gwanggyo-lake-park",
       "name": "광교호수공원",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.7,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.6,
       "apparent_temperature": 0.5,
       "wind_speed": 9.0,
       "wind_direction": 290,
@@ -47,15 +67,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 58,
+      "temp_score": 60,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "skku",
       "name": "성균관대학교",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.5,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.4,
       "apparent_temperature": 0.4,
-      "wind_speed": 8.3,
+      "wind_speed": 7.6,
       "wind_direction": 303,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -63,15 +93,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 62,
+      "temp_score": 60,
+      "wind_score": 40,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 강한 편입니다. 맞바람 구간에서는 페이스 조절이 필요합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "woncheon-stream-sindong",
       "name": "원천리천(신동)",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 4.0,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.8,
       "apparent_temperature": 0.6,
-      "wind_speed": 9.7,
+      "wind_speed": 9.4,
       "wind_direction": 297,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -79,15 +119,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 58,
+      "temp_score": 60,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "paldalsan-hwaseong",
       "name": "팔달산(수원화성, 행궁동)",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.3,
-      "apparent_temperature": 0.2,
-      "wind_speed": 8.3,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.2,
+      "apparent_temperature": 0.1,
+      "wind_speed": 7.9,
       "wind_direction": 297,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -95,15 +145,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 62,
+      "temp_score": 60,
+      "wind_score": 40,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 강한 편입니다. 맞바람 구간에서는 페이스 조절이 필요합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "suwon-stream",
       "name": "수원천",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 4.0,
-      "apparent_temperature": 0.9,
-      "wind_speed": 8.3,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.8,
+      "apparent_temperature": 0.8,
+      "wind_speed": 7.9,
       "wind_direction": 297,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -111,14 +171,24 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 62,
+      "temp_score": 60,
+      "wind_score": 40,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 강한 편입니다. 맞바람 구간에서는 페이스 조절이 필요합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "gwanggyo-mountain",
       "name": "광교산",
-      "updated_at": "2025-11-26T00:15",
+      "updated_at": "2025-11-26T00:30",
       "temperature": 1.5,
-      "apparent_temperature": -1.7,
+      "apparent_temperature": -1.9,
       "wind_speed": 8.3,
       "wind_direction": 315,
       "rain_now": 0.0,
@@ -127,14 +197,24 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "매우 춥습니다. 방한 장비 필수 ⚠️ · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 48,
+      "temp_score": 40,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "춥다",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "suwon-worldcup",
       "name": "수원월드컵경기장",
-      "updated_at": "2025-11-26T00:15",
+      "updated_at": "2025-11-26T00:30",
       "temperature": 3.8,
-      "apparent_temperature": 0.6,
+      "apparent_temperature": 0.5,
       "wind_speed": 9.0,
       "wind_direction": 301,
       "rain_now": 0.0,
@@ -143,15 +223,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 58,
+      "temp_score": 60,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "dongtan-yeoul-park",
       "name": "동탄여울공원",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.8,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.7,
       "apparent_temperature": 0.6,
-      "wind_speed": 9.0,
+      "wind_speed": 8.6,
       "wind_direction": 295,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -159,15 +249,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 58,
+      "temp_score": 60,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "yeongheung-forest-park",
       "name": "영흥숲공원",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.6,
-      "apparent_temperature": 0.2,
-      "wind_speed": 10.1,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.5,
+      "apparent_temperature": 0.1,
+      "wind_speed": 9.7,
       "wind_direction": 292,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -175,15 +275,25 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 58,
+      "temp_score": 60,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     },
     {
       "id": "majung-park",
       "name": "마중공원",
-      "updated_at": "2025-11-26T00:15",
-      "temperature": 3.8,
+      "updated_at": "2025-11-26T00:30",
+      "temperature": 3.7,
       "apparent_temperature": 0.6,
-      "wind_speed": 9.0,
+      "wind_speed": 8.6,
       "wind_direction": 296,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -191,7 +301,17 @@
         "text": "노면 건조",
         "level": "good"
       },
-      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+      "run_score": 58,
+      "temp_score": 60,
+      "wind_score": 25,
+      "wet_score": 100,
+      "tags": [
+        "조금 쌀쌀함",
+        "매우 강한 바람",
+        "노면 건조"
+      ],
+      "advice_short": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_detail": "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다. 바람이 매우 강합니다. 체감온도가 내려가고 피로가 빨리 쌓일 수 있습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     }
   ]
 }
