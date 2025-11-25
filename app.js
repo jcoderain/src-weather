@@ -33,6 +33,7 @@ function renderCourseCard(info) {
       : "-";
 
   const wetBadge = info.wet_badge || { text: "", level: "" };
+  const tags = info.tags || [];
 
   div.innerHTML = `
     <div class="course-title">
@@ -40,6 +41,18 @@ function renderCourseCard(info) {
       <span class="${badgeClass(wetBadge.level)}">${wetBadge.text}</span>
     </div>
     <div class="course-meta">
+      <div style="margin-bottom:4px;">
+        <strong>러닝 지수</strong> ${info.run_score ?? "?"}/100
+      </div>
+      ${
+        tags.length
+          ? `<div style="margin-bottom:4px;">
+               ${tags
+                 .map((t) => `<span class="badge" style="margin-right:4px;">${t}</span>`)
+                 .join("")}
+             </div>`
+          : ""
+      }
       <div>현재 기온 ${info.temperature.toFixed(
         1
       )}°C · 체감 ${info.apparent_temperature.toFixed(1)}°C</div>
@@ -47,7 +60,8 @@ function renderCourseCard(info) {
       <div>현재 비 ${info.rain_now.toFixed(
         1
       )} mm · 최근 3시간 비 ${info.recent_rain_3h.toFixed(1)} mm</div>
-      <div>${info.comment || ""}</div>
+      <div style="margin-top:4px;"><strong>${info.advice_short || ""}</strong></div>
+      <div style="margin-top:2px;">${info.advice_detail || ""}</div>
       <div style="margin-top:4px; font-size:0.78rem; color:#9ca3af;">
         업데이트: ${info.updated_at}
       </div>
@@ -55,6 +69,7 @@ function renderCourseCard(info) {
   `;
   return div;
 }
+
 
 async function init() {
   try {
@@ -66,7 +81,7 @@ async function init() {
     const data = await resp.json();
     const courses = data.courses || [];
 
-    statusEl.innerHTML = `<p>총 ${courses.length}개 코스의 컨디션을 불러왔습니다 🏃‍♂️</p>`;
+    statusEl.innerHTML = `<p>총 ${courses.length}개 지점의 날씨를 불러왔습니다 🏃‍♂️</p>`;
 
     coursesEl.innerHTML = "";
     courses.forEach((info) => {
