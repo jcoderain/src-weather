@@ -32,10 +32,7 @@ function renderCourseCard(info) {
         )} m/s`
       : "-";
 
-  const wetBadge = info.wet_badge || {
-    text: "",
-    level: "",
-  };
+  const wetBadge = info.wet_badge || { text: "", level: "" };
 
   div.innerHTML = `
     <div class="course-title">
@@ -61,18 +58,16 @@ async function init() {
   try {
     statusEl.innerHTML = "<p>수원 러너용 날씨 데이터를 불러오는 중…</p>";
 
-    const resp = await fetch("data/suwon_weather.json", {
-      cache: "no-cache",
-    });
-    if (!resp.ok) {
-      throw new Error("JSON not found");
-    }
-    const data = await resp.json();
+    const resp = await fetch("data/suwon_weather.json", { cache: "no-cache" });
+    if (!resp.ok) throw new Error("JSON not found");
 
-    statusEl.innerHTML = "<p>지금 달리기 컨디션을 확인해보세요 🏃‍♂️</p>";
+    const data = await resp.json();
+    const courses = data.courses || [];
+
+    statusEl.innerHTML = `<p>총 ${courses.length}개 코스의 컨디션을 불러왔습니다 🏃‍♂️</p>`;
 
     coursesEl.innerHTML = "";
-    (data.courses || []).forEach((info) => {
+    courses.forEach((info) => {
       coursesEl.appendChild(renderCourseCard(info));
     });
   } catch (err) {
