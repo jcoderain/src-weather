@@ -1,80 +1,8 @@
-let currentLang = "ko";
-let LAST_DATA = null;
-
-const statusEl = document.getElementById("status");
-const coursesEl = document.getElementById("courses");
-const appTitleEl = document.getElementById("app-title");
-const appSubtitleEl = document.getElementById("app-subtitle");
-const courseListTitleEl = document.getElementById("course-list-title");
-
-// 절대 경로 + 캐시 방지
-const JSON_URL =
-  "https://jcoderain.github.io/src-weather/data/suwon_weather.json";
-
-const uiText = {
-  appTitle: {
-    ko: "SRC 날씨",
-    en: "SRC Weather",
-  },
-  appSubtitle: {
-    ko: "SRC 러너들을 위한 현재 컨디션",
-    en: "Current conditions for SRC runners",
-  },
-  courseListTitle: {
-    ko: "코스별 현재 상황",
-    en: "Current conditions by course",
-  },
-  statusLoading: {
-    ko: "SRC 러너용 날씨 데이터를 불러오는 중…",
-    en: "Loading weather data for Suwon runners…",
-  },
-  statusLoaded: (count) => ({
-    ko: `총 ${count}개 코스의 컨디션을 불러왔습니다 🏃‍♂️`,
-    en: `Loaded conditions for ${count} courses 🏃‍♂️`,
-  }),
-  fail: {
-    ko: "날씨 데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해 주세요.",
-    en: "Failed to load weather data. Please try again later.",
-  },
-};
-
-function applyLanguage() {
-  appTitleEl.textContent = uiText.appTitle[currentLang];
-  appSubtitleEl.textContent = uiText.appSubtitle[currentLang];
-  courseListTitleEl.textContent = uiText.courseListTitle[currentLang];
-
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
-    const lang = btn.dataset.lang;
-    if (lang === currentLang) btn.classList.add("active");
-    else btn.classList.remove("active");
-  });
-}
-
-function windDirectionToText(deg) {
-  if (deg === null || deg === undefined) return "-";
-  const dirsKo = ["북", "북동", "동", "남동", "남", "남서", "서", "북서"];
-  const dirsEn = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-  const idx = Math.round((deg % 360) / 45) % 8;
-  return currentLang === "ko" ? dirsKo[idx] : dirsEn[idx];
-}
-
-function badgeClass(level) {
-  switch (level) {
-    case "good":
-      return "badge badge-good";
-    case "wet":
-      return "badge badge-wet";
-    case "bad":
-      return "badge badge-bad";
-    default:
-      return "badge";
-  }
-}
-
 function renderCourseCard(info) {
   const div = document.createElement("div");
   div.className = "course-card";
 
+  // 이름 한/영
   const displayName =
     currentLang === "ko"
       ? info.name_ko || info.name
@@ -94,12 +22,13 @@ function renderCourseCard(info) {
   const tags =
     currentLang === "ko" ? info.tags_ko || [] : info.tags_en || [];
 
-  // ✅ 중복·노면 태그 제거
+  // ✅ 1) 노면 배지와 같은 태그 제거
+  // ✅ 2) 중복 태그 제거
   const uniqueTags = [];
   for (const t of tags) {
     if (!t) continue;
-    if (t === wetText) continue;
-    if (uniqueTags.includes(t)) continue;
+    if (t === wetText) continue; // 이미 배지로 표시된 문구는 태그에서 제거
+    if (uniqueTags.includes(t)) continue; // 같은 문구 중복 제거
     uniqueTags.push(t);
   }
 
@@ -153,51 +82,3 @@ function renderCourseCard(info) {
   `;
   return div;
 }
-
-function renderAllCourses() {
-  if (!LAST_DATA) return;
-  const courses = LAST_DATA.courses || [];
-  coursesEl.innerHTML = "";
-  courses.forEach((info) => {
-    coursesEl.appendChild(renderCourseCard(info));
-  });
-}
-
-async function init() {
-  try {
-    applyLanguage();
-    statusEl.innerHTML = `<p>${uiText.statusLoading[currentLang]}</p>`;
-
-    const resp = await fetch(`${JSON_URL}?t=${Date.now()}`, {
-      cache: "no-store",
-    });
-    if (!resp.ok) {
-      throw new Error(`HTTP ${resp.status}`);
-    }
-
-    const data = await resp.json();
-    LAST_DATA = data;
-
-    const courses = data.courses || [];
-    const statusText = uiText.statusLoaded(courses.length)[currentLang];
-    statusEl.innerHTML = `<p>${statusText}</p>`;
-
-    renderAllCourses();
-  } catch (err) {
-    console.error("[weather-init-error]", err);
-    statusEl.innerHTML = `<p>${uiText.fail[currentLang]}</p>`;
-  }
-}
-
-// 언어 버튼 이벤트
-document.querySelectorAll(".lang-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const lang = btn.dataset.lang;
-    if (!lang || lang === currentLang) return;
-    currentLang = lang;
-    applyLanguage();
-    renderAllCourses();
-  });
-});
-
-init();
