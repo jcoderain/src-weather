@@ -1,11 +1,57 @@
+let currentLang = "ko";
+let LAST_DATA = null;
+
 const statusEl = document.getElementById("status");
 const coursesEl = document.getElementById("courses");
+const appTitleEl = document.getElementById("app-title");
+const appSubtitleEl = document.getElementById("app-subtitle");
+const courseListTitleEl = document.getElementById("course-list-title");
+
+const uiText = {
+  appTitle: {
+    ko: "SRC 러너 날씨",
+    en: "SRC Runner Weather",
+  },
+  appSubtitle: {
+    ko: "수원 러너들을 위한 현재 컨디션",
+    en: "Current conditions for Suwon runners",
+  },
+  courseListTitle: {
+    ko: "코스별 현재 상황",
+    en: "Current conditions by course",
+  },
+  statusLoading: {
+    ko: "수원 러너용 날씨 데이터를 불러오는 중…",
+    en: "Loading weather data for Suwon runners…",
+  },
+  statusLoaded: (count) => ({
+    ko: `총 ${count}개 코스의 컨디션을 불러왔습니다 🏃‍♂️`,
+    en: `Loaded conditions for ${count} courses 🏃‍♂️`,
+  }),
+  fail: {
+    ko: "날씨 데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해 주세요.",
+    en: "Failed to load weather data. Please try again later.",
+  },
+};
+
+function applyLanguage() {
+  appTitleEl.textContent = uiText.appTitle[currentLang];
+  appSubtitleEl.textContent = uiText.appSubtitle[currentLang];
+  courseListTitleEl.textContent = uiText.courseListTitle[currentLang];
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    const lang = btn.dataset.lang;
+    if (lang === currentLang) btn.classList.add("active");
+    else btn.classList.remove("active");
+  });
+}
 
 function windDirectionToText(deg) {
   if (deg === null || deg === undefined) return "-";
-  const dirs = ["북", "북동", "동", "남동", "남", "남서", "서", "북서"];
+  const dirsKo = ["북", "북동", "동", "남동", "남", "남서", "서", "북서"];
+  const dirsEn = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   const idx = Math.round((deg % 360) / 45) % 8;
-  return dirs[idx];
+  return currentLang === "ko" ? dirsKo[idx] : dirsEn[idx];
 }
 
 function badgeClass(level) {
@@ -32,66 +78,104 @@ function renderCourseCard(info) {
         )} m/s`
       : "-";
 
-  const wetBadge = info.wet_badge || { text: "", level: "" };
-  const tags = info.tags || [];
+  const wetBadge = info.wet_badge || { level: "", text_ko: "", text_en: "" };
+  const wetText =
+    currentLang === "ko" ? wetBadge.text_ko : wetBadge.text_en;
+
+  const tags =
+    currentLang === "ko" ? info.tags_ko || [] : info.tags_en || [];
+
+  const runLabel = currentLang === "ko" ? "러닝 지수" : "Run index";
+  const tempLabel = currentLang === "ko" ? "현재 기온" : "Air temp";
+  const feelsLabel = currentLang === "ko" ? "체감" : "Feels like";
+  const windLabel = currentLang === "ko" ? "바람" : "Wind";
+  const rainNowLabel = currentLang === "ko" ? "현재 비" : "Rain now";
+  const rain3hLabel =
+    currentLang === "ko" ? "최근 3시간 비" : "Rain (last 3h)";
+  const updatedLabel = currentLang === "ko" ? "업데이트" : "Updated";
 
   div.innerHTML = `
     <div class="course-title">
       <span>${info.name}</span>
-      <span class="${badgeClass(wetBadge.level)}">${wetBadge.text}</span>
+      <span class="${badgeClass(wetBadge.level)}">${wetText}</span>
     </div>
     <div class="course-meta">
       <div style="margin-bottom:4px;">
-        <strong>러닝 지수</strong> ${info.run_score ?? "?"}/100
+        <strong>${runLabel}</strong> ${info.run_score ?? "?"}/100
       </div>
       ${
         tags.length
           ? `<div style="margin-bottom:4px;">
                ${tags
-                 .map((t) => `<span class="badge" style="margin-right:4px;">${t}</span>`)
+                 .map(
+                   (t) =>
+                     `<span class="badge" style="margin-right:4px;">${t}</span>`
+                 )
                  .join("")}
              </div>`
           : ""
       }
-      <div>현재 기온 ${info.temperature.toFixed(
-        1
-      )}°C · 체감 ${info.apparent_temperature.toFixed(1)}°C</div>
-      <div>바람 ${windText}</div>
-      <div>현재 비 ${info.rain_now.toFixed(
-        1
-      )} mm · 최근 3시간 비 ${info.recent_rain_3h.toFixed(1)} mm</div>
-      <div style="margin-top:4px;"><strong>${info.advice_short || ""}</strong></div>
-      <div style="margin-top:2px;">${info.advice_detail || ""}</div>
+      <div>
+        ${tempLabel} ${info.temperature.toFixed(
+    1
+  )}°C · ${feelsLabel} ${info.apparent_temperature.toFixed(1)}°C
+      </div>
+      <div>
+        ${windLabel} ${windText}
+      </div>
+      <div>
+        ${rainNowLabel} ${info.rain_now.toFixed(
+    1
+  )} mm · ${rain3hLabel} ${info.recent_rain_3h.toFixed(1)} mm
+      </div>
       <div style="margin-top:4px; font-size:0.78rem; color:#9ca3af;">
-        업데이트: ${info.updated_at}
+        ${updatedLabel}: ${info.updated_at}
       </div>
     </div>
   `;
   return div;
 }
 
+function renderAllCourses() {
+  if (!LAST_DATA) return;
+  const courses = LAST_DATA.courses || [];
+  coursesEl.innerHTML = "";
+  courses.forEach((info) => {
+    coursesEl.appendChild(renderCourseCard(info));
+  });
+}
 
 async function init() {
   try {
-    statusEl.innerHTML = "<p>수원 러너용 날씨 데이터를 불러오는 중…</p>";
+    applyLanguage();
+    statusEl.innerHTML = `<p>${uiText.statusLoading[currentLang]}</p>`;
 
     const resp = await fetch("data/suwon_weather.json", { cache: "no-cache" });
     if (!resp.ok) throw new Error("JSON not found");
 
     const data = await resp.json();
+    LAST_DATA = data;
+
     const courses = data.courses || [];
+    const statusText = uiText.statusLoaded(courses.length)[currentLang];
+    statusEl.innerHTML = `<p>${statusText}</p>`;
 
-    statusEl.innerHTML = `<p>총 ${courses.length}개 지점의 날씨를 불러왔습니다 🏃‍♂️</p>`;
-
-    coursesEl.innerHTML = "";
-    courses.forEach((info) => {
-      coursesEl.appendChild(renderCourseCard(info));
-    });
+    renderAllCourses();
   } catch (err) {
     console.error(err);
-    statusEl.innerHTML =
-      "<p>날씨 데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해 주세요.</p>";
+    statusEl.innerHTML = `<p>${uiText.fail[currentLang]}</p>`;
   }
 }
+
+// 언어 버튼 이벤트
+document.querySelectorAll(".lang-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;
+    if (!lang || lang === currentLang) return;
+    currentLang = lang;
+    applyLanguage();
+    renderAllCourses();
+  });
+});
 
 init();
