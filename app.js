@@ -30,8 +30,8 @@ const uiText = {
     en: "Loading weather data for SRC runners…",
   },
   statusLoaded: (count) => ({
-    ko: `총 ${count}개 코스의 날씨를 불러왔습니다. 화이팅! 🏃‍♂️`,
-    en: `Loaded weather for ${count} courses. Fighting! 🏃‍♂️`,
+    ko: `수원시의 주요 ${count}개 코스의 날씨를 불러왔습니다. 화이팅! 🏃‍♂️`,
+    en: `Loaded weather for Suwon major ${count} courses. Fighting! 🏃‍♂️`,
   }),
   fail: {
     ko: "날씨 데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해 주세요.",
