@@ -9,7 +9,8 @@ const courseListTitleEl = document.getElementById("course-list-title");
 
 // 절대 경로 + 캐시 방지
 const JSON_URL =
-  "https://jcoderain.github.io/src-weather/data/suwon_weather.json";
+  "https://jcoderain.github.io/src-weather/data/src_weather.json";
+
 
 const uiText = {
   appTitle: {
@@ -26,7 +27,7 @@ const uiText = {
   },
   statusLoading: {
     ko: "SRC 러너용 날씨 데이터를 불러오는 중…",
-    en: "Loading weather data for Suwon runners…",
+    en: "Loading weather data for SRC runners…",
   },
   statusLoaded: (count) => ({
     ko: `총 ${count}개 코스의 컨디션을 불러왔습니다 🏃‍♂️`,

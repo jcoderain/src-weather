@@ -381,7 +381,7 @@ def main() -> None:
         "courses": results,
     }
 
-    out_path = Path("data") / "suwon_weather.json"
+    out_path = Path("data") / "src_weather.json"  # ✅ 이름 변경
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         json.dumps(output, ensure_ascii=False, indent=2),
