@@ -1,12 +1,3 @@
-const COURSES = [
-  {
-    id: "suwon-city-hall",
-    name: "수원시청 주변",
-    lat: 37.2636,
-    lon: 127.0286,
-  },
-];
-
 const statusEl = document.getElementById("status");
 const coursesEl = document.getElementById("courses");
 
@@ -17,52 +8,17 @@ function windDirectionToText(deg) {
   return dirs[idx];
 }
 
-function buildApiUrl(lat, lon) {
-  const base = "https://api.open-meteo.com/v1/forecast";
-  const params = new URLSearchParams({
-    latitude: lat,
-    longitude: lon,
-    hourly:
-      "temperature_2m,apparent_temperature,precipitation,rain,wind_speed_10m,wind_direction_10m",
-    current:
-      "temperature_2m,apparent_temperature,precipitation,rain,wind_speed_10m,wind_direction_10m",
-    timezone: "Asia/Seoul",
-    models: "kma_seamless",
-    past_hours: "3",
-    forecast_hours: "0",
-  });
-  return `${base}?${params.toString()}`;
-}
-
-async function fetchCourseWeather(course) {
-  const url = buildApiUrl(course.lat, course.lon);
-  const resp = await fetch(url);
-  if (!resp.ok) throw new Error("API error");
-  const data = await resp.json();
-
-  const current = data.current;
-  const hourly = data.hourly;
-
-  const recentRain = hourly.rain.reduce((sum, v) => sum + (v || 0), 0);
-
-  let wetBadge = { text: "노면 건조", cls: "badge-good" };
-  if (recentRain > 0 && recentRain < 1) {
-    wetBadge = { text: "약간 젖음", cls: "badge-wet" };
-  } else if (recentRain >= 1) {
-    wetBadge = { text: "많이 젖음", cls: "badge-bad" };
+function badgeClass(level) {
+  switch (level) {
+    case "good":
+      return "badge badge-good";
+    case "wet":
+      return "badge badge-wet";
+    case "bad":
+      return "badge badge-bad";
+    default:
+      return "badge";
   }
-
-  return {
-    course,
-    currentTemp: current.temperature_2m,
-    apparentTemp: current.apparent_temperature,
-    windSpeed: current.wind_speed_10m,
-    windDirDeg: current.wind_direction_10m,
-    rainNow: current.rain,
-    recentRain,
-    wetBadge,
-    time: current.time,
-  };
 }
 
 function renderCourseCard(info) {
@@ -70,26 +26,32 @@ function renderCourseCard(info) {
   div.className = "course-card";
 
   const windText =
-    info.windSpeed != null
-      ? `${windDirectionToText(info.windDirDeg)} ${info.windSpeed.toFixed(
+    info.wind_speed != null
+      ? `${windDirectionToText(info.wind_direction)} ${info.wind_speed.toFixed(
           1
         )} m/s`
       : "-";
 
+  const wetBadge = info.wet_badge || {
+    text: "",
+    level: "",
+  };
+
   div.innerHTML = `
     <div class="course-title">
-      <span>${info.course.name}</span>
-      <span class="badge ${info.wetBadge.cls}">${info.wetBadge.text}</span>
+      <span>${info.name}</span>
+      <span class="${badgeClass(wetBadge.level)}">${wetBadge.text}</span>
     </div>
     <div class="course-meta">
-      <div>현재 기온 ${info.currentTemp.toFixed(
+      <div>현재 기온 ${info.temperature.toFixed(
         1
-      )}°C · 체감 ${info.apparentTemp.toFixed(1)}°C</div>
+      )}°C · 체감 ${info.apparent_temperature.toFixed(1)}°C</div>
       <div>바람 ${windText}</div>
-      <div>현재 비 ${info.rainNow.toFixed(
+      <div>현재 비 ${info.rain_now.toFixed(
         1
-      )} mm · 최근 3시간 비 ${info.recentRain.toFixed(1)} mm</div>
-      <div>업데이트: ${info.time}</div>
+      )} mm · 최근 3시간 비 ${info.recent_rain_3h.toFixed(1)} mm</div>
+      <div>${info.comment || ""}</div>
+      <div>업데이트: ${info.updated_at}</div>
     </div>
   `;
   return div;
@@ -97,16 +59,20 @@ function renderCourseCard(info) {
 
 async function init() {
   try {
-    statusEl.innerHTML = "<p>Open-Meteo KMA에서 데이터를 가져오는 중…</p>";
+    statusEl.innerHTML = "<p>수원 러너용 날씨 데이터를 불러오는 중…</p>";
 
-    const results = await Promise.all(
-      COURSES.map((c) => fetchCourseWeather(c))
-    );
+    const resp = await fetch("data/suwon_weather.json", {
+      cache: "no-cache",
+    });
+    if (!resp.ok) {
+      throw new Error("JSON not found");
+    }
+    const data = await resp.json();
 
     statusEl.innerHTML = "<p>지금 달리기 컨디션을 확인해보세요 🏃‍♂️</p>";
 
     coursesEl.innerHTML = "";
-    results.forEach((info) => {
+    (data.courses || []).forEach((info) => {
       coursesEl.appendChild(renderCourseCard(info));
     });
   } catch (err) {

@@ -1,0 +1,21 @@
+{
+  "generated_at": "2025-11-25T23:31:24.244442",
+  "courses": [
+    {
+      "id": "suwon-city-hall",
+      "name": "수원시청 주변",
+      "updated_at": "2025-11-25T23:30",
+      "temperature": 3.8,
+      "apparent_temperature": 1.0,
+      "wind_speed": 7.4,
+      "wind_direction": 316,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    }
+  ]
+}
