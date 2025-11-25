@@ -48,7 +48,9 @@ function renderCourseCard(info) {
         1
       )} mm · 최근 3시간 비 ${info.recent_rain_3h.toFixed(1)} mm</div>
       <div>${info.comment || ""}</div>
-      <div>업데이트: ${info.updated_at}</div>
+      <div style="margin-top:4px; font-size:0.78rem; color:#9ca3af;">
+        업데이트: ${info.updated_at}
+      </div>
     </div>
   `;
   return div;

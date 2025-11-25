@@ -1,3 +1,4 @@
+/* 레이아웃 기본 설정 */
 *,
 *::before,
 *::after {
@@ -12,6 +13,7 @@ body {
   color: #e5e7eb;
 }
 
+/* 헤더 영역 */
 .app-header {
   padding: 16px 20px;
   background: #020617;
@@ -29,12 +31,14 @@ body {
   color: #9ca3af;
 }
 
+/* 메인 콘텐츠 영역 */
 .content {
   padding: 12px 12px 64px;
   max-width: 480px;
   margin: 0 auto;
 }
 
+/* 카드 공통 스타일 */
 .card {
   background: #020617;
   border-radius: 16px;
@@ -49,6 +53,7 @@ body {
   font-size: 1rem;
 }
 
+/* 코스 카드 한 장 */
 .course-card {
   border-radius: 14px;
   padding: 10px 12px;
@@ -57,18 +62,22 @@ body {
   border: 1px solid #111827;
 }
 
+/* 코스 카드 상단: 이름 + 배지 */
 .course-title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 0.95rem;
   margin-bottom: 4px;
 }
 
+/* 코스 카드 본문 텍스트 */
 .course-meta {
   font-size: 0.8rem;
   color: #9ca3af;
 }
 
+/* 배지 공통 */
 .badge {
   display: inline-block;
   padding: 2px 8px;
@@ -77,6 +86,7 @@ body {
   border: 1px solid #4b5563;
 }
 
+/* 노면 상태별 배지 색 */
 .badge-good {
   border-color: #22c55e;
   color: #bbf7d0;
@@ -92,6 +102,7 @@ body {
   color: #fecaca;
 }
 
+/* 풋터 */
 .app-footer {
   position: fixed;
   bottom: 0;
