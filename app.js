@@ -75,7 +75,6 @@ function renderCourseCard(info) {
   const div = document.createElement("div");
   div.className = "course-card";
 
-  // ✅ 이름도 언어에 따라 선택
   const displayName =
     currentLang === "ko"
       ? info.name_ko || info.name
@@ -94,6 +93,15 @@ function renderCourseCard(info) {
 
   const tags =
     currentLang === "ko" ? info.tags_ko || [] : info.tags_en || [];
+
+  // ✅ 중복·노면 태그 제거
+  const uniqueTags = [];
+  for (const t of tags) {
+    if (!t) continue;
+    if (t === wetText) continue;
+    if (uniqueTags.includes(t)) continue;
+    uniqueTags.push(t);
+  }
 
   const runLabel = currentLang === "ko" ? "러닝 지수" : "Run index";
   const tempLabel = currentLang === "ko" ? "현재 기온" : "Air temp";
@@ -114,9 +122,9 @@ function renderCourseCard(info) {
         <strong>${runLabel}</strong> ${info.run_score ?? "?"}/100
       </div>
       ${
-        tags.length
+        uniqueTags.length
           ? `<div style="margin-bottom:4px;">
-               ${tags
+               ${uniqueTags
                  .map(
                    (t) =>
                      `<span class="badge" style="margin-right:4px;">${t}</span>`
