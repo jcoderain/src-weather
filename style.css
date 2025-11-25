@@ -136,38 +136,3 @@ body {
   background: #020617ee;
   color: #6b7280;
 }
-
-.run-score {
-  display: inline-block;
-  min-width: 38px;
-  text-align: center;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border: 1px solid #4b5563;
-}
-
-.run-score-great {
-  border-color: #22c55e;
-  color: #bbf7d0;
-}
-
-.run-score-good {
-  border-color: #a3e635;
-  color: #d9f99d;
-}
-
-.run-score-caution {
-  border-color: #facc15;
-  color: #fef9c3;
-}
-
-.run-score-bad {
-  border-color: #fb7185;
-  color: #ffe4e6;
-}
-
-.run-score-unknown {
-  color: #9ca3af;
-}
