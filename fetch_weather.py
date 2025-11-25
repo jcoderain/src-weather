@@ -17,19 +17,79 @@ class Course:
     lon: float
 
 
-COURSES = [
-    {"name": "서호공원",         "lat": 37.280325,   "lon": 126.990396},
-    {"name": "청소년문화센터",         "lat": 37.274248,   "lon": 127.034519},
-    {"name": "광교호수공원",     "lat": 37.283439, "lon": 127.065989},
-    {"name": "성균관대학교", "lat": 37.293788, "lon": 126.974365},
-    {"name": "원천리천(신동)",           "lat": 37.248469, "lon": 1127.041965},
-    {"name": "팔달산(수원화성, 행궁동)",     "lat": 37.277614, "lon": 127.010650},
-    {"name": "수원천",     "lat": 37.266571, "lon": 127.015022},
-    {"name": "광교산",           "lat": 37.328633, "lon": 127.038172},
-    {"name": "수원월드컵경기장", "lat": 37.286545, "lon": 127.036871},
-    {"name": "동탄여울공원",     "lat": 37.198689, "lon": 127.086609},
-    {"name": "영흥숲공원",       "lat": 37.261067, "lon": 127.070470},
-    {"name": "마중공원",         "lat": 37.236832, "lon": 127.020592},
+COURSES: List[Course] = [
+    Course(
+        id="seoho-park",
+        name="서호공원",
+        lat=37.280325,
+        lon=126.990396,
+    ),
+    Course(
+        id="youth-center",
+        name="청소년문화센터",
+        lat=37.274248,
+        lon=127.034519,
+    ),
+    Course(
+        id="gwanggyo-lake-park",
+        name="광교호수공원",
+        lat=37.283439,
+        lon=127.065989,
+    ),
+    Course(
+        id="skku",
+        name="성균관대학교",
+        lat=37.293788,
+        lon=126.974365,
+    ),
+    Course(
+        id="woncheon-stream-sindong",
+        name="원천리천(신동)",
+        lat=37.248469,
+        lon=127.041965,  # 1127 → 127로 수정
+    ),
+    Course(
+        id="paldalsan-hwaseong",
+        name="팔달산(수원화성, 행궁동)",
+        lat=37.277614,
+        lon=127.010650,
+    ),
+    Course(
+        id="suwon-stream",
+        name="수원천",
+        lat=37.266571,
+        lon=127.015022,
+    ),
+    Course(
+        id="gwanggyo-mountain",
+        name="광교산",
+        lat=37.328633,
+        lon=127.038172,
+    ),
+    Course(
+        id="suwon-worldcup",
+        name="수원월드컵경기장",
+        lat=37.286545,
+        lon=127.036871,
+    ),
+    Course(
+        id="dongtan-yeoul-park",
+        name="동탄여울공원",
+        lat=37.198689,
+        lon=127.086609,
+    ),
+    Course(
+        id="yeongheung-forest-park",
+        name="영흥숲공원",
+        lat=37.261067,
+        lon=127.070470,
+    ),
+    Course(
+        id="majung-park",
+        name="마중공원",
+        lat=37.236832,
+        lon=127.020592,
+    ),
 ]
 
 

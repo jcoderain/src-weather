@@ -1,14 +1,190 @@
 {
-  "generated_at": "2025-11-25T23:31:24.244442",
+  "generated_at": "2025-11-26T00:07:26.253591",
   "courses": [
     {
-      "id": "suwon-city-hall",
-      "name": "수원시청 주변",
-      "updated_at": "2025-11-25T23:30",
+      "id": "seoho-park",
+      "name": "서호공원",
+      "updated_at": "2025-11-26T00:00",
       "temperature": 3.8,
+      "apparent_temperature": 0.6,
+      "wind_speed": 9.0,
+      "wind_direction": 301,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "youth-center",
+      "name": "청소년문화센터",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 3.9,
+      "apparent_temperature": 0.6,
+      "wind_speed": 9.7,
+      "wind_direction": 298,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "gwanggyo-lake-park",
+      "name": "광교호수공원",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 3.8,
+      "apparent_temperature": 0.6,
+      "wind_speed": 9.0,
+      "wind_direction": 290,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "skku",
+      "name": "성균관대학교",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 3.7,
+      "apparent_temperature": 0.5,
+      "wind_speed": 8.6,
+      "wind_direction": 303,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "woncheon-stream-sindong",
+      "name": "원천리천(신동)",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 4.1,
+      "apparent_temperature": 0.8,
+      "wind_speed": 10.1,
+      "wind_direction": 297,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "paldalsan-hwaseong",
+      "name": "팔달산(수원화성, 행궁동)",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 3.5,
+      "apparent_temperature": 0.3,
+      "wind_speed": 8.6,
+      "wind_direction": 297,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "suwon-stream",
+      "name": "수원천",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 4.1,
       "apparent_temperature": 1.0,
-      "wind_speed": 7.4,
-      "wind_direction": 316,
+      "wind_speed": 8.6,
+      "wind_direction": 297,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "gwanggyo-mountain",
+      "name": "광교산",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 1.6,
+      "apparent_temperature": -1.6,
+      "wind_speed": 8.3,
+      "wind_direction": 315,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "매우 춥습니다. 방한 장비 필수 ⚠️ · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "suwon-worldcup",
+      "name": "수원월드컵경기장",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 4.0,
+      "apparent_temperature": 0.7,
+      "wind_speed": 9.4,
+      "wind_direction": 301,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "dongtan-yeoul-park",
+      "name": "동탄여울공원",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 3.8,
+      "apparent_temperature": 0.7,
+      "wind_speed": 9.4,
+      "wind_direction": 295,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "yeongheung-forest-park",
+      "name": "영흥숲공원",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 3.7,
+      "apparent_temperature": 0.3,
+      "wind_speed": 10.4,
+      "wind_direction": 292,
+      "rain_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "wet_badge": {
+        "text": "노면 건조",
+        "level": "good"
+      },
+      "comment": "쌀쌀합니다. 긴팔/바람막이 추천 🧥 · 바람이 강한 편입니다. 체감온도 주의 🌬"
+    },
+    {
+      "id": "majung-park",
+      "name": "마중공원",
+      "updated_at": "2025-11-26T00:00",
+      "temperature": 3.9,
+      "apparent_temperature": 0.7,
+      "wind_speed": 9.4,
+      "wind_direction": 296,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
