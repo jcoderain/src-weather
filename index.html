@@ -1,42 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <title>SRC Weather</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="app-header">
-    <div class="header-top">
-      <div>
-        <h1 id="app-title">SRC 러너 날씨</h1>
-        <p id="app-subtitle" class="subtitle">SRC 러너들을 위한 코스 컨디션</p>
-      </div>
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="ko">한</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>SRC 날씨</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div>
+          <h1 id="app-title">SRC 날씨</h1>
+          <p id="app-subtitle">SRC 러너들을 위한 현재 컨디션</p>
+        </div>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="ko">한</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="status-card">
+          <div id="status">
+            <p>SRC 러너용 날씨 데이터를 불러오는 중입니다…</p>
+          </div>
+        </section>
+
+        <section class="course-list">
+          <h2 id="course-list-title">코스별 현재 상황</h2>
+          <div id="courses" class="course-grid">
+            <!-- JS(app.js)에서 코스 카드가 들어옵니다 -->
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        Powered by Open-Meteo KMA · jcoderain
+      </footer>
     </div>
-  </header>
 
-  <main class="content">
-    <!-- 전체 상태 -->
-    <section id="status" class="card">
-      <p>SRC 러너용 날씨 데이터를 불러오는 중입니다…</p>
-    </section>
-
-    <!-- 코스별 카드 리스트 -->
-    <section id="course-list" class="card">
-      <h2 id="course-list-title">코스별 현재 날씨</h2>
-      <div id="courses"></div>
-    </section>
-  </main>
-
-  <footer class="app-footer">
-    <small>Powered by Open-Meteo KMA · jcoderain</small>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
+    <script src="app.js" defer></script>
+  </body>
 </html>
