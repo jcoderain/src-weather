@@ -7,6 +7,10 @@ const appTitleEl = document.getElementById("app-title");
 const appSubtitleEl = document.getElementById("app-subtitle");
 const courseListTitleEl = document.getElementById("course-list-title");
 
+// ✅ 절대 경로 + 캐시 방지용 쿼리 붙일 예정
+const JSON_URL =
+  "https://jcoderain.github.io/src-weather/data/suwon_weather.json";
+
 const uiText = {
   appTitle: {
     ko: "SRC 러너 날씨",
@@ -150,8 +154,13 @@ async function init() {
     applyLanguage();
     statusEl.innerHTML = `<p>${uiText.statusLoading[currentLang]}</p>`;
 
-    const resp = await fetch("data/suwon_weather.json", { cache: "no-cache" });
-    if (!resp.ok) throw new Error("JSON not found");
+    // ✅ 절대 URL + 캐시 방지 쿼리
+    const resp = await fetch(`${JSON_URL}?t=${Date.now()}`, {
+      cache: "no-store",
+    });
+    if (!resp.ok) {
+      throw new Error(`HTTP ${resp.status}`);
+    }
 
     const data = await resp.json();
     LAST_DATA = data;
@@ -162,7 +171,7 @@ async function init() {
 
     renderAllCourses();
   } catch (err) {
-    console.error(err);
+    console.error("[weather-init-error]", err);
     statusEl.innerHTML = `<p>${uiText.fail[currentLang]}</p>`;
   }
 }
