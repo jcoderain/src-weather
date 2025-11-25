@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-26T02:32:02.404935",
+  "generated_at": "2025-11-26T02:34:46.502452",
   "courses": [
     {
       "id": "seoho-park",
@@ -24,11 +24,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "다소 강한 바람"
+        "다소 강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Moderate wind"
+        "Moderate wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -58,11 +60,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "강한 바람"
+        "강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Strong wind"
+        "Strong wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -92,11 +96,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "약한 바람"
+        "약한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Light breeze"
+        "Light breeze",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -126,11 +132,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "다소 강한 바람"
+        "다소 강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Moderate wind"
+        "Moderate wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -160,11 +168,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "강한 바람"
+        "강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Strong wind"
+        "Strong wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -194,11 +204,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "다소 강한 바람"
+        "다소 강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Moderate wind"
+        "Moderate wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -228,11 +240,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "다소 강한 바람"
+        "다소 강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Moderate wind"
+        "Moderate wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -262,11 +276,13 @@
       "wet_score": null,
       "tags_ko": [
         "춥다",
-        "강한 바람"
+        "강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "Cold",
-        "Strong wind"
+        "Strong wind",
+        "Dry surface"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
@@ -296,11 +312,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "강한 바람"
+        "강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Strong wind"
+        "Strong wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -330,11 +348,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "다소 강한 바람"
+        "다소 강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Moderate wind"
+        "Moderate wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -364,11 +384,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "다소 강한 바람"
+        "다소 강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Moderate wind"
+        "Moderate wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
@@ -398,11 +420,13 @@
       "wet_score": null,
       "tags_ko": [
         "조금 쌀쌀함",
-        "다소 강한 바람"
+        "다소 강한 바람",
+        "노면 건조"
       ],
       "tags_en": [
         "A bit chilly",
-        "Moderate wind"
+        "Moderate wind",
+        "Dry surface"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",

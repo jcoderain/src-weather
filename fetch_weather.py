@@ -353,14 +353,15 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         "temp_score": temp_score,
         "wind_score": wind_score,
         "wet_score": None,
-        # ✅ 태그에는 온도 + 바람만, 노면은 위 배지에서만 보여주기
-        "tags_ko": [temp_tag_ko, wind_tag_ko],
-        "tags_en": [temp_tag_en, wind_tag_en],
+        # ✅ 온도 + 바람 + 노면 태그 모두 표시
+        "tags_ko": [temp_tag_ko, wind_tag_ko, wet_tag_ko],
+        "tags_en": [temp_tag_en, wind_tag_en, wet_tag_en],
         "advice_short_ko": advice_short_ko,
         "advice_short_en": advice_short_en,
         "advice_detail_ko": advice_detail_ko,
         "advice_detail_en": advice_detail_en,
     }
+
 
 
 
