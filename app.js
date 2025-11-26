@@ -6,6 +6,8 @@ const coursesEl = document.getElementById("courses");
 const appTitleEl = document.getElementById("app-title");
 const appSubtitleEl = document.getElementById("app-subtitle");
 const courseListTitleEl = document.getElementById("course-list-title");
+const courseListUpdatedEl = document.getElementById("course-list-updated"); // ✅ 추가
+
 
 // 절대 경로 + 캐시 방지
 const JSON_URL =
@@ -64,8 +66,49 @@ function applyLanguage() {
 
   // ✅ 언어 바꿀 때 status 문구도 다시 렌더
   renderStatus();
+  renderUpdatedAt(); // ✅ 언어 바뀔 때도 같이 갱신
 }
 
+// "2025-11-26T21:00" 같은 문자열을 한/영으로 포맷
+function formatUpdatedAtLocalized(isoLikeStr) {
+  if (!isoLikeStr) return "";
+
+  const [datePart, timePart] = isoLikeStr.split("T");
+  if (!datePart || !timePart) return "";
+
+  const [y, m, d] = datePart.split("-").map((v) => parseInt(v, 10));
+  const [hh, mm] = timePart.split(":").map((v) => parseInt(v, 10));
+
+  const pad = (n) => String(n).padStart(2, "0");
+
+  if (currentLang === "ko") {
+    return `${y}년 ${m}월 ${d}일 ${hh}시 ${mm}분에 업데이트됨`;
+  } else {
+    // 영어는 yyyy-mm-dd hh:mm (KST) 정도로
+    return `Updated at ${y}-${pad(m)}-${pad(d)} ${pad(hh)}:${pad(mm)} (KST)`;
+  }
+}
+
+// 공통 updated_at (첫 코스 기준) 가져오기
+function getCommonUpdatedAt() {
+  if (!LAST_DATA) return null;
+  const courses = LAST_DATA.courses || [];
+  if (!courses.length) return null;
+  return courses[0].updated_at || null;
+}
+
+// 실제로 DOM에 렌더
+function renderUpdatedAt() {
+  if (!courseListUpdatedEl) return;
+  const iso = getCommonUpdatedAt();
+  if (!iso) {
+    courseListUpdatedEl.textContent = "";
+    return;
+  }
+  courseListUpdatedEl.textContent = formatUpdatedAtLocalized(iso);
+}
+
+// ✅ 풍향(deg)을 한/영 텍스트로 변환
 function windDirectionToText(deg) {
   if (deg === null || deg === undefined) return "-";
   const dirsKo = ["북", "북동", "동", "남동", "남", "남서", "서", "북서"];
@@ -191,7 +234,6 @@ function renderCourseCard(info) {
   const rainNowLabel = currentLang === "ko" ? "현재 비" : "Rain now";
   const rain3hLabel =
     currentLang === "ko" ? "최근 3시간 비" : "Rain (last 3h)";
-  const updatedLabel = currentLang === "ko" ? "업데이트" : "Updated";
   const gpxLabel = uiText.gpxLabel[currentLang];
 
   const airQualityHtml = buildAirQualityHtml(info);
@@ -236,9 +278,6 @@ function renderCourseCard(info) {
           ? `<div style="margin-top:4px;">${airQualityHtml}</div>`
           : ""
       }
-      <div style="margin-top:4px; font-size:0.78rem; color:#9ca3af;">
-        ${updatedLabel}: ${info.updated_at}
-      </div>
       ${
         info.gpx
           ? `<div class="course-actions" style="margin-top:6px;">
@@ -291,6 +330,7 @@ async function init() {
     LAST_DATA = data;
 
     renderStatus(); // ✅ 데이터 받은 뒤에도 다시 호출
+    renderUpdatedAt();   // ✅ 데이터 로딩 후 갱신
     renderAllCourses();
   } catch (err) {
     console.error("[weather-init-error]", err);
