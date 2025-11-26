@@ -11,14 +11,18 @@ const courseListTitleEl = document.getElementById("course-list-title");
 const JSON_URL =
   "https://jcoderain.github.io/src-weather/data/src_weather.json";
 
+// ✅ wind_speed 값의 단위 설정
+// true  => src_weather.json 의 wind_speed 가 m/s 라고 가정
+// false => src_weather.json 의 wind_speed 가 km/h 라고 가정 (자동으로 m/s 로 환산해서 표시)
+const WIND_SOURCE_IS_MS = true;
 
 const uiText = {
   appTitle: {
-    ko: "SRC 날씨",
-    en: "SRC Weather",
+    ko: "SRC 코스 날씨 정보",
+    en: "SRC Course Weather Information",
   },
   appSubtitle: {
-    ko: "SRC 러너들을 위한 현재 코스 컨디션",
+    ko: "SRC 러너들을 위한 현재 코스 상황",
     en: "Current course conditions for SRC runners",
   },
   courseListTitle: {
@@ -31,11 +35,19 @@ const uiText = {
   },
   statusLoaded: (count) => ({
     ko: `수원시의 주요 ${count}개 코스의 날씨를 불러왔습니다. 화이팅! 🏃‍♂️`,
-    en: `Loaded weather for Suwon major ${count} courses. Fighting! 🏃‍♂️`,
+    en: `Loaded conditions for Suwon major ${count} courses. Fighting! 🏃‍♂️`,
   }),
   fail: {
-    ko: "날씨 데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해 주세요.",
-    en: "Failed to load weather data. Please try again later.",
+    ko: "코스 데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해 주세요.",
+    en: "Failed to load course data. Please try again later.",
+  },
+  airQualityLabel: {
+    ko: "공기질",
+    en: "Air quality",
+  },
+  gpxLabel: {
+    ko: "GPX 파일 열기",
+    en: "Open GPX file",
   },
 };
 
@@ -54,13 +66,30 @@ function applyLanguage() {
   renderStatus();
 }
 
-
 function windDirectionToText(deg) {
   if (deg === null || deg === undefined) return "-";
   const dirsKo = ["북", "북동", "동", "남동", "남", "남서", "서", "북서"];
   const dirsEn = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   const idx = Math.round((deg % 360) / 45) % 8;
   return currentLang === "ko" ? dirsKo[idx] : dirsEn[idx];
+}
+
+// ✅ 풍속 포맷팅 (단위 변환 포함)
+function formatWindText(speed, deg) {
+  if (speed == null) return "-";
+
+  let valueMs;
+  if (WIND_SOURCE_IS_MS) {
+    valueMs = speed;
+  } else {
+    // JSON 이 km/h 라면 m/s 로 변환
+    valueMs = speed / 3.6;
+  }
+
+  const dirText = windDirectionToText(deg);
+  const unitLabel = "m/s"; // 화면에는 m/s 기준으로 표시
+
+  return `${dirText} ${valueMs.toFixed(1)} ${unitLabel}`;
 }
 
 // (지금은 안 쓰이지만 놔둬도 상관 없음)
@@ -86,6 +115,59 @@ function runScoreClass(score) {
   return "run-score run-score-bad"; // 비추천
 }
 
+// ✅ 미세먼지/초미세먼지 등급 분류
+function classifyPm10(value) {
+  if (value == null) return null;
+  if (value <= 30) return { level: "good", ko: "좋음", en: "Good" };
+  if (value <= 80) return { level: "moderate", ko: "보통", en: "Moderate" };
+  if (value <= 150) return { level: "bad", ko: "나쁨", en: "Bad" };
+  return { level: "very-bad", ko: "매우 나쁨", en: "Very bad" };
+}
+
+function classifyPm25(value) {
+  if (value == null) return null;
+  if (value <= 15) return { level: "good", ko: "좋음", en: "Good" };
+  if (value <= 35) return { level: "moderate", ko: "보통", en: "Moderate" };
+  if (value <= 75) return { level: "bad", ko: "나쁨", en: "Bad" };
+  return { level: "very-bad", ko: "매우 나쁨", en: "Very bad" };
+}
+
+// ✅ 공기질 한 줄 HTML 생성
+function buildAirQualityHtml(info) {
+  const pm10 = info.pm10;
+  const pm25 = info.pm25;
+
+  if (pm10 == null && pm25 == null) {
+    return "";
+  }
+
+  const pm10Info = classifyPm10(pm10);
+  const pm25Info = classifyPm25(pm25);
+
+  const label = uiText.airQualityLabel[currentLang];
+  const unit = "㎍/m³";
+
+  const pm10Text =
+    pm10 != null && pm10Info
+      ? `PM10 ${pm10.toFixed(0)} ${unit} (${
+          currentLang === "ko" ? pm10Info.ko : pm10Info.en
+        })`
+      : "";
+
+  const pm25Text =
+    pm25 != null && pm25Info
+      ? `PM2.5 ${pm25.toFixed(0)} ${unit} (${
+          currentLang === "ko" ? pm25Info.ko : pm25Info.en
+        })`
+      : "";
+
+  const parts = [pm10Text, pm25Text].filter((x) => x);
+
+  if (!parts.length) return "";
+
+  return `<div>${label} · ${parts.join(" · ")}</div>`;
+}
+
 function renderCourseCard(info) {
   const div = document.createElement("div");
   div.className = "course-card";
@@ -96,12 +178,7 @@ function renderCourseCard(info) {
       ? info.name_ko || info.name
       : info.name_en || info.name;
 
-  const windText =
-    info.wind_speed != null
-      ? `${windDirectionToText(info.wind_direction)} ${info.wind_speed.toFixed(
-          1
-        )} m/s`
-      : "-";
+  const windText = formatWindText(info.wind_speed, info.wind_direction);
 
   // 태그는 원래대로(온도/바람/노면 모두) 사용
   const tags =
@@ -115,6 +192,9 @@ function renderCourseCard(info) {
   const rain3hLabel =
     currentLang === "ko" ? "최근 3시간 비" : "Rain (last 3h)";
   const updatedLabel = currentLang === "ko" ? "업데이트" : "Updated";
+  const gpxLabel = uiText.gpxLabel[currentLang];
+
+  const airQualityHtml = buildAirQualityHtml(info);
 
   div.innerHTML = `
     <div class="course-title">
@@ -151,9 +231,23 @@ function renderCourseCard(info) {
     1
   )} mm · ${rain3hLabel} ${info.recent_rain_3h.toFixed(1)} mm
       </div>
+      ${
+        airQualityHtml
+          ? `<div style="margin-top:4px;">${airQualityHtml}</div>`
+          : ""
+      }
       <div style="margin-top:4px; font-size:0.78rem; color:#9ca3af;">
         ${updatedLabel}: ${info.updated_at}
       </div>
+      ${
+        info.gpx
+          ? `<div class="course-actions" style="margin-top:6px;">
+               <a class="gpx-link" href="${info.gpx}" target="_blank" rel="noopener">
+                 ${gpxLabel}
+               </a>
+             </div>`
+          : ""
+      }
     </div>
   `;
   return div;
@@ -196,7 +290,7 @@ async function init() {
     const data = await resp.json();
     LAST_DATA = data;
 
-    renderStatus();   // ✅ 데이터 받은 뒤에도 다시 호출
+    renderStatus(); // ✅ 데이터 받은 뒤에도 다시 호출
     renderAllCourses();
   } catch (err) {
     console.error("[weather-init-error]", err);
