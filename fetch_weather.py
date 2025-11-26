@@ -2,7 +2,7 @@ import json
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 import requests
 
@@ -107,9 +107,10 @@ COURSES: List[Course] = [
 ]
 
 
-# === 2. Open-Meteo KMA 호출 ===
+# === 2. Open-Meteo KMA & Air Quality 호출 ===
 
 OPEN_METEO_BASE = "https://api.open-meteo.com/v1/forecast"
+AIR_QUALITY_BASE = "https://air-quality-api.open-meteo.com/v1/air-quality"
 
 
 def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
@@ -141,6 +142,7 @@ def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
         "models": "kma_seamless",
         "past_hours": 3,
         "forecast_hours": 0,
+        # wind_speed_unit 기본값은 km/h 이므로 아래에서 m/s로 변환
     }
 
     resp = requests.get(OPEN_METEO_BASE, params=params, timeout=10)
@@ -148,12 +150,29 @@ def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
     return resp.json()
 
 
+def fetch_air_quality(course: Course) -> Optional[Dict[str, Any]]:
+    """Open-Meteo Air Quality API에서 PM10 / PM2.5 현재값을 가져옵니다."""
+    params = {
+        "latitude": course.lat,
+        "longitude": course.lon,
+        "current": "pm10,pm2_5",
+        "timezone": "Asia/Seoul",
+    }
+    resp = requests.get(AIR_QUALITY_BASE, params=params, timeout=10)
+    resp.raise_for_status()
+    return resp.json()
+
+
 # === 3. 러닝용으로 요약 + 한/영 텍스트 생성 ===
 
 
-def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, Any]:
-    current = raw["current"]
-    hourly = raw["hourly"]
+def summarize_course_weather(
+    course: Course,
+    raw_weather: Dict[str, Any],
+    raw_air: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    current = raw_weather["current"]
+    hourly = raw_weather["hourly"]
 
     # 최근 3시간 비 합계
     recent_rain = float(sum(hourly.get("rain", []) or []))
@@ -263,7 +282,9 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         temp_comment_en = "Very hot. Consider shorter, easier runs or indoor running."
 
     # --- 바람 점수/코멘트 (한/영) ---
-    wind_speed = float(current["wind_speed_10m"])
+    # Open-Meteo wind_speed_10m 기본 단위는 km/h 이므로 m/s 로 변환해서 사용
+    raw_wind_speed_kmh = float(current["wind_speed_10m"])
+    wind_speed = raw_wind_speed_kmh / 3.6  # m/s
     wind_dir = float(current["wind_direction_10m"])
 
     if wind_speed < 2:
@@ -299,12 +320,11 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
 
     # --- 종합 러닝 지수 ---
     run_score = round(
-        temp_score * 0.5 +   # 온도 50%
-        wind_score * 0.3 +   # 바람 30%
-        (100 if recent_rain == 0 else 70) * 0.2  # 노면 20%
+        temp_score * 0.5  # 온도 50%
+        + wind_score * 0.3  # 바람 30%
+        + (100 if recent_rain == 0 else 70) * 0.2  # 노면 20%
     )
     run_score = max(0, min(100, run_score))
-
 
     if run_score >= 80:
         advice_short_ko = "러닝하기 아주 좋은 컨디션입니다 😄"
@@ -336,6 +356,22 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         ]
     )
 
+    # --- 공기질 (PM10 / PM2.5, μg/m³) ---
+    pm10 = None
+    pm25 = None
+    if raw_air is not None and "current" in raw_air:
+        current_air = raw_air["current"]
+        if current_air.get("pm10") is not None:
+            pm10 = float(current_air["pm10"])
+        if current_air.get("pm2_5") is not None:
+            pm25 = float(current_air["pm2_5"])
+
+    # --- GPX 파일 경로 (있을 때만) ---
+    gpx_rel_path: Optional[str] = None
+    gpx_path = Path("gpx") / f"{course.id}.gpx"
+    if gpx_path.exists():
+        gpx_rel_path = f"gpx/{course.id}.gpx"
+
     return {
         "id": course.id,
         "name_ko": course.name_ko,
@@ -344,6 +380,7 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         "updated_at": current["time"],
         "temperature": float(current["temperature_2m"]),
         "apparent_temperature": apparent,
+        # m/s 로 저장
         "wind_speed": wind_speed,
         "wind_direction": wind_dir,
         "rain_now": float(current["rain"]),
@@ -353,16 +390,18 @@ def summarize_course_weather(course: Course, raw: Dict[str, Any]) -> Dict[str, A
         "temp_score": temp_score,
         "wind_score": wind_score,
         "wet_score": None,
-        # ✅ 온도 + 바람 + 노면 태그 모두 표시
         "tags_ko": [temp_tag_ko, wind_tag_ko, wet_tag_ko],
         "tags_en": [temp_tag_en, wind_tag_en, wet_tag_en],
         "advice_short_ko": advice_short_ko,
         "advice_short_en": advice_short_en,
         "advice_detail_ko": advice_detail_ko,
         "advice_detail_en": advice_detail_en,
+        # 공기질
+        "pm10": pm10,
+        "pm25": pm25,
+        # GPX 링크 (파일이 있을 때만)
+        "gpx": gpx_rel_path,
     }
-
-
 
 
 # === 4. JSON 파일로 저장 ===
@@ -373,8 +412,17 @@ def main() -> None:
 
     for course in COURSES:
         print(f"[INFO] Fetching weather for {course.name_ko} ({course.lat}, {course.lon})")
-        raw = fetch_open_meteo_kma(course)
-        summary = summarize_course_weather(course, raw)
+        raw_weather = fetch_open_meteo_kma(course)
+
+        raw_air: Optional[Dict[str, Any]] = None
+        try:
+            print("    - Fetching air quality (PM10/PM2.5)...")
+            raw_air = fetch_air_quality(course)
+        except Exception as e:
+            print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
+            raw_air = None
+
+        summary = summarize_course_weather(course, raw_weather, raw_air)
         results.append(summary)
 
     output = {
@@ -382,7 +430,7 @@ def main() -> None:
         "courses": results,
     }
 
-    out_path = Path("data") / "src_weather.json"  # ✅ 이름 변경
+    out_path = Path("data") / "src_weather.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         json.dumps(output, ensure_ascii=False, indent=2),
