@@ -153,5 +153,6 @@ body {
 
 .src-logo img {
   height: 28px;          /* 로고 크기 조정 */
+  width: auto;
   display: block;
 }
