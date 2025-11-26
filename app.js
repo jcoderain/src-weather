@@ -20,8 +20,8 @@ const WIND_SOURCE_IS_MS = true;
 
 const uiText = {
   appTitle: {
-    ko: "SRC 코스 날씨 정보",
-    en: "SRC Course Weather Information",
+    ko: "SRC 날씨 정보",
+    en: "SRC Weather Information",
   },
   appSubtitle: {
     ko: "SRC 러너들을 위한 현재 코스 상황",
