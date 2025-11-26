@@ -136,3 +136,10 @@ body {
   background: #020617ee;
   color: #6b7280;
 }
+
+.course-list-updated {
+  margin-top: 4px;
+  margin-bottom: 16px;  /* ✅ 카드와의 간격 */
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
