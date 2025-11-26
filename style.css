@@ -10,7 +10,7 @@ body {
     sans-serif;
   background: #0f172a;
   color: #e5e7eb;
-  padding-bottom: 80px; /* ✅ powered by 배너 안 가리게 여유 공간 */
+  padding-bottom: 50px; /* ✅ powered by 배너 안 가리게 여유 공간 */
 }
 
 /* 헤더 */
