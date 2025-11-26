@@ -82,10 +82,10 @@ function formatUpdatedAtLocalized(isoLikeStr) {
   const pad = (n) => String(n).padStart(2, "0");
 
   if (currentLang === "ko") {
-    return `${y}년 ${m}월 ${d}일 ${hh}시 ${mm}분에 업데이트됨`;
+    return `${y}년 ${m}월 ${d}일 ${pad2(hh)}시 ${pad2(mm)}분에 업데이트됨`;
   } else {
     // 영어는 yyyy-mm-dd hh:mm (KST) 정도로
-    return `Updated at ${y}-${pad(m)}-${pad(d)} ${pad(hh)}:${pad(mm)} (KST)`;
+    return `Updated at ${y}-${pad2(m)}-${pad2(d)} ${pad2(hh)}:${pad2(mm)} (KST)`;
   }
 }
 
