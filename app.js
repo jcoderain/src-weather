@@ -76,18 +76,20 @@ function formatUpdatedAtLocalized(isoLikeStr) {
   const [datePart, timePart] = isoLikeStr.split("T");
   if (!datePart || !timePart) return "";
 
-  const [y, m, d] = datePart.split("-").map((v) => parseInt(v, 10));
-  const [hh, mm] = timePart.split(":").map((v) => parseInt(v, 10));
+  const [y, m, d] = datePart.split("-");
+  const [hh, mm] = timePart.split(":");
 
-  const pad = (n) => String(n).padStart(2, "0");
+  const pad2 = (v) => String(v).padStart(2, "0");  // ✅ 여기서 pad2 정의
 
   if (currentLang === "ko") {
-    return `${y}년 ${m}월 ${d}일 ${pad2(hh)}시 ${pad2(mm)}분에 업데이트됨`;
+    // 시/분 모두 2자리로 (21시 00분)
+    return `${y}년 ${Number(m)}월 ${Number(d)}일 ${pad2(hh)}시 ${pad2(mm)}분에 업데이트됨`;
   } else {
-    // 영어는 yyyy-mm-dd hh:mm (KST) 정도로
+    // 2025-11-26 21:00 (KST)
     return `Updated at ${y}-${pad2(m)}-${pad2(d)} ${pad2(hh)}:${pad2(mm)} (KST)`;
   }
 }
+
 
 // 공통 updated_at (첫 코스 기준) 가져오기
 function getCommonUpdatedAt() {
