@@ -174,11 +174,24 @@ def summarize_course_weather(
     current = raw_weather["current"]
     hourly = raw_weather["hourly"]
 
-    # 최근 3시간 비 합계
-    recent_rain = float(sum(hourly.get("rain", []) or []))
+    # -----------------------------
+    # 1) 강수/노면 상태 (비 + 눈)
+    # -----------------------------
+    current_rain = float(current.get("rain", 0.0))              # mm/h
+    current_precip = float(current.get("precipitation", 0.0))   # mm/h (비+눈)
+    current_snow = max(current_precip - current_rain, 0.0)      # 눈/진눈깨비 추정
 
-    # --- 노면 상태 배지 (한/영) ---
-    if recent_rain == 0:
+    recent_rain_list = hourly.get("rain", []) or []
+    recent_precip_list = hourly.get("precipitation", []) or []
+    recent_rain = float(sum(recent_rain_list))                  # 최근 3시간 비
+    recent_precip = float(sum(recent_precip_list))              # 최근 3시간 비+눈
+    recent_snow = max(recent_precip - recent_rain, 0.0)         # 최근 3시간 눈
+
+    # surface_score: 0~100
+    # wet_badge: { level: good/wet/bad, text_ko/text_en }
+    # wet_tag_*: 태그용, wet_comment_*: 설명문용
+    if recent_precip == 0 and current_precip == 0:
+        surface_score = 100
         wet_badge = {
             "level": "good",
             "text_ko": "노면 건조",
@@ -187,142 +200,311 @@ def summarize_course_weather(
         wet_tag_ko = "노면 건조"
         wet_tag_en = "Dry surface"
         wet_comment_ko = "노면이 건조해서 미끄럼 위험이 적습니다."
-        wet_comment_en = "Dry surface, low risk of slipping."
-    elif recent_rain < 0.5:
-        wet_badge = {
-            "level": "wet",
-            "text_ko": "살짝 젖음",
-            "text_en": "Slightly wet",
-        }
-        wet_tag_ko = "살짝 젖음"
-        wet_tag_en = "Slightly wet"
-        wet_comment_ko = "노면이 살짝 젖어 있습니다. 코너링 시 미끄럼에만 주의하세요."
-        wet_comment_en = "Surface is slightly wet. Be careful when cornering."
-    elif recent_rain < 2:
-        wet_badge = {
-            "level": "wet",
-            "text_ko": "젖은 노면",
-            "text_en": "Wet surface",
-        }
-        wet_tag_ko = "젖은 노면"
-        wet_tag_en = "Wet surface"
-        wet_comment_ko = "노면이 젖어 있습니다. 속도를 너무 올리기보다는 안정적으로 뛰는 것을 추천합니다."
-        wet_comment_en = "Surface is wet. Better to run safely rather than pushing the pace."
-    elif recent_rain < 5:
-        wet_badge = {
-            "level": "bad",
-            "text_ko": "많이 젖음",
-            "text_en": "Very wet",
-        }
-        wet_tag_ko = "많이 젖음"
-        wet_tag_en = "Very wet"
-        wet_comment_ko = "노면이 꽤 젖어 있습니다. 물웅덩이와 미끄러운 구간을 조심하세요."
-        wet_comment_en = "Surface is very wet. Watch out for puddles and slippery spots."
+        wet_comment_en = "Surface is dry with low risk of slipping."
     else:
-        wet_badge = {
-            "level": "bad",
-            "text_ko": "매우 젖음",
-            "text_en": "Extremely wet",
-        }
-        wet_tag_ko = "매우 젖음"
-        wet_tag_en = "Extremely wet"
-        wet_comment_ko = "노면이 매우 젖어 있고 물웅덩이가 많을 수 있습니다. 안정 위주의 조심 러닝을 추천합니다."
-        wet_comment_en = "Surface is extremely wet with many puddles. Run conservatively for safety."
+        # 눈 많은 날 / 조금 쌓인 날 / 비 위주인 날 구분
+        heavy_snow = (recent_snow >= 6.0) or (current_snow >= 4.0)
+        light_snow = (recent_snow >= 1.0) or (current_snow >= 0.5)
 
-    # --- 온도 점수/코멘트 (한/영) ---
+        if heavy_snow:
+            surface_score = 0
+            wet_badge = {
+                "level": "bad",
+                "text_ko": "눈 많이 쌓임",
+                "text_en": "Heavy snow/ice",
+            }
+            wet_tag_ko = "눈 많이 쌓임"
+            wet_tag_en = "Heavy snow"
+            wet_comment_ko = (
+                "눈이 많이 쌓이거나 얼음 구간이 많아 매우 미끄럽습니다. "
+                "실외 러닝보다는 실내 러닝이나 휴식을 권장합니다."
+            )
+            wet_comment_en = (
+                "There is heavy snow or many icy sections, making it very slippery. "
+                "Indoor running or rest is recommended instead of outdoor running."
+            )
+        elif light_snow:
+            surface_score = 40
+            wet_badge = {
+                "level": "bad",
+                "text_ko": "눈 조금 쌓임",
+                "text_en": "Some snow on surface",
+            }
+            wet_tag_ko = "눈 조금 쌓임"
+            wet_tag_en = "Some snow"
+            wet_comment_ko = (
+                "노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. "
+                "가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요."
+            )
+            wet_comment_en = (
+                "Some snow or meltwater on the surface may cause slipperiness. "
+                "Trail running shoes or shoes with good grip are recommended."
+            )
+        else:
+            # 비 위주로 판단
+            if recent_precip < 2.0 and current_precip < 1.0:
+                surface_score = 80
+                wet_badge = {
+                    "level": "wet",
+                    "text_ko": "살짝 젖음",
+                    "text_en": "Slightly wet",
+                }
+                wet_tag_ko = "살짝 젖음"
+                wet_tag_en = "Slightly wet"
+                wet_comment_ko = (
+                    "노면이 살짝 젖어 있습니다. 코너링이나 브레이킹 시에만 "
+                    "미끄럼에 주의하면 러닝에 큰 지장은 없습니다."
+                )
+                wet_comment_en = (
+                    "The surface is slightly wet. As long as you are careful "
+                    "when cornering or braking, running should be fine."
+                )
+            elif recent_rain < 10.0 or current_rain < 4.0:
+                surface_score = 50
+                wet_badge = {
+                    "level": "wet",
+                    "text_ko": "젖은 노면",
+                    "text_en": "Wet surface",
+                }
+                wet_tag_ko = "젖은 노면"
+                wet_tag_en = "Wet surface"
+                wet_comment_ko = (
+                    "노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. "
+                    "페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요."
+                )
+                wet_comment_en = (
+                    "The surface is wet, and some sections may be slippery. "
+                    "Slightly lower your pace and take extra care on downhills and corners."
+                )
+            elif recent_rain < 20.0 or current_rain < 8.0:
+                surface_score = 20
+                wet_badge = {
+                    "level": "bad",
+                    "text_ko": "많이 젖음",
+                    "text_en": "Very wet",
+                }
+                wet_tag_ko = "많이 젖음"
+                wet_tag_en = "Very wet"
+                wet_comment_ko = (
+                    "비가 많이 내려 노면이 꽤 젖어 있고 물웅덩이가 많을 수 있습니다. "
+                    "발이 쉽게 젖고 미끄러울 수 있으니 강도 높은 훈련은 피하는 것이 좋습니다."
+                )
+                wet_comment_en = (
+                    "It has rained a lot, so the surface is very wet with many puddles. "
+                    "Your feet may get soaked and it can be slippery, so avoid high-intensity workouts."
+                )
+            else:
+                surface_score = 0
+                wet_badge = {
+                    "level": "bad",
+                    "text_ko": "매우 젖음",
+                    "text_en": "Extremely wet",
+                }
+                wet_tag_ko = "매우 젖음"
+                wet_tag_en = "Extremely wet"
+                wet_comment_ko = (
+                    "폭우 수준의 비가 내리고 있어 노면 상태가 매우 좋지 않습니다. "
+                    "실외 러닝보다는 실내 러닝이나 휴식을 권장합니다."
+                )
+                wet_comment_en = (
+                    "Rain is at a heavy or torrential level, making the surface very poor. "
+                    "Indoor running or rest is recommended instead of outdoor running."
+                )
+
+    # -----------------------------
+    # 2) 온도 점수 (체감온도, 한국 기준)
+    # -----------------------------
     apparent = float(current["apparent_temperature"])
 
-    if apparent < -5:
-        temp_score = 20
+    if apparent <= -15:
+        temp_score = 5
         temp_tag_ko = "매우 춥음"
         temp_tag_en = "Very cold"
-        temp_comment_ko = "매우 춥습니다. 두꺼운 장갑·모자·넥워머 등 방한 장비가 필요합니다."
-        temp_comment_en = "Very cold. Wear warm gear such as thick gloves, hat, and neck warmer."
-    elif apparent < 0:
-        temp_score = 40
+        temp_comment_ko = (
+            "매우 춥습니다. 노출 부위를 최소화하고 두꺼운 장갑, 모자, 넥워머 등 "
+            "충분한 방한 장비가 필요합니다."
+        )
+        temp_comment_en = (
+            "It is extremely cold. Minimize exposed skin and wear warm gear such as gloves, hat, and neck warmer."
+        )
+    elif apparent < -10:
+        temp_score = 15
+        temp_tag_ko = "매우 춥음"
+        temp_tag_en = "Very cold"
+        temp_comment_ko = (
+            "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, "
+            "짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다."
+        )
+        temp_comment_en = (
+            "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out."
+        )
+    elif apparent < -5:
+        temp_score = 30
         temp_tag_ko = "춥다"
         temp_tag_en = "Cold"
-        temp_comment_ko = "상당히 쌀쌀합니다. 긴팔+긴바지, 바람막이 착용을 추천합니다."
-        temp_comment_en = "Quite chilly. Long sleeves, tights, and a light windbreaker are recommended."
+        temp_comment_ko = (
+            "꽤 춥습니다. 긴팔+긴바지에 방풍 자켓을 더해 주는 것이 좋습니다."
+        )
+        temp_comment_en = (
+            "It is quite cold. Long sleeves, tights, and a windproof jacket are recommended."
+        )
+    elif apparent < 0:
+        temp_score = 45
+        temp_tag_ko = "쌀쌀함"
+        temp_tag_en = "Chilly"
+        temp_comment_ko = (
+            "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다."
+        )
+        temp_comment_en = (
+            "Chilly conditions. Long sleeves and tights or light layering are recommended."
+        )
     elif apparent < 5:
         temp_score = 60
         temp_tag_ko = "조금 쌀쌀함"
         temp_tag_en = "A bit chilly"
-        temp_comment_ko = "쌀쌀하지만 러닝하기 괜찮은 온도입니다. 얇은 겹겹이 레이어링이 좋습니다."
-        temp_comment_en = "A bit chilly but fine for running. Light layering works well."
-    elif apparent < 15:
-        temp_score = 95
+        temp_comment_ko = (
+            "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다."
+        )
+        temp_comment_en = (
+            "A bit chilly but good for running. Light layering works well."
+        )
+    elif apparent < 12:
+        temp_score = 100
         temp_tag_ko = "러닝 최적"
         temp_tag_en = "Optimal"
-        temp_comment_ko = "러닝하기 아주 좋은 온도입니다. 평소보다 페이스를 조금 올려도 괜찮습니다."
-        temp_comment_en = "Perfect temperature for running. You can slightly increase your usual pace."
-    elif apparent < 20:
-        temp_score = 85
+        temp_comment_ko = (
+            "러닝하기 최적의 온도입니다. 평소보다 페이스를 조금 올려도 부담이 적습니다."
+        )
+        temp_comment_en = (
+            "Perfect temperature for running. You can slightly increase your usual pace."
+        )
+    elif apparent < 18:
+        temp_score = 90
         temp_tag_ko = "적당함"
         temp_tag_en = "Comfortable"
-        temp_comment_ko = "적당한 온도입니다. 평소 복장에 얇은 상·하의 정도면 충분합니다."
-        temp_comment_en = "Comfortable temperature. Usual outfit with light layers is enough."
-    elif apparent < 24:
-        temp_score = 70
-        temp_tag_ko = "조금 더움"
+        temp_comment_ko = (
+            "적당한 온도입니다. 평소 복장으로 무리 없이 러닝하기 좋습니다."
+        )
+        temp_comment_en = (
+            "Comfortable temperature. Your usual outfit should be fine for running."
+        )
+    elif apparent < 22:
+        temp_score = 75
+        temp_tag_ko = "다소 따뜻함"
         temp_tag_en = "Slightly warm"
-        temp_comment_ko = "조금 덥게 느껴질 수 있습니다. 밝은색·통풍 잘 되는 옷을 추천합니다."
-        temp_comment_en = "Might feel slightly warm. Wear light, breathable, bright-colored clothes."
-    elif apparent < 28:
-        temp_score = 50
+        temp_comment_ko = (
+            "다소 따뜻한 편입니다. 통풍 잘 되는 옷과 충분한 수분 섭취를 추천합니다."
+        )
+        temp_comment_en = (
+            "Slightly warm. Wear breathable clothes and make sure to hydrate."
+        )
+    elif apparent < 26:
+        temp_score = 55
+        temp_tag_ko = "조금 더움"
+        temp_tag_en = "Slightly hot"
+        temp_comment_ko = (
+            "조금 더운 편입니다. 강도 높은 훈련보다는 적당한 강도의 러닝이 좋습니다."
+        )
+        temp_comment_en = (
+            "Slightly hot. Moderate intensity runs are better than hard workouts."
+        )
+    elif apparent < 29:
+        temp_score = 40
         temp_tag_ko = "더움"
         temp_tag_en = "Warm"
-        temp_comment_ko = "덥습니다. 강도 높은 훈련은 피하고 자주 수분을 섭취하세요."
-        temp_comment_en = "Warm. Avoid high-intensity workouts and hydrate frequently."
-    else:
-        temp_score = 30
+        temp_comment_ko = (
+            "더운 편입니다. 강도를 낮추고 자주 수분을 섭취하는 것이 좋습니다."
+        )
+        temp_comment_en = (
+            "Warm conditions. Lower your intensity and hydrate frequently."
+        )
+    elif apparent < 31:
+        temp_score = 25
+        temp_tag_ko = "덥다"
+        temp_tag_en = "Hot"
+        temp_comment_ko = (
+            "상당히 덥습니다. 장거리나 고강도 러닝은 피하고, 그늘 위주 코스를 추천합니다."
+        )
+        temp_comment_en = (
+            "It is quite hot. Avoid long or high-intensity runs and seek shaded routes."
+        )
+    elif apparent < 33:
+        temp_score = 10
         temp_tag_ko = "매우 더움"
         temp_tag_en = "Very hot"
-        temp_comment_ko = "매우 덥습니다. 가능한 한 짧게, 강도 낮게 달리거나 실내 러닝을 고려하세요."
-        temp_comment_en = "Very hot. Consider shorter, easier runs or indoor running."
+        temp_comment_ko = (
+            "매우 덥습니다. 짧고 가벼운 러닝이 아니면 실외 러닝을 피하는 편이 안전합니다."
+        )
+        temp_comment_en = (
+            "Very hot. Unless it is a short and easy run, it is safer to avoid outdoor running."
+        )
+    else:
+        temp_score = 0
+        temp_tag_ko = "매우 더움"
+        temp_tag_en = "Very hot"
+        temp_comment_ko = (
+            "위험할 정도로 덥습니다. 실외 러닝은 권장하지 않으며, 실내 운동이나 휴식을 추천합니다."
+        )
+        temp_comment_en = (
+            "Dangerously hot. Outdoor running is not recommended; consider indoor exercise or rest."
+        )
 
-    # --- 바람 점수/코멘트 (한/영) ---
-    # Open-Meteo wind_speed_10m 기본 단위는 km/h 이므로 m/s 로 변환해서 사용
+    # -----------------------------
+    # 3) 바람 점수 (m/s 기준)
+    # -----------------------------
     raw_wind_speed_kmh = float(current["wind_speed_10m"])
-    wind_speed = raw_wind_speed_kmh / 3.6  # m/s
+    wind_speed = raw_wind_speed_kmh / 3.6  # km/h → m/s
     wind_dir = float(current["wind_direction_10m"])
 
-    if wind_speed < 2:
+    if wind_speed < 2.0:
         wind_score = 100
         wind_tag_ko = "바람 거의 없음"
         wind_tag_en = "Calm"
         wind_comment_ko = "바람이 거의 없어 페이스 유지에 유리합니다."
-        wind_comment_en = "Almost no wind, good for maintaining pace."
-    elif wind_speed < 4:
+        wind_comment_en = "Almost no wind, good for maintaining your pace."
+    elif wind_speed < 4.0:
         wind_score = 80
         wind_tag_ko = "약한 바람"
         wind_tag_en = "Light breeze"
-        wind_comment_ko = "약한 바람입니다. 러닝에 큰 지장은 없습니다."
-        wind_comment_en = "Light breeze, little impact on running."
-    elif wind_speed < 6:
+        wind_comment_ko = "약한 바람으로 러닝에 큰 지장은 없습니다."
+        wind_comment_en = "Light breeze with little impact on running."
+    elif wind_speed < 6.0:
         wind_score = 60
         wind_tag_ko = "다소 강한 바람"
         wind_tag_en = "Moderate wind"
-        wind_comment_ko = "바람이 다소 있어 체감온도가 낮게 느껴질 수 있습니다."
-        wind_comment_en = "Moderate wind. It may feel cooler than the actual temperature."
-    elif wind_speed < 8:
+        wind_comment_ko = (
+            "바람이 다소 있어 체감온도가 조금 낮게 느껴질 수 있습니다."
+        )
+        wind_comment_en = (
+            "Moderate wind. It may feel a bit cooler than the actual temperature."
+        )
+    elif wind_speed < 8.0:
         wind_score = 40
         wind_tag_ko = "강한 바람"
         wind_tag_en = "Strong wind"
-        wind_comment_ko = "바람이 강한 편입니다. 맞바람 구간에서는 페이스 조절이 필요합니다."
-        wind_comment_en = "Strong wind. Adjust your pace in headwind sections."
+        wind_comment_ko = (
+            "바람이 강한 편입니다. 맞바람 구간에서는 페이스를 낮추는 것이 좋습니다."
+        )
+        wind_comment_en = (
+            "Strong wind. Lower your pace in headwind sections."
+        )
     else:
         wind_score = 25
         wind_tag_ko = "매우 강한 바람"
         wind_tag_en = "Very strong wind"
-        wind_comment_ko = "바람이 매우 강합니다. 체감온도가 크게 내려가고 피로가 빨리 쌓일 수 있습니다."
-        wind_comment_en = "Very strong wind. It feels much colder and fatigue may build up faster."
+        wind_comment_ko = (
+            "바람이 매우 강합니다. 체감온도가 크게 내려가고 피로가 빨리 쌓일 수 있습니다."
+        )
+        wind_comment_en = (
+            "Very strong wind. It feels much colder and fatigue may build up faster."
+        )
 
-    # --- 공기질 (PM10 / PM2.5, μg/m³) ---
+    # -----------------------------
+    # 4) 공기질 (PM10 / PM2.5) + 패널티 팩터
+    # -----------------------------
     pm10 = None
     pm25 = None
-    # 데이터가 없을 때 사용할 기본값들
-    air_score = 85  # "약간 좋은 공기질" 정도로 기본 가정
+    air_score = 90  # 기본값: "거의 문제 없음" 정도
     air_tag_ko = None
     air_tag_en = None
     air_comment_ko = ""
@@ -335,76 +517,120 @@ def summarize_course_weather(
         if current_air.get("pm2_5") is not None:
             pm25 = float(current_air["pm2_5"])
 
-    # PM2.5가 있으면 그걸 우선, 없으면 PM10으로 공기질 점수를 계산
     pm_for_score = pm25 if pm25 is not None else pm10
 
     if pm_for_score is not None:
-        # PM2.5 기준
+        # PM2.5 우선 기준
         if pm25 is not None:
             v = pm25
             if v <= 15:
                 air_score = 100
                 air_tag_ko = "공기질 좋음"
                 air_tag_en = "Good air"
-                air_comment_ko = "공기질이 좋아 러닝에 큰 지장은 없습니다."
+                air_comment_ko = "공기질이 좋아 러닝에 거의 지장이 없습니다."
                 air_comment_en = "Air quality is good with little impact on running."
             elif v <= 35:
                 air_score = 80
                 air_tag_ko = "공기질 보통"
                 air_tag_en = "Moderate air"
-                air_comment_ko = "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
-                air_comment_en = "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
+                air_comment_ko = (
+                    "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
+                )
+                air_comment_en = (
+                    "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
+                )
             elif v <= 75:
                 air_score = 55
                 air_tag_ko = "공기질 나쁨"
                 air_tag_en = "Bad air"
-                air_comment_ko = "공기질이 좋지 않습니다. 호흡기·심혈관 질환이 있다면 강도 높은 야외 러닝은 피하는 것이 좋습니다."
-                air_comment_en = "Air quality is poor. If you have respiratory or heart issues, avoid intense outdoor running."
+                air_comment_ko = (
+                    "공기질이 좋지 않습니다. 호흡기·심혈관 질환이 있다면 강한 야외 러닝은 피하는 것이 좋습니다."
+                )
+                air_comment_en = (
+                    "Air quality is poor. If you have respiratory or heart issues, avoid intense outdoor running."
+                )
             else:
                 air_score = 30
                 air_tag_ko = "공기질 매우 나쁨"
                 air_tag_en = "Very bad air"
-                air_comment_ko = "공기질이 매우 나쁩니다. 가능하면 실내 러닝이나 휴식을 권장합니다."
-                air_comment_en = "Air quality is very poor. Indoor running or rest is recommended if possible."
-        # PM10 기준 (PM2.5가 없을 때)
+                air_comment_ko = (
+                    "공기질이 매우 나쁩니다. 가능하면 실외 러닝 대신 실내 운동이나 휴식을 권장합니다."
+                )
+                air_comment_en = (
+                    "Air quality is very poor. Indoor exercise or rest is recommended instead of outdoor running."
+                )
+        # PM10만 있을 때
         else:
             v = pm10
             if v <= 30:
                 air_score = 100
                 air_tag_ko = "공기질 좋음"
                 air_tag_en = "Good air"
-                air_comment_ko = "공기질이 좋아 러닝에 큰 지장은 없습니다."
+                air_comment_ko = "공기질이 좋아 러닝에 거의 지장이 없습니다."
                 air_comment_en = "Air quality is good with little impact on running."
             elif v <= 80:
                 air_score = 80
                 air_tag_ko = "공기질 보통"
                 air_tag_en = "Moderate air"
-                air_comment_ko = "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
-                air_comment_en = "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
+                air_comment_ko = (
+                    "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
+                )
+                air_comment_en = (
+                    "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
+                )
             elif v <= 150:
                 air_score = 55
                 air_tag_ko = "공기질 나쁨"
                 air_tag_en = "Bad air"
-                air_comment_ko = "공기질이 좋지 않습니다. 장시간·고강도 야외 러닝은 피하는 것이 좋습니다."
-                air_comment_en = "Air quality is poor. Avoid long or intense outdoor runs."
+                air_comment_ko = (
+                    "공기질이 좋지 않습니다. 장시간·고강도 야외 러닝은 피하는 것이 좋습니다."
+                )
+                air_comment_en = (
+                    "Air quality is poor. Avoid long or intense outdoor runs."
+                )
             else:
                 air_score = 30
                 air_tag_ko = "공기질 매우 나쁨"
                 air_tag_en = "Very bad air"
-                air_comment_ko = "공기질이 매우 나쁩니다. 가능하면 실내 러닝이나 휴식을 권장합니다."
-                air_comment_en = "Air quality is very poor. Indoor running or rest is recommended if possible."
+                air_comment_ko = (
+                    "공기질이 매우 나쁩니다. 가능하면 실외 러닝 대신 실내 운동이나 휴식을 권장합니다."
+                )
+                air_comment_en = (
+                    "Air quality is very poor. Indoor exercise or rest is recommended instead of outdoor running."
+                )
 
-    # --- 종합 러닝 지수 (공기질 포함) ---
-    surface_score = 100 if recent_rain == 0 else 70
+    # 공기질 수준에 따른 패널티 팩터
+    if air_score >= 90:
+        factor_air = 1.0     # 좋음: 영향 없음
+    elif air_score >= 70:
+        factor_air = 0.98    # 보통: 거의 영향 없음
+    elif air_score >= 50:
+        factor_air = 0.8     # 나쁨: 20% 정도 점수 감소
+    else:
+        factor_air = 0.6     # 매우 나쁨: 40% 정도 점수 감소
 
-    run_score = round(
-        temp_score * 0.45   # 온도 45%
-        + wind_score * 0.25 # 바람 25%
-        + surface_score * 0.15  # 노면 15%
-        + air_score * 0.15      # 공기질 15%
+    # -----------------------------
+    # 5) 종합 러닝 인덱스
+    #    기본: 온도 60% + 바람 20% + 노면 20%
+    #    공기질은 패널티(factor_air)로만 반영
+    # -----------------------------
+    base_score = (
+        temp_score * 0.60 +
+        wind_score * 0.20 +
+        surface_score * 0.20
     )
-    run_score = max(0, min(100, run_score))
 
+    run_score = base_score * factor_air
+
+    # 극단적인 온도/노면에서 안전 상한
+    if surface_score == 0 or apparent <= -15 or apparent >= 33:
+        run_score = min(run_score, 20)
+
+    run_score = int(round(max(0, min(100, run_score))))
+
+    # -----------------------------
+    # 6) 종합 코멘트 및 태그 구성
+    # -----------------------------
     if run_score >= 80:
         advice_short_ko = "러닝하기 아주 좋은 컨디션입니다 😄"
         advice_short_en = "Great conditions for running 😄"
@@ -415,8 +641,8 @@ def summarize_course_weather(
         advice_short_ko = "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️"
         advice_short_en = "Okay to run with some caution ⚠️"
     else:
-        advice_short_ko = "러닝 강도/시간을 줄이는 것을 추천합니다 🚨"
-        advice_short_en = "Consider reducing intensity or duration 🚨"
+        advice_short_ko = "러닝 강도/시간을 줄이거나 실외 러닝을 피하는 것이 좋습니다 🚨"
+        advice_short_en = "Consider reducing intensity/duration or avoiding outdoor running 🚨"
 
     detail_parts_ko = [temp_comment_ko, wind_comment_ko, wet_comment_ko]
     detail_parts_en = [temp_comment_en, wind_comment_en, wet_comment_en]
@@ -436,94 +662,24 @@ def summarize_course_weather(
     advice_detail_ko = " ".join(detail_parts_ko)
     advice_detail_en = " ".join(detail_parts_en)
 
-
-    # --- 공기질 (PM10 / PM2.5, μg/m³) ---
-    pm10 = None
-    pm25 = None
-    air_score = 85  # 데이터 없을 때는 약간 좋은 정도로 기본값
-    air_tag_ko = None
-    air_tag_en = None
-    air_comment_ko = ""
-    air_comment_en = ""
-
-    if raw_air is not None and "current" in raw_air:
-        current_air = raw_air["current"]
-        if current_air.get("pm10") is not None:
-            pm10 = float(current_air["pm10"])
-        if current_air.get("pm2_5") is not None:
-            pm25 = float(current_air["pm2_5"])
-
-    # PM2.5가 있으면 그걸 우선, 없으면 PM10으로 공기질 점수를 계산
-    pm_for_score = pm25 if pm25 is not None else pm10
-
-    if pm_for_score is not None:
-        # PM2.5 기준
-        if pm25 is not None:
-            v = pm25
-            if v <= 15:
-                air_score = 100
-                air_tag_ko = "공기질 좋음"
-                air_tag_en = "Good air"
-                air_comment_ko = "공기질이 좋아 러닝에 큰 지장은 없습니다."
-                air_comment_en = "Air quality is good with little impact on running."
-            elif v <= 35:
-                air_score = 80
-                air_tag_ko = "공기질 보통"
-                air_tag_en = "Moderate air"
-                air_comment_ko = "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
-                air_comment_en = "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
-            elif v <= 75:
-                air_score = 55
-                air_tag_ko = "공기질 나쁨"
-                air_tag_en = "Bad air"
-                air_comment_ko = "공기질이 좋지 않습니다. 호흡기·심혈관 질환이 있다면 강도 높은 야외 러닝은 피하는 것이 좋습니다."
-                air_comment_en = "Air quality is poor. If you have respiratory or heart issues, avoid intense outdoor running."
-            else:
-                air_score = 30
-                air_tag_ko = "공기질 매우 나쁨"
-                air_tag_en = "Very bad air"
-                air_comment_ko = "공기질이 매우 나쁩니다. 가능하면 실내 러닝이나 휴식을 권장합니다."
-                air_comment_en = "Air quality is very poor. Indoor running or rest is recommended if possible."
-        # PM10 기준 (PM2.5가 없을 때)
-        else:
-            v = pm10
-            if v <= 30:
-                air_score = 100
-                air_tag_ko = "공기질 좋음"
-                air_tag_en = "Good air"
-                air_comment_ko = "공기질이 좋아 러닝에 큰 지장은 없습니다."
-                air_comment_en = "Air quality is good with little impact on running."
-            elif v <= 80:
-                air_score = 80
-                air_tag_ko = "공기질 보통"
-                air_tag_en = "Moderate air"
-                air_comment_ko = "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
-                air_comment_en = "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
-            elif v <= 150:
-                air_score = 55
-                air_tag_ko = "공기질 나쁨"
-                air_tag_en = "Bad air"
-                air_comment_ko = "공기질이 좋지 않습니다. 장시간·고강도 야외 러닝은 피하는 것이 좋습니다."
-                air_comment_en = "Air quality is poor. Avoid long or intense outdoor runs."
-            else:
-                air_score = 30
-                air_tag_ko = "공기질 매우 나쁨"
-                air_tag_en = "Very bad air"
-                air_comment_ko = "공기질이 매우 나쁩니다. 가능하면 실내 러닝이나 휴식을 권장합니다."
-                air_comment_en = "Air quality is very poor. Indoor running or rest is recommended if possible."
-
-    # --- GPX 파일 경로 (있을 때만) ---
-    gpx_rel_path: Optional[str] = None
-    gpx_path = Path("gpx") / f"{course.id}.gpx"
-    if gpx_path.exists():
-        gpx_rel_path = f"gpx/{course.id}.gpx"
-
+    # 태그: 온도/바람/노면 + (공기질 있으면) 공기질
     tags_ko = [temp_tag_ko, wind_tag_ko, wet_tag_ko]
     tags_en = [temp_tag_en, wind_tag_en, wet_tag_en]
     if air_tag_ko and air_tag_en:
         tags_ko.append(air_tag_ko)
         tags_en.append(air_tag_en)
 
+    # -----------------------------
+    # 7) GPX 파일 경로 (있을 때만)
+    # -----------------------------
+    gpx_rel_path: Optional[str] = None
+    gpx_path = Path("gpx") / f"{course.id}.gpx"
+    if gpx_path.exists():
+        gpx_rel_path = f"gpx/{course.id}.gpx"
+
+    # -----------------------------
+    # 8) 최종 Dict 리턴 (JSON으로 직렬화될 내용)
+    # -----------------------------
     return {
         "id": course.id,
         "name_ko": course.name_ko,
@@ -532,26 +688,25 @@ def summarize_course_weather(
         "updated_at": current["time"],
         "temperature": float(current["temperature_2m"]),
         "apparent_temperature": apparent,
-        # m/s 로 저장
-        "wind_speed": wind_speed,
+        "wind_speed": wind_speed,          # m/s
         "wind_direction": wind_dir,
-        "rain_now": float(current["rain"]),
+        "rain_now": current_rain,
         "recent_rain_3h": recent_rain,
         "wet_badge": wet_badge,
         "run_score": run_score,
         "temp_score": temp_score,
         "wind_score": wind_score,
-        "wet_score": None,
+        "wet_score": surface_score,        # 노면 점수 그대로 넣어둠
+        "surface_score": surface_score,
+        "air_score": air_score,
         "tags_ko": tags_ko,
         "tags_en": tags_en,
         "advice_short_ko": advice_short_ko,
         "advice_short_en": advice_short_en,
         "advice_detail_ko": advice_detail_ko,
         "advice_detail_en": advice_detail_en,
-        # 공기질
         "pm10": pm10,
         "pm25": pm25,
-        # GPX 링크 (파일이 있을 때만)
         "gpx": gpx_rel_path,
     }
 
