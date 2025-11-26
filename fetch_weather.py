@@ -318,6 +318,82 @@ def summarize_course_weather(
         wind_comment_ko = "바람이 매우 강합니다. 체감온도가 크게 내려가고 피로가 빨리 쌓일 수 있습니다."
         wind_comment_en = "Very strong wind. It feels much colder and fatigue may build up faster."
 
+    # --- 공기질 (PM10 / PM2.5, μg/m³) ---
+    pm10 = None
+    pm25 = None
+    # 데이터가 없을 때 사용할 기본값들
+    air_score = 85  # "약간 좋은 공기질" 정도로 기본 가정
+    air_tag_ko = None
+    air_tag_en = None
+    air_comment_ko = ""
+    air_comment_en = ""
+
+    if raw_air is not None and "current" in raw_air:
+        current_air = raw_air["current"]
+        if current_air.get("pm10") is not None:
+            pm10 = float(current_air["pm10"])
+        if current_air.get("pm2_5") is not None:
+            pm25 = float(current_air["pm2_5"])
+
+    # PM2.5가 있으면 그걸 우선, 없으면 PM10으로 공기질 점수를 계산
+    pm_for_score = pm25 if pm25 is not None else pm10
+
+    if pm_for_score is not None:
+        # PM2.5 기준
+        if pm25 is not None:
+            v = pm25
+            if v <= 15:
+                air_score = 100
+                air_tag_ko = "공기질 좋음"
+                air_tag_en = "Good air"
+                air_comment_ko = "공기질이 좋아 러닝에 큰 지장은 없습니다."
+                air_comment_en = "Air quality is good with little impact on running."
+            elif v <= 35:
+                air_score = 80
+                air_tag_ko = "공기질 보통"
+                air_tag_en = "Moderate air"
+                air_comment_ko = "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
+                air_comment_en = "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
+            elif v <= 75:
+                air_score = 55
+                air_tag_ko = "공기질 나쁨"
+                air_tag_en = "Bad air"
+                air_comment_ko = "공기질이 좋지 않습니다. 호흡기·심혈관 질환이 있다면 강도 높은 야외 러닝은 피하는 것이 좋습니다."
+                air_comment_en = "Air quality is poor. If you have respiratory or heart issues, avoid intense outdoor running."
+            else:
+                air_score = 30
+                air_tag_ko = "공기질 매우 나쁨"
+                air_tag_en = "Very bad air"
+                air_comment_ko = "공기질이 매우 나쁩니다. 가능하면 실내 러닝이나 휴식을 권장합니다."
+                air_comment_en = "Air quality is very poor. Indoor running or rest is recommended if possible."
+        # PM10 기준 (PM2.5가 없을 때)
+        else:
+            v = pm10
+            if v <= 30:
+                air_score = 100
+                air_tag_ko = "공기질 좋음"
+                air_tag_en = "Good air"
+                air_comment_ko = "공기질이 좋아 러닝에 큰 지장은 없습니다."
+                air_comment_en = "Air quality is good with little impact on running."
+            elif v <= 80:
+                air_score = 80
+                air_tag_ko = "공기질 보통"
+                air_tag_en = "Moderate air"
+                air_comment_ko = "공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다."
+                air_comment_en = "Air quality is moderate. Consider a mask if you are sensitive to fine dust."
+            elif v <= 150:
+                air_score = 55
+                air_tag_ko = "공기질 나쁨"
+                air_tag_en = "Bad air"
+                air_comment_ko = "공기질이 좋지 않습니다. 장시간·고강도 야외 러닝은 피하는 것이 좋습니다."
+                air_comment_en = "Air quality is poor. Avoid long or intense outdoor runs."
+            else:
+                air_score = 30
+                air_tag_ko = "공기질 매우 나쁨"
+                air_tag_en = "Very bad air"
+                air_comment_ko = "공기질이 매우 나쁩니다. 가능하면 실내 러닝이나 휴식을 권장합니다."
+                air_comment_en = "Air quality is very poor. Indoor running or rest is recommended if possible."
+
     # --- 종합 러닝 지수 (공기질 포함) ---
     surface_score = 100 if recent_rain == 0 else 70
 
