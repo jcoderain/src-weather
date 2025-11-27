@@ -158,7 +158,7 @@ def fetch_air_quality(course: Course) -> Optional[Dict[str, Any]]:
         "current": "pm10,pm2_5",
         "timezone": "Asia/Seoul",
     }
-    resp = requests.get(AIR_QUALITY_BASE, params=params, timeout=10)
+    resp = requests.get(AIR_QUALITY_BASE, params=params, timeout=30)
     resp.raise_for_status()
     return resp.json()
 
