@@ -5,7 +5,9 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional
 
 import requests
+import time
 
+from requests.exceptions import Timeout, ReadTimeout, RequestException
 
 # === 1. 러닝 코스 정의 ===
 
@@ -145,8 +147,24 @@ def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
         # wind_speed_unit 기본값은 km/h 이므로 아래에서 m/s로 변환
     }
 
-    resp = requests.get(OPEN_METEO_BASE, params=params, timeout=30)
-    resp.raise_for_status()
+    try:
+        resp = requests.get(OPEN_METEO_BASE, params=params, timeout=10)
+        resp.raise_for_status()
+    except (Timeout, ReadTimeout) as e:
+        print(
+            f"[WARN] Open-Meteo timeout for {course.name_ko} "
+            f"({course.lat}, {course.lon}): {e}"
+        )
+        print(f"[WARN] Skipping {course.name_ko} for this run.")
+        return None
+    except RequestException as e:
+        print(
+            f"[WARN] Open-Meteo request error for {course.name_ko} "
+            f"({course.lat}, {course.lon}): {e}"
+        )
+        print(f"[WARN] Skipping {course.name_ko} for this run.")
+        return None
+
     return resp.json()
 
 
@@ -158,7 +176,7 @@ def fetch_air_quality(course: Course) -> Optional[Dict[str, Any]]:
         "current": "pm10,pm2_5",
         "timezone": "Asia/Seoul",
     }
-    resp = requests.get(AIR_QUALITY_BASE, params=params, timeout=30)
+    resp = requests.get(AIR_QUALITY_BASE, params=params, timeout=10)
     resp.raise_for_status()
     return resp.json()
 
@@ -721,16 +739,28 @@ def main() -> None:
         print(f"[INFO] Fetching weather for {course.name_ko} ({course.lat}, {course.lon})")
         raw_weather = fetch_open_meteo_kma(course)
 
-        raw_air: Optional[Dict[str, Any]] = None
-        try:
-            print("    - Fetching air quality (PM10/PM2.5)...")
-            raw_air = fetch_air_quality(course)
-        except Exception as e:
-            print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
-            raw_air = None
+        if raw_weather is None:
+            # 이 코스는 이번 run에서 실패 → 전체 스크립트는 계속 진행
+            print(f"[WARN] Weather fetch failed for {course.name_ko}, skipping this course.")
+            continue
 
+        # 응급처치
+        #raw_air: Optional[Dict[str, Any]] = None
+        #try:
+        #    print("    - Fetching air quality (PM10/PM2.5)...")
+        #    raw_air = fetch_air_quality(course)
+        #except Exception as e:
+        #    print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
+        #    raw_air = None
+        raw_air = {
+        "hourly": {
+            "pm10": ["N/A"],
+            "pm2_5": ["N/A"],
+        }
+        }      
         summary = summarize_course_weather(course, raw_weather, raw_air)
         results.append(summary)
+        time.sleep(0.5)
 
     output = {
         "generated_at": datetime.now().isoformat(),
