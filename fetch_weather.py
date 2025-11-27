@@ -145,7 +145,7 @@ def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
         # wind_speed_unit 기본값은 km/h 이므로 아래에서 m/s로 변환
     }
 
-    resp = requests.get(OPEN_METEO_BASE, params=params, timeout=10)
+    resp = requests.get(OPEN_METEO_BASE, params=params, timeout=30)
     resp.raise_for_status()
     return resp.json()
 
