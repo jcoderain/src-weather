@@ -177,6 +177,12 @@ function classifyPm25(value) {
   return { level: "very-bad", ko: "매우 나쁨", en: "Very bad" };
 }
 
+function buildNaverMapLink(lat, lon) {
+  if (lat == null || lon == null) return null;
+  // v5 지도에서 중심을 주어진 좌표로 맞추는 URL
+  return `https://map.naver.com/v5/?c=${lon},${lat},16,0,0,0,dh`;
+}
+
 // ✅ 공기질 한 줄 HTML 생성
 function buildAirQualityHtml(info) {
   const pm10 = info.pm10;
@@ -233,6 +239,10 @@ function renderCourseCard(info) {
     currentLang === "ko" ? info.advice_short_ko : info.advice_short_en;
   const adviceDetail =
     currentLang === "ko" ? info.advice_detail_ko : info.advice_detail_en;
+
+  const lat = info.lat ?? info.latitude;
+  const lon = info.lon ?? info.longitude;
+  const locationLink = buildNaverMapLink(lat, lon);
 
   const windTag =
     currentLang === "ko"
@@ -296,6 +306,20 @@ function renderCourseCard(info) {
       ${
         airQualityHtml
           ? `<div style="margin-top:4px;">${airQualityHtml}</div>`
+          : ""
+      }
+      ${
+        lat != null && lon != null
+          ? `<div class="location-row">
+               <div>${currentLang === "ko" ? "위치" : "Location"} ${lat.toFixed(5)}, ${lon.toFixed(5)}</div>
+               ${
+                 locationLink
+                   ? `<a class="location-link" href="${locationLink}" target="_blank" rel="noopener">
+                        ${currentLang === "ko" ? "네이버맵에서 보기" : "Open in Naver Map"}
+                      </a>`
+                   : ""
+               }
+             </div>`
           : ""
       }
       <div class="score-rows">

@@ -171,6 +171,29 @@ body {
   color: #9ca3af;
 }
 
+.location-row {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.location-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.location-link:hover {
+  text-decoration: underline;
+}
+
+.course-actions {
+  display: none; /* GPX 링크 숨김 */
+}
+
 /* 풋터 */
 .app-footer {
   position: fixed;

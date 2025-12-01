@@ -1067,6 +1067,8 @@ def summarize_course_weather(
         "name_en": course.name_en,
         "name": course.name_ko,
         "updated_at": current["time"],
+        "lat": course.lat,
+        "lon": course.lon,
         "temperature": float(current["temperature_2m"]),
         "apparent_temperature": apparent,
         "wind_speed": wind_speed,          # m/s
