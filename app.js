@@ -229,6 +229,24 @@ function renderCourseCard(info) {
   const tags =
     currentLang === "ko" ? info.tags_ko || [] : info.tags_en || [];
 
+  const adviceShort =
+    currentLang === "ko" ? info.advice_short_ko : info.advice_short_en;
+  const adviceDetail =
+    currentLang === "ko" ? info.advice_detail_ko : info.advice_detail_en;
+
+  const windTag =
+    currentLang === "ko"
+      ? (info.tags_ko && info.tags_ko[1]) || null
+      : (info.tags_en && info.tags_en[1]) || null;
+  const airTag =
+    currentLang === "ko"
+      ? info.tags_ko && info.tags_ko.length > 3
+        ? info.tags_ko[3]
+        : null
+      : info.tags_en && info.tags_en.length > 3
+        ? info.tags_en[3]
+        : null;
+
   const runLabel = currentLang === "ko" ? "러닝 지수" : "Run index";
   const tempLabel = currentLang === "ko" ? "현재 기온" : "Air temp";
   const feelsLabel = currentLang === "ko" ? "체감" : "Feels like";
@@ -278,6 +296,24 @@ function renderCourseCard(info) {
       ${
         airQualityHtml
           ? `<div style="margin-top:4px;">${airQualityHtml}</div>`
+          : ""
+      }
+      <div class="score-rows">
+        <div class="score-row">
+          <span class="score-label">${currentLang === "ko" ? "바람 점수" : "Wind score"}</span>
+          <span>${info.wind_score ?? "?"}/100 ${windTag ? `· ${windTag}` : ""}</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">${currentLang === "ko" ? "공기질" : "Air quality"}</span>
+          <span>${info.air_score ?? "?"}/100 ${airTag ? `· ${airTag}` : ""}</span>
+        </div>
+      </div>
+      ${
+        adviceShort || adviceDetail
+          ? `<div class="advice-box">
+               ${adviceShort ? `<div class="advice-short">${adviceShort}</div>` : ""}
+               ${adviceDetail ? `<div class="advice-detail">${adviceDetail}</div>` : ""}
+             </div>`
           : ""
       }
       ${
