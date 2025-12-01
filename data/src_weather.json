@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-12-01T22:16:16.256219+09:00",
+  "generated_at": "2025-12-01T22:24:08.155290+09:00",
   "courses": [
     {
       "id": "seoho-park",
       "name_ko": "서호공원",
       "name_en": "Seoho Park",
       "name": "서호공원",
-      "updated_at": "2025-12-01T22:15:59+09:00",
+      "updated_at": "2025-12-01T22:23:39+09:00",
       "temperature": 3.3,
       "apparent_temperature": 1.6029170167133937,
       "wind_speed": 1.8,
@@ -18,28 +18,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 21.8,
+      "pm25": 21.0,
       "gpx": "gpx/seoho-park.gpx"
     },
     {
@@ -47,7 +49,7 @@
       "name_ko": "청소년문화센터",
       "name_en": "Youth Culture Center",
       "name": "청소년문화센터",
-      "updated_at": "2025-12-01T22:16:00+09:00",
+      "updated_at": "2025-12-01T22:23:41+09:00",
       "temperature": 2.2,
       "apparent_temperature": 2.2,
       "wind_speed": 1.1,
@@ -59,28 +61,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -88,7 +92,7 @@
       "name_ko": "광교호수공원",
       "name_en": "Gwanggyo Lake Park",
       "name": "광교호수공원",
-      "updated_at": "2025-12-01T22:16:02+09:00",
+      "updated_at": "2025-12-01T22:23:43+09:00",
       "temperature": 2.0,
       "apparent_temperature": 2.0,
       "wind_speed": 0.2,
@@ -100,28 +104,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -129,7 +135,7 @@
       "name_ko": "성균관대학교",
       "name_en": "Sungkyunkwan Univ. (Suwon)",
       "name": "성균관대학교",
-      "updated_at": "2025-12-01T22:16:04+09:00",
+      "updated_at": "2025-12-01T22:23:46+09:00",
       "temperature": 3.3,
       "apparent_temperature": 1.6029170167133937,
       "wind_speed": 1.8,
@@ -141,28 +147,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 21.8,
+      "pm25": 21.0,
       "gpx": null
     },
     {
@@ -170,7 +178,7 @@
       "name_ko": "원천리천(신동)",
       "name_en": "Woncheon Stream (Sindong)",
       "name": "원천리천(신동)",
-      "updated_at": "2025-12-01T22:16:05+09:00",
+      "updated_at": "2025-12-01T22:23:48+09:00",
       "temperature": 2.2,
       "apparent_temperature": 2.2,
       "wind_speed": 1.1,
@@ -182,28 +190,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -211,7 +221,7 @@
       "name_ko": "팔달산(수원화성, 행궁동)",
       "name_en": "Paldalsan Fortress Area",
       "name": "팔달산(수원화성, 행궁동)",
-      "updated_at": "2025-12-01T22:16:06+09:00",
+      "updated_at": "2025-12-01T22:23:50+09:00",
       "temperature": 2.2,
       "apparent_temperature": 2.2,
       "wind_speed": 1.1,
@@ -223,28 +233,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -252,7 +264,7 @@
       "name_ko": "수원천",
       "name_en": "Suwoncheon Stream",
       "name": "수원천",
-      "updated_at": "2025-12-01T22:16:07+09:00",
+      "updated_at": "2025-12-01T22:23:52+09:00",
       "temperature": 2.2,
       "apparent_temperature": 2.2,
       "wind_speed": 1.1,
@@ -264,28 +276,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -293,7 +307,7 @@
       "name_ko": "광교산",
       "name_en": "Gwanggyo Mountain",
       "name": "광교산",
-      "updated_at": "2025-12-01T22:16:11+09:00",
+      "updated_at": "2025-12-01T22:23:55+09:00",
       "temperature": 2.0,
       "apparent_temperature": 2.0,
       "wind_speed": 0.2,
@@ -305,28 +319,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -334,7 +350,7 @@
       "name_ko": "수원월드컵경기장",
       "name_en": "Suwon World Cup Stadium",
       "name": "수원월드컵경기장",
-      "updated_at": "2025-12-01T22:16:12+09:00",
+      "updated_at": "2025-12-01T22:23:57+09:00",
       "temperature": 2.0,
       "apparent_temperature": 2.0,
       "wind_speed": 0.2,
@@ -346,28 +362,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -375,7 +393,7 @@
       "name_ko": "동탄여울공원",
       "name_en": "Dongtan Yeoul Park",
       "name": "동탄여울공원",
-      "updated_at": "2025-12-01T22:16:13+09:00",
+      "updated_at": "2025-12-01T22:24:00+09:00",
       "temperature": 0.9,
       "apparent_temperature": 0.9,
       "wind_speed": 0.1,
@@ -387,28 +405,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -416,7 +436,7 @@
       "name_ko": "영흥숲공원",
       "name_en": "Yeongheung Forest Park",
       "name": "영흥숲공원",
-      "updated_at": "2025-12-01T22:16:14+09:00",
+      "updated_at": "2025-12-01T22:24:02+09:00",
       "temperature": 2.2,
       "apparent_temperature": 2.2,
       "wind_speed": 1.1,
@@ -428,28 +448,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     },
     {
@@ -457,7 +479,7 @@
       "name_ko": "마중공원",
       "name_en": "Majung Park",
       "name": "마중공원",
-      "updated_at": "2025-12-01T22:16:15+09:00",
+      "updated_at": "2025-12-01T22:24:04+09:00",
       "temperature": 2.2,
       "apparent_temperature": 2.2,
       "wind_speed": 1.1,
@@ -469,28 +491,30 @@
         "text_ko": "노면 건조",
         "text_en": "Dry surface"
       },
-      "run_score": 76,
+      "run_score": 74,
       "temp_score": 60,
       "wind_score": 100,
       "wet_score": 100,
       "surface_score": 100,
-      "air_score": 90,
+      "air_score": 80,
       "tags_ko": [
         "조금 쌀쌀함",
         "바람 거의 없음",
-        "노면 건조"
+        "노면 건조",
+        "공기질 보통"
       ],
       "tags_en": [
         "A bit chilly",
         "Calm",
-        "Dry surface"
+        "Dry surface",
+        "Moderate air"
       ],
       "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
       "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": null,
-      "pm25": null,
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 29.8,
+      "pm25": 28.8,
       "gpx": null
     }
   ]

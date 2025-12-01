@@ -478,8 +478,18 @@ def fetch_air_quality_kma(
     }
 
     url = build_kma_url(KMA_AIR_QUALITY_URL, service_key)
-    resp = requests.get(url, params=params, timeout=10)
-    resp.raise_for_status()
+    try:
+        resp = requests.get(url, params=params, timeout=10)
+        resp.raise_for_status()
+    except HTTPError as e:
+        print(f"[WARN] KMA air quality HTTP error: {e}")
+        if e.response is not None:
+            print(f"[WARN] KMA air quality body: {e.response.text}")
+        return None
+    except RequestException as e:
+        print(f"[WARN] KMA air quality request error: {e}")
+        return None
+
     body = resp.json().get("response", {}).get("body", {})
     items = body.get("items") or []
 
@@ -1125,6 +1135,15 @@ def main() -> None:
                 raw_air = fetch_air_quality_kma(course, kma_service_key, kma_air_sido_name)
         except Exception as e:
             print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
+            raw_air = None
+
+        # KMA 대기질 실패 시 Open-Meteo로 한 번 더 시도
+        if raw_air is None and air_provider == "kma":
+            try:
+                print("    - Air quality fallback to Open-Meteo...")
+                raw_air = fetch_air_quality_open_meteo(course)
+            except Exception as e:
+                print(f"[WARN] Air quality fallback failed for {course.name_ko}: {e}")
         summary = summarize_course_weather(course, raw_weather, raw_air)
         results.append(summary)
         time.sleep(0.5)
