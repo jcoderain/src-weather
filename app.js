@@ -265,7 +265,7 @@ function renderCourseCard(info) {
       <span class="${runScoreClass(info.run_score)}">${info.run_score ?? "?"}</span>
     </div>
     <div class="course-meta">
-      <div style="margin-bottom:4px;">
+      <div class="run-index-row" style="margin-bottom:4px;">
         <strong>${runLabel}</strong> ${info.run_score ?? "?"}/100
       </div>
       ${
