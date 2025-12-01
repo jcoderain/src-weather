@@ -151,6 +151,7 @@ body {
   color: #cbd5e1;
   display: grid;
   gap: 2px;
+  display: none; /* 바람/공기질 점수는 숨김 */
 }
 
 .score-row {
