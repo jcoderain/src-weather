@@ -1,13 +1,17 @@
+import argparse
 import json
+import math
+import os
+import time
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
+from urllib.parse import quote_plus
 
 import requests
-import time
 
-from requests.exceptions import Timeout, ReadTimeout, RequestException
+from requests.exceptions import Timeout, ReadTimeout, RequestException, HTTPError
 
 # === 1. 러닝 코스 정의 ===
 
@@ -108,8 +112,264 @@ COURSES: List[Course] = [
     ),
 ]
 
+# === Provider 정의 & 상수 ===
 
-# === 2. Open-Meteo KMA & Air Quality 호출 ===
+DEFAULT_PROVIDER = os.getenv("WEATHER_PROVIDER", "open-meteo")
+SUPPORTED_PROVIDERS = ("open-meteo", "kma")
+KST = timezone(timedelta(hours=9))
+
+KMA_ULTRA_NCST_URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"
+KMA_ULTRA_FCST_URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"
+
+
+# === 2. 기상청(KMA) 초단기/초단기예보 호출 ===
+
+def kst_now() -> datetime:
+    return datetime.now(tz=timezone.utc).astimezone(KST)
+
+
+def kma_base_datetime(now_kst: Optional[datetime] = None) -> Tuple[str, str]:
+    """
+    기상청 초단기 API는 발표시각 이후 약 30~40분 뒤에 최신 값을 제공합니다.
+    현재 시각에서 40분을 뺀 뒤, 가까운 30분 단위로 내림하여 base_date/base_time을 계산합니다.
+    """
+    now = now_kst or kst_now()
+    base_dt = now - timedelta(minutes=40)
+    base_dt = base_dt.replace(
+        minute=(base_dt.minute // 30) * 30,
+        second=0,
+        microsecond=0,
+    )
+    return base_dt.strftime("%Y%m%d"), base_dt.strftime("%H%M")
+
+
+def latlon_to_kma_xy(lat: float, lon: float) -> Tuple[int, int]:
+    """
+    위/경도를 기상청 격자(nx, ny)로 변환합니다.
+    표준 기상청 격자 변환(DFS) 공식 사용.
+    """
+    RE = 6371.00877  # 지구 반경(km)
+    GRID = 5.0       # 격자 간격(km)
+    SLAT1 = 30.0
+    SLAT2 = 60.0
+    OLON = 126.0
+    OLAT = 38.0
+    XO = 43
+    YO = 136
+
+    DEGRAD = math.pi / 180.0
+
+    re = RE / GRID
+    slat1 = SLAT1 * DEGRAD
+    slat2 = SLAT2 * DEGRAD
+    olon = OLON * DEGRAD
+    olat = OLAT * DEGRAD
+
+    sn = math.tan(math.pi * 0.25 + slat2 * 0.5) / math.tan(math.pi * 0.25 + slat1 * 0.5)
+    sn = math.log(math.cos(slat1) / math.cos(slat2)) / math.log(sn)
+    sf = math.tan(math.pi * 0.25 + slat1 * 0.5)
+    sf = math.pow(sf, sn) * math.cos(slat1) / sn
+    ro = math.tan(math.pi * 0.25 + olat * 0.5)
+    ro = re * sf / math.pow(ro, sn)
+    ra = math.tan(math.pi * 0.25 + lat * DEGRAD * 0.5)
+    ra = re * sf / math.pow(ra, sn)
+    theta = lon * DEGRAD - olon
+    if theta > math.pi:
+        theta -= 2.0 * math.pi
+    if theta < -math.pi:
+        theta += 2.0 * math.pi
+    theta *= sn
+
+    x = int(ra * math.sin(theta) + XO + 1.5)
+    y = int(ro - ra * math.cos(theta) + YO + 1.5)
+    return x, y
+
+
+def parse_precip_value(raw: Any) -> float:
+    """
+    기상청 RN1/PCP 값은 숫자 또는 '강수없음', '1mm 미만' 형태가 올 수 있으므로 보정합니다.
+    """
+    if raw is None:
+        return 0.0
+    if isinstance(raw, (int, float)):
+        return float(raw)
+
+    text = str(raw).strip()
+    if not text or text == "강수없음":
+        return 0.0
+
+    cleaned = text.replace("mm", "").replace(" ", "")
+    cleaned = cleaned.replace("미만", "")
+    if cleaned == "":
+        return 0.0
+    try:
+        return float(cleaned)
+    except ValueError:
+        return 0.0
+
+
+def calc_apparent_temperature(temp_c: float, wind_speed_ms: float, humidity: float) -> float:
+    """
+    기상청 실황(체감온도 제공 안 함) 값을 이용해 간단히 체감온도를 계산합니다.
+    - 추울 때: 캐나다 윈드칠 공식
+    - 더울 때: NOAA Heat Index (섭씨 변환)
+    """
+    wind_kmh = wind_speed_ms * 3.6
+
+    if temp_c <= 10 and wind_kmh > 4.8:
+        v16 = math.pow(wind_kmh, 0.16)
+        return 13.12 + 0.6215 * temp_c - 11.37 * v16 + 0.3965 * temp_c * v16
+
+    if temp_c >= 27 and humidity >= 40:
+        t_f = temp_c * 9 / 5 + 32
+        hi_f = (
+            -42.379
+            + 2.04901523 * t_f
+            + 10.14333127 * humidity
+            - 0.22475541 * t_f * humidity
+            - 0.00683783 * t_f * t_f
+            - 0.05481717 * humidity * humidity
+            + 0.00122874 * t_f * t_f * humidity
+            + 0.00085282 * t_f * humidity * humidity
+            - 0.00000199 * t_f * t_f * humidity * humidity
+        )
+        return (hi_f - 32) * 5 / 9
+
+    return temp_c
+
+
+def build_kma_url(base_url: str, service_key: str) -> str:
+    """
+    serviceKey는 이미 URL-encoded된 문자열을 그대로 써야 하므로,
+    인코딩 여부를 감지해 중복 인코딩을 방지합니다.
+    """
+    if "%" in service_key:
+        encoded_key = service_key
+    else:
+        encoded_key = quote_plus(service_key)
+    return f"{base_url}?serviceKey={encoded_key}"
+
+
+def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, Any]]:
+    """
+    기상청 초단기실황 + 초단기예보를 조회해 summarize_course_weather가 기대하는
+    형태(current/hourly)로 정규화합니다.
+    """
+    if not service_key:
+        raise ValueError("KMA 서비스 키가 필요합니다. --kma-service-key 또는 KMA_SERVICE_KEY를 설정하세요.")
+
+    base_date, base_time = kma_base_datetime()
+    nx, ny = latlon_to_kma_xy(course.lat, course.lon)
+
+    common_params = {
+        "dataType": "JSON",
+        "base_date": base_date,
+        "base_time": base_time,
+        "nx": nx,
+        "ny": ny,
+        "pageNo": 1,
+        "numOfRows": 1000,
+    }
+
+    try:
+        obs_url = build_kma_url(KMA_ULTRA_NCST_URL, service_key)
+        obs_resp = requests.get(obs_url, params=common_params, timeout=10)
+        obs_resp.raise_for_status()
+        obs_items = obs_resp.json()["response"]["body"]["items"]["item"]
+    except (Timeout, ReadTimeout) as e:
+        print(f"[WARN] KMA timeout for {course.name_ko} ({course.lat}, {course.lon}): {e}")
+        return None
+    except HTTPError as e:
+        print(f"[WARN] KMA request error for {course.name_ko} ({course.lat}, {course.lon}): {e}")
+        if e.response is not None:
+            print(f"[WARN] KMA response body: {e.response.text}")
+        return None
+    except RequestException as e:
+        print(f"[WARN] KMA request error for {course.name_ko} ({course.lat}, {course.lon}): {e}")
+        return None
+    except Exception as e:
+        print(f"[WARN] KMA response parsing error for {course.name_ko}: {e}")
+        return None
+
+    obs_map: Dict[str, Any] = {item["category"]: item.get("obsrValue") for item in obs_items}
+
+    try:
+        temp_c = float(obs_map.get("T1H"))
+    except (TypeError, ValueError):
+        temp_c = None
+
+    if temp_c is None:
+        print(f"[WARN] KMA response missing temperature for {course.name_ko}, skipping.")
+        return None
+
+    wind_ms = float(obs_map.get("WSD", 0.0) or 0.0)
+    wind_dir = float(obs_map.get("VEC", 0.0) or 0.0)
+    humidity = float(obs_map.get("REH", 60.0) or 60.0)
+    precip_mm = parse_precip_value(obs_map.get("RN1"))
+    pty_val = str(obs_map.get("PTY", "0"))
+
+    rain_mm = precip_mm if pty_val in ("1", "2", "5", "6") else 0.0
+    apparent = calc_apparent_temperature(temp_c or 0.0, wind_ms, humidity)
+
+    # 초단기예보로 앞으로 3시간 강수 예측값을 가져와 최근 강수량 근사에 사용
+    forecast_params = dict(common_params)
+    forecast_params["numOfRows"] = 200
+
+    forecast_rain: Dict[str, float] = {}
+    forecast_pty: Dict[str, str] = {}
+    try:
+        fcst_url = build_kma_url(KMA_ULTRA_FCST_URL, service_key)
+        fcst_resp = requests.get(fcst_url, params=forecast_params, timeout=10)
+        fcst_resp.raise_for_status()
+        fcst_items = fcst_resp.json()["response"]["body"]["items"]["item"]
+        for item in fcst_items:
+            time_key = f"{item['fcstDate']}{item['fcstTime']}"
+            if item["category"] == "RN1":
+                forecast_rain[time_key] = parse_precip_value(item["fcstValue"])
+            elif item["category"] == "PTY":
+                forecast_pty[time_key] = str(item["fcstValue"])
+    except (Timeout, ReadTimeout) as e:
+        print(f"[WARN] KMA forecast timeout for {course.name_ko} ({course.lat}, {course.lon}): {e}")
+    except HTTPError as e:
+        print(f"[WARN] KMA forecast request error for {course.name_ko} ({course.lat}, {course.lon}): {e}")
+        if e.response is not None:
+            print(f"[WARN] KMA forecast response body: {e.response.text}")
+    except RequestException as e:
+        print(f"[WARN] KMA forecast request error for {course.name_ko} ({course.lat}, {course.lon}): {e}")
+    except Exception as e:
+        print(f"[WARN] KMA forecast parsing error for {course.name_ko}: {e}")
+
+    hourly_precip: List[float] = []
+    hourly_rain: List[float] = []
+    sorted_times = sorted(forecast_rain.keys())
+    if not sorted_times:
+        sorted_times = sorted(forecast_pty.keys())
+
+    for time_key in sorted_times[:3]:
+        rn1 = forecast_rain.get(time_key, 0.0)
+        pty = forecast_pty.get(time_key, "0")
+        hourly_precip.append(rn1)
+        hourly_rain.append(rn1 if pty in ("1", "2", "5", "6") else 0.0)
+
+    current_time = kst_now().replace(microsecond=0).isoformat()
+    return {
+        "current": {
+            "time": current_time,
+            "temperature_2m": temp_c,
+            "apparent_temperature": apparent if temp_c is not None else temp_c,
+            "precipitation": precip_mm,
+            "rain": rain_mm,
+            "wind_speed_10m": wind_ms * 3.6,  # summarize 함수가 m/s로 변환하므로 km/h 단위로 제공
+            "wind_direction_10m": wind_dir,
+        },
+        "hourly": {
+            "precipitation": hourly_precip,
+            "rain": hourly_rain,
+        },
+    }
+
+
+# === 3. Open-Meteo KMA & Air Quality 호출 ===
 
 OPEN_METEO_BASE = "https://api.open-meteo.com/v1/forecast"
 AIR_QUALITY_BASE = "https://air-quality-api.open-meteo.com/v1/air-quality"
@@ -181,7 +441,27 @@ def fetch_air_quality(course: Course) -> Optional[Dict[str, Any]]:
     return resp.json()
 
 
-# === 3. 러닝용으로 요약 + 한/영 텍스트 생성 ===
+# === CLI 옵션 ===
+
+
+def build_arg_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Fetch running weather data from Open-Meteo or KMA.")
+    parser.add_argument(
+        "--provider",
+        choices=list(SUPPORTED_PROVIDERS),
+        default=DEFAULT_PROVIDER,
+        help="날씨 데이터 소스 (open-meteo|kma). 기본값은 WEATHER_PROVIDER 환경변수 또는 open-meteo.",
+    )
+    parser.add_argument(
+        "--kma-service-key",
+        dest="kma_service_key",
+        default=os.getenv("KMA_SERVICE_KEY"),
+        help="기상청(data.go.kr) 서비스 키. provider=kma일 때 필수. 환경변수 KMA_SERVICE_KEY로도 지정 가능.",
+    )
+    return parser
+
+
+# === 4. 러닝용으로 요약 + 한/영 텍스트 생성 ===
 
 
 def summarize_course_weather(
@@ -729,15 +1009,31 @@ def summarize_course_weather(
     }
 
 
-# === 4. JSON 파일로 저장 ===
+# === 5. JSON 파일로 저장 ===
 
 
 def main() -> None:
+    parser = build_arg_parser()
+    args = parser.parse_args()
+    provider = args.provider
+    kma_service_key = args.kma_service_key
+
+    if provider == "kma" and not kma_service_key:
+        print("[ERROR] provider=kma 인 경우 --kma-service-key 또는 KMA_SERVICE_KEY가 필요합니다.")
+        return
+
     results: List[Dict[str, Any]] = []
 
     for course in COURSES:
-        print(f"[INFO] Fetching weather for {course.name_ko} ({course.lat}, {course.lon})")
-        raw_weather = fetch_open_meteo_kma(course)
+        print(
+            f"[INFO] Fetching weather ({provider}) for {course.name_ko} "
+            f"({course.lat}, {course.lon})"
+        )
+
+        if provider == "kma":
+            raw_weather = fetch_kma_weather(course, kma_service_key)
+        else:
+            raw_weather = fetch_open_meteo_kma(course)
 
         if raw_weather is None:
             # 이 코스는 이번 run에서 실패 → 전체 스크립트는 계속 진행
@@ -753,17 +1049,17 @@ def main() -> None:
         #    print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
         #    raw_air = None
         raw_air = {
-        "hourly": {
-            "pm10": ["N/A"],
-            "pm2_5": ["N/A"],
+            "hourly": {
+                "pm10": ["N/A"],
+                "pm2_5": ["N/A"],
+            }
         }
-        }      
         summary = summarize_course_weather(course, raw_weather, raw_air)
         results.append(summary)
         time.sleep(0.5)
 
     output = {
-        "generated_at": datetime.now().isoformat(),
+        "generated_at": kst_now().isoformat(),
         "courses": results,
     }
 

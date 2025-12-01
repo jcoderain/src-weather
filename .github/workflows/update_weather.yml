@@ -29,8 +29,16 @@ jobs:
           pip install requests
 
       - name: Generate Suwon weather JSON
+        env:
+          WEATHER_PROVIDER: ${{ secrets.WEATHER_PROVIDER }}
+          KMA_SERVICE_KEY: ${{ secrets.KMA_SERVICE_KEY }}
         run: |
-          python fetch_weather.py
+          export WEATHER_PROVIDER=${WEATHER_PROVIDER:-open-meteo}
+          if [ "$WEATHER_PROVIDER" = "kma" ] && [ -z "$KMA_SERVICE_KEY" ]; then
+            echo "KMA_SERVICE_KEY secret is required when WEATHER_PROVIDER=kma" >&2
+            exit 1
+          fi
+          python fetch_weather.py --provider "$WEATHER_PROVIDER"
 
       - name: Commit and push changes
         env:
