@@ -308,20 +308,20 @@ function renderCourseCard(info) {
           ? `<div style="margin-top:4px;">${airQualityHtml}</div>`
           : ""
       }
-      ${
-        lat != null && lon != null
-          ? `<div class="location-row">
-               <div>${currentLang === "ko" ? "위치" : "Location"} ${lat.toFixed(5)}, ${lon.toFixed(5)}</div>
+      <div class="location-row">
+        ${
+          lat != null && lon != null
+            ? `<div>${currentLang === "ko" ? "위치" : "Location"} ${lat.toFixed(5)}, ${lon.toFixed(5)}</div>
                ${
                  locationLink
                    ? `<a class="location-link" href="${locationLink}" target="_blank" rel="noopener">
                         ${currentLang === "ko" ? "네이버맵에서 보기" : "Open in Naver Map"}
                       </a>`
                    : ""
-               }
-             </div>`
-          : ""
-      }
+               }`
+            : `<div>${currentLang === "ko" ? "위치 정보 없음" : "No location info"}</div>`
+        }
+      </div>
       <div class="score-rows">
         <div class="score-row">
           <span class="score-label">${currentLang === "ko" ? "바람 점수" : "Wind score"}</span>
