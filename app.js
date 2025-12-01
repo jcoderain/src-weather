@@ -17,6 +17,8 @@ const JSON_URL =
 // true  => src_weather.json 의 wind_speed 가 m/s 라고 가정
 // false => src_weather.json 의 wind_speed 가 km/h 라고 가정 (자동으로 m/s 로 환산해서 표시)
 const WIND_SOURCE_IS_MS = true;
+// ✅ 네이버맵 링크를 표시할지 여부 (필요 없으면 false)
+const SHOW_NAVER_MAP_LINK = true;
 
 const uiText = {
   appTitle: {
@@ -179,8 +181,13 @@ function classifyPm25(value) {
 
 function buildNaverMapLink(lat, lon) {
   if (lat == null || lon == null) return null;
-  // v5 지도에서 중심을 주어진 좌표로 맞추는 URL
-  return `https://map.naver.com/v5/?c=${lon},${lat},16,0,0,0,dh`;
+  // 검색 중심을 좌표로 맞춘 검색 URL (v5)
+  return `https://map.naver.com/v5/search/${lat},${lon}`;
+}
+
+function buildGoogleMapLink(lat, lon) {
+  if (lat == null || lon == null) return null;
+  return `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
 }
 
 // ✅ 공기질 한 줄 HTML 생성
@@ -243,6 +250,7 @@ function renderCourseCard(info) {
   const lat = info.lat ?? info.latitude;
   const lon = info.lon ?? info.longitude;
   const locationLink = buildNaverMapLink(lat, lon);
+  const googleLink = buildGoogleMapLink(lat, lon);
 
   const windTag =
     currentLang === "ko"
@@ -312,13 +320,22 @@ function renderCourseCard(info) {
         ${
           lat != null && lon != null
             ? `<div>${currentLang === "ko" ? "위치" : "Location"} ${lat.toFixed(5)}, ${lon.toFixed(5)}</div>
-               ${
-                 locationLink
-                   ? `<a class="location-link" href="${locationLink}" target="_blank" rel="noopener">
-                        ${currentLang === "ko" ? "네이버맵에서 보기" : "Open in Naver Map"}
-                      </a>`
-                   : ""
-               }`
+               <div class="location-links">
+                 ${
+                   googleLink
+                     ? `<a class="location-link" href="${googleLink}" target="_blank" rel="noopener">
+                          ${currentLang === "ko" ? "구글맵에서 보기" : "Open in Google Maps"}
+                        </a>`
+                     : ""
+                 }
+                 ${
+                   SHOW_NAVER_MAP_LINK && locationLink
+                     ? `<a class="location-link" href="${locationLink}" target="_blank" rel="noopener">
+                          ${currentLang === "ko" ? "네이버맵에서 보기" : "Open in Naver Map"}
+                        </a>`
+                     : ""
+                 }
+               </div>`
             : `<div>${currentLang === "ko" ? "위치 정보 없음" : "No location info"}</div>`
         }
       </div>
