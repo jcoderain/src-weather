@@ -120,6 +120,8 @@ KST = timezone(timedelta(hours=9))
 
 KMA_ULTRA_NCST_URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"
 KMA_ULTRA_FCST_URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"
+KMA_AIR_QUALITY_URL = "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"
+DEFAULT_KMA_AIR_SIDO = os.getenv("KMA_AIR_SIDO_NAME", "경기도")
 
 
 # === 2. 기상청(KMA) 초단기/초단기예보 호출 ===
@@ -206,6 +208,19 @@ def parse_precip_value(raw: Any) -> float:
         return float(cleaned)
     except ValueError:
         return 0.0
+
+
+def parse_pm_value(raw: Any) -> Optional[float]:
+    """PM10/PM2.5 값 문자열에서 숫자만 추출해 float로 변환합니다."""
+    if raw is None:
+        return None
+    text = str(raw).strip()
+    if not text or text == "-":
+        return None
+    try:
+        return float(text)
+    except ValueError:
+        return None
 
 
 def calc_apparent_temperature(temp_c: float, wind_speed_ms: float, humidity: float) -> float:
@@ -428,7 +443,7 @@ def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
     return resp.json()
 
 
-def fetch_air_quality(course: Course) -> Optional[Dict[str, Any]]:
+def fetch_air_quality_open_meteo(course: Course) -> Optional[Dict[str, Any]]:
     """Open-Meteo Air Quality API에서 PM10 / PM2.5 현재값을 가져옵니다."""
     params = {
         "latitude": course.lat,
@@ -439,6 +454,52 @@ def fetch_air_quality(course: Course) -> Optional[Dict[str, Any]]:
     resp = requests.get(AIR_QUALITY_BASE, params=params, timeout=10)
     resp.raise_for_status()
     return resp.json()
+
+
+def fetch_air_quality_kma(
+    course: Course,
+    service_key: str,
+    sido_name: str = DEFAULT_KMA_AIR_SIDO,
+) -> Optional[Dict[str, Any]]:
+    """
+    환경부(에어코리아) 실시간 시도별 대기오염 정보에서 PM10/PM2.5를 조회합니다.
+    - lat/lon별 가장 근처 측정소를 구하는 추가 API가 있으나, 간단히 시도 단위로 조회해
+      유효한 첫 측정값을 사용합니다.
+    """
+    if not service_key:
+        raise ValueError("KMA 서비스 키가 필요합니다. --kma-service-key 또는 KMA_SERVICE_KEY를 설정하세요.")
+
+    params = {
+        "sidoName": sido_name,
+        "returnType": "json",
+        "pageNo": 1,
+        "numOfRows": 100,
+        "ver": "1.3",
+    }
+
+    url = build_kma_url(KMA_AIR_QUALITY_URL, service_key)
+    resp = requests.get(url, params=params, timeout=10)
+    resp.raise_for_status()
+    body = resp.json().get("response", {}).get("body", {})
+    items = body.get("items") or []
+
+    chosen = None
+    for item in items:
+        pm10 = parse_pm_value(item.get("pm10Value"))
+        pm25 = parse_pm_value(item.get("pm25Value"))
+        if pm10 is not None or pm25 is not None:
+            chosen = {
+                "time": item.get("dataTime"),
+                "pm10": pm10,
+                "pm2_5": pm25,
+                "station": item.get("stationName"),
+            }
+            break
+
+    if chosen is None:
+        return None
+
+    return {"current": chosen}
 
 
 # === CLI 옵션 ===
@@ -457,6 +518,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
         dest="kma_service_key",
         default=os.getenv("KMA_SERVICE_KEY"),
         help="기상청(data.go.kr) 서비스 키. provider=kma일 때 필수. 환경변수 KMA_SERVICE_KEY로도 지정 가능.",
+    )
+    parser.add_argument(
+        "--air-provider",
+        choices=("open-meteo", "kma"),
+        default=None,
+        help="대기질 데이터 소스 (open-meteo|kma). 기본값은 weather provider와 동일하게 동작.",
+    )
+    parser.add_argument(
+        "--kma-air-sido-name",
+        dest="kma_air_sido_name",
+        default=DEFAULT_KMA_AIR_SIDO,
+        help=f"기상청(에어코리아) 대기질 조회 시 사용할 시도 이름. 기본값: {DEFAULT_KMA_AIR_SIDO}",
     )
     return parser
 
@@ -1017,6 +1090,8 @@ def main() -> None:
     args = parser.parse_args()
     provider = args.provider
     kma_service_key = args.kma_service_key
+    air_provider = args.air_provider or provider
+    kma_air_sido_name = args.kma_air_sido_name
 
     if provider == "kma" and not kma_service_key:
         print("[ERROR] provider=kma 인 경우 --kma-service-key 또는 KMA_SERVICE_KEY가 필요합니다.")
@@ -1040,20 +1115,16 @@ def main() -> None:
             print(f"[WARN] Weather fetch failed for {course.name_ko}, skipping this course.")
             continue
 
-        # 응급처치
-        #raw_air: Optional[Dict[str, Any]] = None
-        #try:
-        #    print("    - Fetching air quality (PM10/PM2.5)...")
-        #    raw_air = fetch_air_quality(course)
-        #except Exception as e:
-        #    print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
-        #    raw_air = None
-        raw_air = {
-            "hourly": {
-                "pm10": ["N/A"],
-                "pm2_5": ["N/A"],
-            }
-        }
+        raw_air: Optional[Dict[str, Any]] = None
+        try:
+            if air_provider == "open-meteo":
+                print("    - Fetching air quality (Open-Meteo)...")
+                raw_air = fetch_air_quality_open_meteo(course)
+            elif air_provider == "kma":
+                print("    - Fetching air quality (KMA/AirKorea)...")
+                raw_air = fetch_air_quality_kma(course, kma_service_key, kma_air_sido_name)
+        except Exception as e:
+            print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
         summary = summarize_course_weather(course, raw_weather, raw_air)
         results.append(summary)
         time.sleep(0.5)
