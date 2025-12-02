@@ -1148,7 +1148,7 @@ def main() -> None:
                 print(f"[WARN] Air quality fallback failed for {course.name_ko}: {e}")
         summary = summarize_course_weather(course, raw_weather, raw_air)
         results.append(summary)
-        time.sleep(0.5)
+        time.sleep(5)
 
     output = {
         "generated_at": kst_now().isoformat(),
