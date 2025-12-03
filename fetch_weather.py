@@ -699,7 +699,7 @@ def summarize_course_weather(
 
     if apparent <= -15:
         temp_score = 5
-        temp_tag_ko = "매우 춥음"
+        temp_tag_ko = "매우 추움"
         temp_tag_en = "Very cold"
         temp_comment_ko = (
             "매우 춥습니다. 노출 부위를 최소화하고 두꺼운 장갑, 모자, 넥워머 등 "
@@ -710,7 +710,7 @@ def summarize_course_weather(
         )
     elif apparent < -10:
         temp_score = 15
-        temp_tag_ko = "매우 춥음"
+        temp_tag_ko = "매우 추움"
         temp_tag_en = "Very cold"
         temp_comment_ko = (
             "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, "
@@ -721,7 +721,7 @@ def summarize_course_weather(
         )
     elif apparent < -5:
         temp_score = 30
-        temp_tag_ko = "춥다"
+        temp_tag_ko = "추움"
         temp_tag_en = "Cold"
         temp_comment_ko = (
             "꽤 춥습니다. 긴팔+긴바지에 방풍 자켓을 더해 주는 것이 좋습니다."
@@ -772,7 +772,7 @@ def summarize_course_weather(
     elif apparent < 22:
         temp_score = 75
         temp_tag_ko = "다소 따뜻함"
-        temp_tag_en = "Slightly warm"
+        temp_tag_en = "Warm"
         temp_comment_ko = (
             "다소 따뜻한 편입니다. 통풍 잘 되는 옷과 충분한 수분 섭취를 추천합니다."
         )
@@ -782,7 +782,7 @@ def summarize_course_weather(
     elif apparent < 26:
         temp_score = 55
         temp_tag_ko = "조금 더움"
-        temp_tag_en = "Slightly hot"
+        temp_tag_en = "Very warm"
         temp_comment_ko = (
             "조금 더운 편입니다. 강도 높은 훈련보다는 적당한 강도의 러닝이 좋습니다."
         )
@@ -792,7 +792,7 @@ def summarize_course_weather(
     elif apparent < 29:
         temp_score = 40
         temp_tag_ko = "더움"
-        temp_tag_en = "Warm"
+        temp_tag_en = "Hot"
         temp_comment_ko = (
             "더운 편입니다. 강도를 낮추고 자주 수분을 섭취하는 것이 좋습니다."
         )
@@ -801,8 +801,8 @@ def summarize_course_weather(
         )
     elif apparent < 31:
         temp_score = 25
-        temp_tag_ko = "덥다"
-        temp_tag_en = "Hot"
+        temp_tag_ko = "꽤 더움"
+        temp_tag_en = "Quite hot"
         temp_comment_ko = (
             "상당히 덥습니다. 장거리나 고강도 러닝은 피하고, 그늘 위주 코스를 추천합니다."
         )
@@ -821,8 +821,8 @@ def summarize_course_weather(
         )
     else:
         temp_score = 0
-        temp_tag_ko = "매우 더움"
-        temp_tag_en = "Very hot"
+        temp_tag_ko = "위험한 더움"
+        temp_tag_en = "Extremely hot"
         temp_comment_ko = (
             "위험할 정도로 덥습니다. 실외 러닝은 권장하지 않으며, 실내 운동이나 휴식을 추천합니다."
         )
