@@ -699,7 +699,7 @@ def summarize_course_weather(
 
     if apparent <= -15:
         temp_score = 5
-        temp_tag_ko = "매우 추움"
+        temp_tag_ko = "위험한 추움"
         temp_tag_en = "Very cold"
         temp_comment_ko = (
             "매우 춥습니다. 노출 부위를 최소화하고 두꺼운 장갑, 모자, 넥워머 등 "
