@@ -555,6 +555,11 @@ def summarize_course_weather(
     current = raw_weather["current"]
     hourly = raw_weather["hourly"]
 
+    risk_flags_ko: List[str] = []
+    risk_flags_en: List[str] = []
+    hard_caps: List[int] = []
+    penalty_factor = 1.0
+
     # -----------------------------
     # 1) 강수/노면 상태 (비 + 눈)
     # -----------------------------
@@ -567,6 +572,11 @@ def summarize_course_weather(
     recent_rain = float(sum(recent_rain_list))                  # 최근 3시간 비
     recent_precip = float(sum(recent_precip_list))              # 최근 3시간 비+눈
     recent_snow = max(recent_precip - recent_rain, 0.0)         # 최근 3시간 눈
+
+    if current_precip >= 4.0 or recent_precip >= 8.0:
+        hard_caps.append(30)  # 짧은 시간 강수량이 많으면 러닝 강도 제한
+        risk_flags_ko.append("강한 비/눈 주의")
+        risk_flags_en.append("Heavy precipitation caution")
 
     # surface_score: 0~100
     # wet_badge: { level: good/wet/bad, text_ko/text_en }
@@ -830,6 +840,21 @@ def summarize_course_weather(
             "Dangerously hot. Outdoor running is not recommended; consider indoor exercise or rest."
         )
 
+    # 극단적인 추위/더위에서는 추가 패널티와 상한을 적용
+    if apparent < -8:
+        penalty_factor *= max(0.35, 1.0 - (abs(apparent + 8) * 0.06))
+        risk_flags_ko.append("혹한 주의")
+        risk_flags_en.append("Extreme cold")
+    elif apparent > 26:
+        penalty_factor *= max(0.35, 1.0 - ((apparent - 26) * 0.07))
+        risk_flags_ko.append("고온 주의")
+        risk_flags_en.append("Extreme heat")
+
+    if apparent <= -15 or apparent >= 33 or surface_score == 0:
+        hard_caps.append(20)
+    elif apparent <= -12 or apparent >= 30:
+        hard_caps.append(25)
+
     # -----------------------------
     # 3) 바람 점수 (m/s 기준)
     # -----------------------------
@@ -879,6 +904,16 @@ def summarize_course_weather(
         wind_comment_en = (
             "Very strong wind. It feels much colder and fatigue may build up faster."
         )
+
+    if apparent <= -5:
+        if wind_speed >= 8.0:
+            penalty_factor *= 0.8
+            risk_flags_ko.append("강풍 한기")
+            risk_flags_en.append("Wind chill risk")
+        elif wind_speed >= 6.0:
+            penalty_factor *= 0.9
+            risk_flags_ko.append("바람 추위")
+            risk_flags_en.append("Breezy cold")
 
     # -----------------------------
     # 4) 공기질 (PM10 / PM2.5) + 패널티 팩터
@@ -984,11 +1019,27 @@ def summarize_course_weather(
     if air_score >= 90:
         factor_air = 1.0     # 좋음: 영향 없음
     elif air_score >= 70:
-        factor_air = 0.98    # 보통: 거의 영향 없음
+        factor_air = 0.95    # 보통: 소폭 감소
     elif air_score >= 50:
-        factor_air = 0.8     # 나쁨: 20% 정도 점수 감소
+        factor_air = 0.7     # 나쁨: 더 보수적으로 감소
+        risk_flags_ko.append("공기질 주의")
+        risk_flags_en.append("Air quality caution")
     else:
-        factor_air = 0.6     # 매우 나쁨: 40% 정도 점수 감소
+        factor_air = 0.45    # 매우 나쁨: 강하게 감소
+        risk_flags_ko.append("공기질 매우 나쁨")
+        risk_flags_en.append("Very poor air")
+
+    # 야간(22~6시)에는 한 단계 보수적으로
+    night_penalty = 1.0
+    try:
+        current_dt = datetime.fromisoformat(current["time"])
+        if current_dt.hour >= 22 or current_dt.hour < 6:
+            night_penalty = 0.9
+            risk_flags_ko.append("야간 주의")
+            risk_flags_en.append("Night caution")
+    except Exception:
+        current_dt = None
+    penalty_factor *= night_penalty
 
     # -----------------------------
     # 5) 종합 러닝 인덱스
@@ -1001,11 +1052,11 @@ def summarize_course_weather(
         surface_score * 0.20
     )
 
-    run_score = base_score * factor_air
+    run_score = base_score * factor_air * penalty_factor
 
-    # 극단적인 온도/노면에서 안전 상한
-    if surface_score == 0 or apparent <= -15 or apparent >= 33:
-        run_score = min(run_score, 20)
+    # 안전 상한 적용
+    if hard_caps:
+        run_score = min(run_score, min(hard_caps))
 
     run_score = int(round(max(0, min(100, run_score))))
 
@@ -1033,6 +1084,11 @@ def summarize_course_weather(
     if air_comment_en:
         detail_parts_en.append(air_comment_en)
 
+    if risk_flags_ko:
+        detail_parts_ko.append(f"추가 주의 요인: {', '.join(risk_flags_ko)}.")
+    if risk_flags_en:
+        detail_parts_en.append(f"Extra cautions: {', '.join(risk_flags_en)}.")
+
     detail_parts_ko.append(
         "컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요."
     )
@@ -1049,6 +1105,8 @@ def summarize_course_weather(
     if air_tag_ko and air_tag_en:
         tags_ko.append(air_tag_ko)
         tags_en.append(air_tag_en)
+    tags_ko.extend(risk_flags_ko)
+    tags_en.extend(risk_flags_en)
 
     # -----------------------------
     # 7) GPX 파일 경로 (있을 때만)
@@ -1082,6 +1140,8 @@ def summarize_course_weather(
         "wet_score": surface_score,        # 노면 점수 그대로 넣어둠
         "surface_score": surface_score,
         "air_score": air_score,
+        "risk_flags_ko": risk_flags_ko,
+        "risk_flags_en": risk_flags_en,
         "tags_ko": tags_ko,
         "tags_en": tags_en,
         "advice_short_ko": advice_short_ko,
