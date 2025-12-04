@@ -114,8 +114,8 @@ COURSES: List[Course] = [
 
 # === Provider 정의 & 상수 ===
 
-DEFAULT_PROVIDER = os.getenv("WEATHER_PROVIDER", "open-meteo")
-SUPPORTED_PROVIDERS = ("open-meteo", "kma")
+DEFAULT_PROVIDER = "kma"
+SUPPORTED_PROVIDERS = ("kma",)
 KST = timezone(timedelta(hours=9))
 
 KMA_ULTRA_NCST_URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"
@@ -384,78 +384,6 @@ def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, An
     }
 
 
-# === 3. Open-Meteo KMA & Air Quality 호출 ===
-
-OPEN_METEO_BASE = "https://api.open-meteo.com/v1/forecast"
-AIR_QUALITY_BASE = "https://air-quality-api.open-meteo.com/v1/air-quality"
-
-
-def fetch_open_meteo_kma(course: Course) -> Dict[str, Any]:
-    """주어진 코스에 대해 Open-Meteo KMA seamless 모델로 현재/최근 3시간 데이터를 가져옵니다."""
-    params = {
-        "latitude": course.lat,
-        "longitude": course.lon,
-        "hourly": ",".join(
-            [
-                "temperature_2m",
-                "apparent_temperature",
-                "precipitation",
-                "rain",
-                "wind_speed_10m",
-                "wind_direction_10m",
-            ]
-        ),
-        "current": ",".join(
-            [
-                "temperature_2m",
-                "apparent_temperature",
-                "precipitation",
-                "rain",
-                "wind_speed_10m",
-                "wind_direction_10m",
-            ]
-        ),
-        "timezone": "Asia/Seoul",
-        "models": "kma_seamless",
-        "past_hours": 3,
-        "forecast_hours": 0,
-        # wind_speed_unit 기본값은 km/h 이므로 아래에서 m/s로 변환
-    }
-
-    try:
-        resp = requests.get(OPEN_METEO_BASE, params=params, timeout=10)
-        resp.raise_for_status()
-    except (Timeout, ReadTimeout) as e:
-        print(
-            f"[WARN] Open-Meteo timeout for {course.name_ko} "
-            f"({course.lat}, {course.lon}): {e}"
-        )
-        print(f"[WARN] Skipping {course.name_ko} for this run.")
-        return None
-    except RequestException as e:
-        print(
-            f"[WARN] Open-Meteo request error for {course.name_ko} "
-            f"({course.lat}, {course.lon}): {e}"
-        )
-        print(f"[WARN] Skipping {course.name_ko} for this run.")
-        return None
-
-    return resp.json()
-
-
-def fetch_air_quality_open_meteo(course: Course) -> Optional[Dict[str, Any]]:
-    """Open-Meteo Air Quality API에서 PM10 / PM2.5 현재값을 가져옵니다."""
-    params = {
-        "latitude": course.lat,
-        "longitude": course.lon,
-        "current": "pm10,pm2_5",
-        "timezone": "Asia/Seoul",
-    }
-    resp = requests.get(AIR_QUALITY_BASE, params=params, timeout=10)
-    resp.raise_for_status()
-    return resp.json()
-
-
 def fetch_air_quality_kma(
     course: Course,
     service_key: str,
@@ -516,12 +444,12 @@ def fetch_air_quality_kma(
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Fetch running weather data from Open-Meteo or KMA.")
+    parser = argparse.ArgumentParser(description="Fetch running weather data from KMA (only).")
     parser.add_argument(
         "--provider",
         choices=list(SUPPORTED_PROVIDERS),
         default=DEFAULT_PROVIDER,
-        help="날씨 데이터 소스 (open-meteo|kma). 기본값은 WEATHER_PROVIDER 환경변수 또는 open-meteo.",
+        help="날씨 데이터 소스 (kma 고정).",
     )
     parser.add_argument(
         "--kma-service-key",
@@ -531,9 +459,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--air-provider",
-        choices=("open-meteo", "kma"),
-        default=None,
-        help="대기질 데이터 소스 (open-meteo|kma). 기본값은 weather provider와 동일하게 동작.",
+        choices=("kma",),
+        default="kma",
+        help="대기질 데이터 소스 (kma 고정).",
     )
     parser.add_argument(
         "--kma-air-sido-name",
@@ -1162,27 +1090,23 @@ def summarize_course_weather(
 def main() -> None:
     parser = build_arg_parser()
     args = parser.parse_args()
-    provider = args.provider
     kma_service_key = args.kma_service_key
-    air_provider = args.air_provider or provider
+    air_provider = args.air_provider
     kma_air_sido_name = args.kma_air_sido_name
 
-    if provider == "kma" and not kma_service_key:
-        print("[ERROR] provider=kma 인 경우 --kma-service-key 또는 KMA_SERVICE_KEY가 필요합니다.")
+    if not kma_service_key:
+        print("[ERROR] --kma-service-key 또는 KMA_SERVICE_KEY가 필요합니다.")
         return
 
     results: List[Dict[str, Any]] = []
 
     for course in COURSES:
         print(
-            f"[INFO] Fetching weather ({provider}) for {course.name_ko} "
+            f"[INFO] Fetching weather (KMA) for {course.name_ko} "
             f"({course.lat}, {course.lon})"
         )
 
-        if provider == "kma":
-            raw_weather = fetch_kma_weather(course, kma_service_key)
-        else:
-            raw_weather = fetch_open_meteo_kma(course)
+        raw_weather = fetch_kma_weather(course, kma_service_key)
 
         if raw_weather is None:
             # 이 코스는 이번 run에서 실패 → 전체 스크립트는 계속 진행
@@ -1191,23 +1115,13 @@ def main() -> None:
 
         raw_air: Optional[Dict[str, Any]] = None
         try:
-            if air_provider == "open-meteo":
-                print("    - Fetching air quality (Open-Meteo)...")
-                raw_air = fetch_air_quality_open_meteo(course)
-            elif air_provider == "kma":
+            if air_provider == "kma":
                 print("    - Fetching air quality (KMA/AirKorea)...")
                 raw_air = fetch_air_quality_kma(course, kma_service_key, kma_air_sido_name)
         except Exception as e:
             print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
             raw_air = None
 
-        # KMA 대기질 실패 시 Open-Meteo로 한 번 더 시도
-        if raw_air is None and air_provider == "kma":
-            try:
-                print("    - Air quality fallback to Open-Meteo...")
-                raw_air = fetch_air_quality_open_meteo(course)
-            except Exception as e:
-                print(f"[WARN] Air quality fallback failed for {course.name_ko}: {e}")
         summary = summarize_course_weather(course, raw_weather, raw_air)
         results.append(summary)
         time.sleep(5)

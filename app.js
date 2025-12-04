@@ -90,6 +90,17 @@ function formatUpdatedAtLocalized(isoLikeStr) {
   }
 }
 
+// KST 기준 겨울철(12/1~3/31)인지 확인
+function isSnowSeason(dateObj) {
+  const kstNow =
+    dateObj ||
+    new Date(
+      new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" })
+    );
+  const month = kstNow.getMonth() + 1; // 1-12
+  return month === 12 || month <= 3;
+}
+
 
 // 공통 updated_at (첫 코스 기준) 가져오기
 function getCommonUpdatedAt() {
@@ -273,6 +284,7 @@ function renderCourseCard(info) {
   const rain3h = Number(info.recent_rain_3h ?? 0);
   const snowNow = Number(info.snow_now ?? 0);
   const snow3h = Number(info.recent_snow_3h ?? 0);
+  const showSnow = isSnowSeason();
 
   div.innerHTML = `
     <div class="course-title">
@@ -307,9 +319,13 @@ function renderCourseCard(info) {
       <div>
         ${rainNowLabel} ${rainNow.toFixed(1)} mm · ${rain3hLabel} ${rain3h.toFixed(1)} mm
       </div>
-      <div>
-        ${snowNowLabel} ${snowNow.toFixed(1)} mm · ${snow3hLabel} ${snow3h.toFixed(1)} mm
-      </div>
+      ${
+        showSnow
+          ? `<div>
+               ${snowNowLabel} ${snowNow.toFixed(1)} mm · ${snow3hLabel} ${snow3h.toFixed(1)} mm
+             </div>`
+          : ""
+      }
       ${
         airQualityHtml
           ? `<div style="margin-top:4px;">${airQualityHtml}</div>`
