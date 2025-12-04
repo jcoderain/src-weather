@@ -1037,15 +1037,7 @@ def summarize_course_weather(
     tags_en.extend(risk_flags_en)
 
     # -----------------------------
-    # 7) GPX 파일 경로 (있을 때만)
-    # -----------------------------
-    gpx_rel_path: Optional[str] = None
-    gpx_path = Path("gpx") / f"{course.id}.gpx"
-    if gpx_path.exists():
-        gpx_rel_path = f"gpx/{course.id}.gpx"
-
-    # -----------------------------
-    # 8) 최종 Dict 리턴 (JSON으로 직렬화될 내용)
+    # 7) 최종 Dict 리턴 (JSON으로 직렬화될 내용)
     # -----------------------------
     return {
         "id": course.id,
@@ -1080,7 +1072,6 @@ def summarize_course_weather(
         "advice_detail_en": advice_detail_en,
         "pm10": pm10,
         "pm25": pm25,
-        "gpx": gpx_rel_path,
     }
 
 

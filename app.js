@@ -47,10 +47,6 @@ const uiText = {
     ko: "공기질",
     en: "Air quality",
   },
-  gpxLabel: {
-    ko: "GPX 파일 열기",
-    en: "Open GPX file",
-  },
 };
 
 function applyLanguage() {
@@ -277,7 +273,6 @@ function renderCourseCard(info) {
   const snowNowLabel = currentLang === "ko" ? "현재 눈" : "Snow now";
   const snow3hLabel =
     currentLang === "ko" ? "최근 3시간 눈" : "Snow (last 3h)";
-  const gpxLabel = uiText.gpxLabel[currentLang];
 
   const airQualityHtml = buildAirQualityHtml(info);
   const rainNow = Number(info.rain_now ?? 0);
@@ -362,15 +357,6 @@ function renderCourseCard(info) {
           ? `<div class="advice-box">
                ${adviceShort ? `<div class="advice-short">${adviceShort}</div>` : ""}
                ${adviceDetail ? `<div class="advice-detail">${adviceDetail}</div>` : ""}
-             </div>`
-          : ""
-      }
-      ${
-        info.gpx
-          ? `<div class="course-actions" style="margin-top:6px;">
-               <a class="gpx-link" href="${info.gpx}" target="_blank" rel="noopener">
-                 ${gpxLabel}
-               </a>
              </div>`
           : ""
       }
