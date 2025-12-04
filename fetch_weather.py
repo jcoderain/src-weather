@@ -1132,7 +1132,9 @@ def summarize_course_weather(
         "wind_speed": wind_speed,          # m/s
         "wind_direction": wind_dir,
         "rain_now": current_rain,
+        "snow_now": current_snow,
         "recent_rain_3h": recent_rain,
+        "recent_snow_3h": recent_snow,
         "wet_badge": wet_badge,
         "run_score": run_score,
         "temp_score": temp_score,

@@ -263,9 +263,16 @@ function renderCourseCard(info) {
   const rainNowLabel = currentLang === "ko" ? "현재 비" : "Rain now";
   const rain3hLabel =
     currentLang === "ko" ? "최근 3시간 비" : "Rain (last 3h)";
+  const snowNowLabel = currentLang === "ko" ? "현재 눈" : "Snow now";
+  const snow3hLabel =
+    currentLang === "ko" ? "최근 3시간 눈" : "Snow (last 3h)";
   const gpxLabel = uiText.gpxLabel[currentLang];
 
   const airQualityHtml = buildAirQualityHtml(info);
+  const rainNow = Number(info.rain_now ?? 0);
+  const rain3h = Number(info.recent_rain_3h ?? 0);
+  const snowNow = Number(info.snow_now ?? 0);
+  const snow3h = Number(info.recent_snow_3h ?? 0);
 
   div.innerHTML = `
     <div class="course-title">
@@ -298,9 +305,10 @@ function renderCourseCard(info) {
         ${windLabel} ${windText}
       </div>
       <div>
-        ${rainNowLabel} ${info.rain_now.toFixed(
-    1
-  )} mm · ${rain3hLabel} ${info.recent_rain_3h.toFixed(1)} mm
+        ${rainNowLabel} ${rainNow.toFixed(1)} mm · ${rain3hLabel} ${rain3h.toFixed(1)} mm
+      </div>
+      <div>
+        ${snowNowLabel} ${snowNow.toFixed(1)} mm · ${snow3hLabel} ${snow3h.toFixed(1)} mm
       </div>
       ${
         airQualityHtml
