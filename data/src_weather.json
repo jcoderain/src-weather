@@ -1,18 +1,18 @@
 {
-  "generated_at": "2025-12-04T17:52:36.000541+09:00",
+  "generated_at": "2025-12-04T18:22:30.899615+09:00",
   "courses": [
     {
       "id": "seoho-park",
       "name_ko": "서호공원",
       "name_en": "Seoho Park",
       "name": "서호공원",
-      "updated_at": "2025-12-04T17:50:51+09:00",
+      "updated_at": "2025-12-04T18:20:51+09:00",
       "lat": 37.280325,
       "lon": 126.990396,
       "temperature": -0.1,
       "apparent_temperature": -4.208200160591387,
       "wind_speed": 3.7,
-      "wind_direction": 213.0,
+      "wind_direction": 209.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -20,32 +20,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": "gpx/seoho-park.gpx"
     },
     {
@@ -53,13 +53,13 @@
       "name_ko": "청소년문화센터",
       "name_en": "Youth Culture Center",
       "name": "청소년문화센터",
-      "updated_at": "2025-12-04T17:51:01+09:00",
+      "updated_at": "2025-12-04T18:21:00+09:00",
       "lat": 37.274248,
       "lon": 127.034519,
-      "temperature": 0.5,
-      "apparent_temperature": -2.4474040099068795,
-      "wind_speed": 2.5,
-      "wind_direction": 143.0,
+      "temperature": 0.6,
+      "apparent_temperature": -2.7091205525654205,
+      "wind_speed": 2.9,
+      "wind_direction": 146.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -67,32 +67,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -100,13 +100,13 @@
       "name_ko": "광교호수공원",
       "name_en": "Gwanggyo Lake Park",
       "name": "광교호수공원",
-      "updated_at": "2025-12-04T17:51:12+09:00",
+      "updated_at": "2025-12-04T18:21:08+09:00",
       "lat": 37.283439,
       "lon": 127.065989,
-      "temperature": 0.8,
-      "apparent_temperature": -1.6597198047785657,
-      "wind_speed": 2.1,
-      "wind_direction": 211.0,
+      "temperature": 0.9,
+      "apparent_temperature": -0.8946629717717898,
+      "wind_speed": 1.6,
+      "wind_direction": 218.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -114,32 +114,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 55,
       "temp_score": 45,
-      "wind_score": 80,
+      "wind_score": 100,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
-        "약한 바람",
+        "바람 거의 없음",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
-        "Light breeze",
+        "Calm",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Almost no wind, good for maintaining your pace. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -147,13 +147,13 @@
       "name_ko": "성균관대학교",
       "name_en": "Sungkyunkwan Univ. (Suwon)",
       "name": "성균관대학교",
-      "updated_at": "2025-12-04T17:51:23+09:00",
+      "updated_at": "2025-12-04T18:21:17+09:00",
       "lat": 37.293788,
       "lon": 126.974365,
       "temperature": -0.1,
       "apparent_temperature": -4.208200160591387,
       "wind_speed": 3.7,
-      "wind_direction": 213.0,
+      "wind_direction": 209.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -161,32 +161,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -194,13 +194,13 @@
       "name_ko": "원천리천(신동)",
       "name_en": "Woncheon Stream (Sindong)",
       "name": "원천리천(신동)",
-      "updated_at": "2025-12-04T17:51:32+09:00",
+      "updated_at": "2025-12-04T18:21:27+09:00",
       "lat": 37.248469,
       "lon": 127.041965,
-      "temperature": 0.5,
-      "apparent_temperature": -2.4474040099068795,
-      "wind_speed": 2.5,
-      "wind_direction": 143.0,
+      "temperature": 0.6,
+      "apparent_temperature": -2.7091205525654205,
+      "wind_speed": 2.9,
+      "wind_direction": 146.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -208,32 +208,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -241,13 +241,13 @@
       "name_ko": "팔달산(수원화성, 행궁동)",
       "name_en": "Paldalsan Fortress Area",
       "name": "팔달산(수원화성, 행궁동)",
-      "updated_at": "2025-12-04T17:51:40+09:00",
+      "updated_at": "2025-12-04T18:21:36+09:00",
       "lat": 37.277614,
       "lon": 127.01065,
-      "temperature": 0.5,
-      "apparent_temperature": -2.4474040099068795,
-      "wind_speed": 2.5,
-      "wind_direction": 143.0,
+      "temperature": 0.6,
+      "apparent_temperature": -2.7091205525654205,
+      "wind_speed": 2.9,
+      "wind_direction": 146.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -255,32 +255,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -288,13 +288,13 @@
       "name_ko": "수원천",
       "name_en": "Suwoncheon Stream",
       "name": "수원천",
-      "updated_at": "2025-12-04T17:51:48+09:00",
+      "updated_at": "2025-12-04T18:21:43+09:00",
       "lat": 37.266571,
       "lon": 127.015022,
-      "temperature": 0.5,
-      "apparent_temperature": -2.4474040099068795,
-      "wind_speed": 2.5,
-      "wind_direction": 143.0,
+      "temperature": 0.6,
+      "apparent_temperature": -2.7091205525654205,
+      "wind_speed": 2.9,
+      "wind_direction": 146.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -302,32 +302,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -335,13 +335,13 @@
       "name_ko": "광교산",
       "name_en": "Gwanggyo Mountain",
       "name": "광교산",
-      "updated_at": "2025-12-04T17:51:57+09:00",
+      "updated_at": "2025-12-04T18:21:52+09:00",
       "lat": 37.328633,
       "lon": 127.038172,
-      "temperature": 1.0,
-      "apparent_temperature": -3.4532086385185523,
-      "wind_speed": 4.6,
-      "wind_direction": 161.0,
+      "temperature": 1.1,
+      "apparent_temperature": -3.0163863013968846,
+      "wind_speed": 4.1,
+      "wind_direction": 165.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -349,32 +349,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 45,
+      "run_score": 47,
       "temp_score": 45,
       "wind_score": 60,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "다소 강한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Moderate wind",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 바람이 다소 있어 체감온도가 조금 낮게 느껴질 수 있습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Moderate wind. It may feel a bit cooler than the actual temperature. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 바람이 다소 있어 체감온도가 조금 낮게 느껴질 수 있습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Moderate wind. It may feel a bit cooler than the actual temperature. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -382,13 +382,13 @@
       "name_ko": "수원월드컵경기장",
       "name_en": "Suwon World Cup Stadium",
       "name": "수원월드컵경기장",
-      "updated_at": "2025-12-04T17:52:05+09:00",
+      "updated_at": "2025-12-04T18:21:59+09:00",
       "lat": 37.286545,
       "lon": 127.036871,
-      "temperature": 0.8,
-      "apparent_temperature": -1.6597198047785657,
-      "wind_speed": 2.1,
-      "wind_direction": 211.0,
+      "temperature": 0.9,
+      "apparent_temperature": -0.8946629717717898,
+      "wind_speed": 1.6,
+      "wind_direction": 218.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -396,32 +396,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 55,
       "temp_score": 45,
-      "wind_score": 80,
+      "wind_score": 100,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
-        "약한 바람",
+        "바람 거의 없음",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
-        "Light breeze",
+        "Calm",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Almost no wind, good for maintaining your pace. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -429,13 +429,13 @@
       "name_ko": "동탄여울공원",
       "name_en": "Dongtan Yeoul Park",
       "name": "동탄여울공원",
-      "updated_at": "2025-12-04T17:52:13+09:00",
+      "updated_at": "2025-12-04T18:22:08+09:00",
       "lat": 37.198689,
       "lon": 127.086609,
-      "temperature": -0.5,
-      "apparent_temperature": -0.5,
-      "wind_speed": 1.1,
-      "wind_direction": 139.0,
+      "temperature": 0.2,
+      "apparent_temperature": -1.3811673936048945,
+      "wind_speed": 1.4,
+      "wind_direction": 135.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -443,32 +443,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 52,
+      "run_score": 55,
       "temp_score": 45,
       "wind_score": 100,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "바람 거의 없음",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Calm",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Almost no wind, good for maintaining your pace. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Almost no wind, good for maintaining your pace. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -476,13 +476,13 @@
       "name_ko": "영흥숲공원",
       "name_en": "Yeongheung Forest Park",
       "name": "영흥숲공원",
-      "updated_at": "2025-12-04T17:52:22+09:00",
+      "updated_at": "2025-12-04T18:22:17+09:00",
       "lat": 37.261067,
       "lon": 127.07047,
-      "temperature": 0.5,
-      "apparent_temperature": -2.4474040099068795,
-      "wind_speed": 2.5,
-      "wind_direction": 143.0,
+      "temperature": 0.6,
+      "apparent_temperature": -2.7091205525654205,
+      "wind_speed": 2.9,
+      "wind_direction": 146.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -490,32 +490,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     },
     {
@@ -523,13 +523,13 @@
       "name_ko": "마중공원",
       "name_en": "Majung Park",
       "name": "마중공원",
-      "updated_at": "2025-12-04T17:52:29+09:00",
+      "updated_at": "2025-12-04T18:22:24+09:00",
       "lat": 37.236832,
       "lon": 127.020592,
-      "temperature": 0.5,
-      "apparent_temperature": -2.4474040099068795,
-      "wind_speed": 2.5,
-      "wind_direction": 143.0,
+      "temperature": 0.6,
+      "apparent_temperature": -2.7091205525654205,
+      "wind_speed": 2.9,
+      "wind_direction": 146.0,
       "rain_now": 0.0,
       "recent_rain_3h": 0.0,
       "wet_badge": {
@@ -537,32 +537,32 @@
         "text_ko": "눈 조금 쌓임",
         "text_en": "Some snow on surface"
       },
-      "run_score": 48,
+      "run_score": 51,
       "temp_score": 45,
       "wind_score": 80,
       "wet_score": 40,
       "surface_score": 40,
-      "air_score": 80,
+      "air_score": 100,
       "risk_flags_ko": [],
       "risk_flags_en": [],
       "tags_ko": [
         "쌀쌀함",
         "약한 바람",
         "눈 조금 쌓임",
-        "공기질 보통"
+        "공기질 좋음"
       ],
       "tags_en": [
         "Chilly",
         "Light breeze",
         "Some snow",
-        "Moderate air"
+        "Good air"
       ],
       "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
       "advice_short_en": "Okay to run with some caution ⚠️",
-      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 35.0,
-      "pm25": 18.0,
+      "advice_detail_ko": "쌀쌀한 편입니다. 긴팔, 긴바지 또는 얇은 레이어링을 추천합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Chilly conditions. Long sleeves and tights or light layering are recommended. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 34.0,
+      "pm25": 12.0,
       "gpx": null
     }
   ]
