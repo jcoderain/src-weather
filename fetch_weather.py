@@ -122,6 +122,8 @@ KMA_ULTRA_NCST_URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/
 KMA_ULTRA_FCST_URL = "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"
 KMA_AIR_QUALITY_URL = "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"
 DEFAULT_KMA_AIR_SIDO = os.getenv("KMA_AIR_SIDO_NAME", "경기도")
+DEFAULT_OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_API_URL = os.getenv("OPENAI_API_URL", "https://api.openai.com/v1/chat/completions")
 
 
 # === 2. 기상청(KMA) 초단기/초단기예보 호출 ===
@@ -468,6 +470,23 @@ def build_arg_parser() -> argparse.ArgumentParser:
         dest="kma_air_sido_name",
         default=DEFAULT_KMA_AIR_SIDO,
         help=f"기상청(에어코리아) 대기질 조회 시 사용할 시도 이름. 기본값: {DEFAULT_KMA_AIR_SIDO}",
+    )
+    parser.add_argument(
+        "--with-coach",
+        action="store_true",
+        help="ChatGPT 러닝 코치 메시지를 생성합니다. OPENAI_API_KEY가 필요합니다.",
+    )
+    parser.add_argument(
+        "--openai-api-key",
+        dest="openai_api_key",
+        default=os.getenv("OPENAI_API_KEY"),
+        help="OpenAI API 키. 환경변수 OPENAI_API_KEY로도 지정 가능.",
+    )
+    parser.add_argument(
+        "--openai-model",
+        dest="openai_model",
+        default=DEFAULT_OPENAI_MODEL,
+        help=f"러닝 코치 응답에 사용할 OpenAI 모델. 기본값: {DEFAULT_OPENAI_MODEL}",
     )
     return parser
 
@@ -1075,7 +1094,104 @@ def summarize_course_weather(
     }
 
 
-# === 5. JSON 파일로 저장 ===
+# === 5. ChatGPT 러닝 코치 ===
+
+
+def build_coach_messages(
+    course: Course,
+    summary: Dict[str, Any],
+    raw_weather: Dict[str, Any],
+    raw_air: Optional[Dict[str, Any]],
+) -> List[Dict[str, str]]:
+    """
+    ChatGPT에게 전달할 메시지 페이로드를 구성합니다.
+    한국어 → 영어 순서로 짧게 러닝 코칭을 요청합니다.
+    """
+    payload = {
+        "course": {
+            "id": course.id,
+            "name_ko": course.name_ko,
+            "name_en": course.name_en,
+            "lat": course.lat,
+            "lon": course.lon,
+        },
+        "summary_for_running": summary,
+        "raw_weather": raw_weather,
+        "raw_air": raw_air,
+    }
+
+    system_prompt = (
+        "You are a concise running coach who is fluent in Korean and English. "
+        "Given structured weather/air data for a running course, produce short, "
+        "actionable advice (Korean first, English second). "
+        "Cover recommended intensity/time, hydration/gear, and key cautions. "
+        "Keep it under 6 sentences total."
+    )
+
+    user_prompt = (
+        "Here is the course + weather data as JSON. "
+        "Respond with Korean first, then English:\n"
+        f"{json.dumps(payload, ensure_ascii=False, indent=2)}"
+    )
+
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+
+def call_chatgpt_coach(
+    course: Course,
+    summary: Dict[str, Any],
+    raw_weather: Dict[str, Any],
+    raw_air: Optional[Dict[str, Any]],
+    api_key: str,
+    model: str = DEFAULT_OPENAI_MODEL,
+    timeout: int = 30,
+) -> Optional[str]:
+    """
+    OpenAI Chat Completions API를 호출해 러닝 코치 코멘트를 생성합니다.
+    실패 시 None을 반환하며 전체 스크립트를 중단하지 않습니다.
+    """
+    if not api_key:
+        raise ValueError("OpenAI API 키가 필요합니다. --openai-api-key 또는 OPENAI_API_KEY를 설정하세요.")
+
+    messages = build_coach_messages(course, summary, raw_weather, raw_air)
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": model,
+        "messages": messages,
+        "temperature": 0.6,
+        "max_tokens": 400,
+    }
+
+    try:
+        resp = requests.post(
+            OPENAI_API_URL,
+            headers=headers,
+            json=payload,
+            timeout=timeout,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        return data["choices"][0]["message"]["content"]
+    except (Timeout, ReadTimeout) as e:
+        print(f"[WARN] ChatGPT timeout for {course.name_ko}: {e}")
+    except HTTPError as e:
+        print(f"[WARN] ChatGPT HTTP error for {course.name_ko}: {e}")
+        if e.response is not None:
+            print(f"[WARN] ChatGPT response body: {e.response.text}")
+    except RequestException as e:
+        print(f"[WARN] ChatGPT request error for {course.name_ko}: {e}")
+    except Exception as e:
+        print(f"[WARN] ChatGPT unexpected error for {course.name_ko}: {e}")
+    return None
+
+
+# === 6. JSON 파일로 저장 ===
 
 
 def main() -> None:
@@ -1084,10 +1200,16 @@ def main() -> None:
     kma_service_key = args.kma_service_key
     air_provider = args.air_provider
     kma_air_sido_name = args.kma_air_sido_name
+    enable_coach = args.with_coach
+    openai_api_key = args.openai_api_key
+    openai_model = args.openai_model
 
     if not kma_service_key:
         print("[ERROR] --kma-service-key 또는 KMA_SERVICE_KEY가 필요합니다.")
         return
+    if enable_coach and not openai_api_key:
+        print("[WARN] --with-coach가 설정되었지만 OpenAI API 키가 없습니다. 코치 생성은 건너뜁니다.")
+        enable_coach = False
 
     results: List[Dict[str, Any]] = []
 
@@ -1114,6 +1236,18 @@ def main() -> None:
             raw_air = None
 
         summary = summarize_course_weather(course, raw_weather, raw_air)
+        if enable_coach:
+            coach = call_chatgpt_coach(
+                course=course,
+                summary=summary,
+                raw_weather=raw_weather,
+                raw_air=raw_air,
+                api_key=openai_api_key,
+                model=openai_model,
+            )
+            if coach:
+                summary["coach_advice"] = coach
+                summary["coach_model"] = openai_model
         results.append(summary)
         time.sleep(5)
 
