@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-12-23T15:58:35.126241+09:00",
+  "generated_at": "2025-12-23T16:26:14.231869+09:00",
   "courses": [
     {
       "id": "seoho-park",
       "name_ko": "서호공원",
       "name_en": "Seoho Park",
       "name": "서호공원",
-      "updated_at": "2025-12-23T15:57:01+09:00",
+      "updated_at": "2025-12-23T16:24:30+09:00",
       "lat": 37.280325,
       "lon": 126.990396,
       "temperature": 1.5,
@@ -15,7 +15,7 @@
       "wind_direction": 307.0,
       "rain_now": 2.0,
       "snow_now": 0.0,
-      "recent_rain_3h": 6.0,
+      "recent_rain_3h": 5.0,
       "recent_snow_3h": 0.0,
       "wet_badge": {
         "level": "wet",
@@ -46,15 +46,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "youth-center",
       "name_ko": "청소년문화센터",
       "name_en": "Youth Culture Center",
       "name": "청소년문화센터",
-      "updated_at": "2025-12-23T15:57:10+09:00",
+      "updated_at": "2025-12-23T16:24:39+09:00",
       "lat": 37.274248,
       "lon": 127.034519,
       "temperature": 3.1,
@@ -63,7 +63,7 @@
       "wind_direction": 315.0,
       "rain_now": 1.8,
       "snow_now": 0.0,
-      "recent_rain_3h": 5.0,
+      "recent_rain_3h": 6.0,
       "recent_snow_3h": 0.0,
       "wet_badge": {
         "level": "wet",
@@ -94,15 +94,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "gwanggyo-lake-park",
       "name_ko": "광교호수공원",
       "name_en": "Gwanggyo Lake Park",
       "name": "광교호수공원",
-      "updated_at": "2025-12-23T15:57:20+09:00",
+      "updated_at": "2025-12-23T16:24:47+09:00",
       "lat": 37.283439,
       "lon": 127.065989,
       "temperature": 2.0,
@@ -111,7 +111,7 @@
       "wind_direction": 342.0,
       "rain_now": 2.5,
       "snow_now": 0.0,
-      "recent_rain_3h": 6.0,
+      "recent_rain_3h": 5.0,
       "recent_snow_3h": 0.0,
       "wet_badge": {
         "level": "wet",
@@ -142,15 +142,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "skku",
       "name_ko": "성균관대학교",
       "name_en": "Sungkyunkwan Univ. (Suwon)",
       "name": "성균관대학교",
-      "updated_at": "2025-12-23T15:57:29+09:00",
+      "updated_at": "2025-12-23T16:24:55+09:00",
       "lat": 37.293788,
       "lon": 126.974365,
       "temperature": 1.5,
@@ -159,7 +159,7 @@
       "wind_direction": 307.0,
       "rain_now": 2.0,
       "snow_now": 0.0,
-      "recent_rain_3h": 6.0,
+      "recent_rain_3h": 5.0,
       "recent_snow_3h": 0.0,
       "wet_badge": {
         "level": "wet",
@@ -190,15 +190,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "woncheon-stream-sindong",
       "name_ko": "원천리천(신동)",
       "name_en": "Woncheon Stream (Sindong)",
       "name": "원천리천(신동)",
-      "updated_at": "2025-12-23T15:57:37+09:00",
+      "updated_at": "2025-12-23T16:25:04+09:00",
       "lat": 37.248469,
       "lon": 127.041965,
       "temperature": 3.1,
@@ -207,6 +207,54 @@
       "wind_direction": 315.0,
       "rain_now": 1.8,
       "snow_now": 0.0,
+      "recent_rain_3h": 6.0,
+      "recent_snow_3h": 0.0,
+      "wet_badge": {
+        "level": "wet",
+        "text_ko": "젖은 노면",
+        "text_en": "Wet surface"
+      },
+      "run_score": 66,
+      "temp_score": 60,
+      "wind_score": 100,
+      "wet_score": 50,
+      "surface_score": 50,
+      "air_score": 100,
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
+      "tags_ko": [
+        "조금 쌀쌀함",
+        "바람 거의 없음",
+        "젖은 노면",
+        "공기질 좋음"
+      ],
+      "tags_en": [
+        "A bit chilly",
+        "Calm",
+        "Wet surface",
+        "Good air"
+      ],
+      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_short_en": "Decent conditions for running 🙂",
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 23.0,
+      "pm25": 13.0
+    },
+    {
+      "id": "paldalsan-hwaseong",
+      "name_ko": "팔달산(수원화성, 행궁동)",
+      "name_en": "Paldalsan Fortress Area",
+      "name": "팔달산(수원화성, 행궁동)",
+      "updated_at": "2025-12-23T16:25:14+09:00",
+      "lat": 37.277614,
+      "lon": 127.01065,
+      "temperature": 3.1,
+      "apparent_temperature": 1.37168070813523,
+      "wind_speed": 1.8,
+      "wind_direction": 315.0,
+      "rain_now": 1.8,
+      "snow_now": 0.0,
       "recent_rain_3h": 5.0,
       "recent_snow_3h": 0.0,
       "wet_badge": {
@@ -238,17 +286,17 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
-      "id": "paldalsan-hwaseong",
-      "name_ko": "팔달산(수원화성, 행궁동)",
-      "name_en": "Paldalsan Fortress Area",
-      "name": "팔달산(수원화성, 행궁동)",
-      "updated_at": "2025-12-23T15:57:45+09:00",
-      "lat": 37.277614,
-      "lon": 127.01065,
+      "id": "suwon-stream",
+      "name_ko": "수원천",
+      "name_en": "Suwoncheon Stream",
+      "name": "수원천",
+      "updated_at": "2025-12-23T16:25:23+09:00",
+      "lat": 37.266571,
+      "lon": 127.015022,
       "temperature": 3.1,
       "apparent_temperature": 1.37168070813523,
       "wind_speed": 1.8,
@@ -286,63 +334,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
-    },
-    {
-      "id": "suwon-stream",
-      "name_ko": "수원천",
-      "name_en": "Suwoncheon Stream",
-      "name": "수원천",
-      "updated_at": "2025-12-23T15:57:53+09:00",
-      "lat": 37.266571,
-      "lon": 127.015022,
-      "temperature": 3.1,
-      "apparent_temperature": 1.37168070813523,
-      "wind_speed": 1.8,
-      "wind_direction": 315.0,
-      "rain_now": 1.8,
-      "snow_now": 0.0,
-      "recent_rain_3h": 5.0,
-      "recent_snow_3h": 0.0,
-      "wet_badge": {
-        "level": "wet",
-        "text_ko": "젖은 노면",
-        "text_en": "Wet surface"
-      },
-      "run_score": 66,
-      "temp_score": 60,
-      "wind_score": 100,
-      "wet_score": 50,
-      "surface_score": 50,
-      "air_score": 100,
-      "risk_flags_ko": [],
-      "risk_flags_en": [],
-      "tags_ko": [
-        "조금 쌀쌀함",
-        "바람 거의 없음",
-        "젖은 노면",
-        "공기질 좋음"
-      ],
-      "tags_en": [
-        "A bit chilly",
-        "Calm",
-        "Wet surface",
-        "Good air"
-      ],
-      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
-      "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "gwanggyo-mountain",
       "name_ko": "광교산",
       "name_en": "Gwanggyo Mountain",
       "name": "광교산",
-      "updated_at": "2025-12-23T15:58:00+09:00",
+      "updated_at": "2025-12-23T16:25:31+09:00",
       "lat": 37.328633,
       "lon": 127.038172,
       "temperature": 2.0,
@@ -382,15 +382,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "suwon-worldcup",
       "name_ko": "수원월드컵경기장",
       "name_en": "Suwon World Cup Stadium",
       "name": "수원월드컵경기장",
-      "updated_at": "2025-12-23T15:58:07+09:00",
+      "updated_at": "2025-12-23T16:25:39+09:00",
       "lat": 37.286545,
       "lon": 127.036871,
       "temperature": 2.0,
@@ -398,6 +398,54 @@
       "wind_speed": 0.9,
       "wind_direction": 342.0,
       "rain_now": 2.5,
+      "snow_now": 0.0,
+      "recent_rain_3h": 5.0,
+      "recent_snow_3h": 0.0,
+      "wet_badge": {
+        "level": "wet",
+        "text_ko": "젖은 노면",
+        "text_en": "Wet surface"
+      },
+      "run_score": 66,
+      "temp_score": 60,
+      "wind_score": 100,
+      "wet_score": 50,
+      "surface_score": 50,
+      "air_score": 100,
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
+      "tags_ko": [
+        "조금 쌀쌀함",
+        "바람 거의 없음",
+        "젖은 노면",
+        "공기질 좋음"
+      ],
+      "tags_en": [
+        "A bit chilly",
+        "Calm",
+        "Wet surface",
+        "Good air"
+      ],
+      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
+      "advice_short_en": "Decent conditions for running 🙂",
+      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": 23.0,
+      "pm25": 13.0
+    },
+    {
+      "id": "dongtan-yeoul-park",
+      "name_ko": "동탄여울공원",
+      "name_en": "Dongtan Yeoul Park",
+      "name": "동탄여울공원",
+      "updated_at": "2025-12-23T16:25:48+09:00",
+      "lat": 37.198689,
+      "lon": 127.086609,
+      "temperature": 2.2,
+      "apparent_temperature": 0.7381085586067468,
+      "wind_speed": 1.5,
+      "wind_direction": 337.0,
+      "rain_now": 0.5,
       "snow_now": 0.0,
       "recent_rain_3h": 6.0,
       "recent_snow_3h": 0.0,
@@ -430,63 +478,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
-    },
-    {
-      "id": "dongtan-yeoul-park",
-      "name_ko": "동탄여울공원",
-      "name_en": "Dongtan Yeoul Park",
-      "name": "동탄여울공원",
-      "updated_at": "2025-12-23T15:58:14+09:00",
-      "lat": 37.198689,
-      "lon": 127.086609,
-      "temperature": 2.2,
-      "apparent_temperature": 0.7381085586067468,
-      "wind_speed": 1.5,
-      "wind_direction": 337.0,
-      "rain_now": 0.5,
-      "snow_now": 0.0,
-      "recent_rain_3h": 5.0,
-      "recent_snow_3h": 0.0,
-      "wet_badge": {
-        "level": "wet",
-        "text_ko": "젖은 노면",
-        "text_en": "Wet surface"
-      },
-      "run_score": 66,
-      "temp_score": 60,
-      "wind_score": 100,
-      "wet_score": 50,
-      "surface_score": 50,
-      "air_score": 100,
-      "risk_flags_ko": [],
-      "risk_flags_en": [],
-      "tags_ko": [
-        "조금 쌀쌀함",
-        "바람 거의 없음",
-        "젖은 노면",
-        "공기질 좋음"
-      ],
-      "tags_en": [
-        "A bit chilly",
-        "Calm",
-        "Wet surface",
-        "Good air"
-      ],
-      "advice_short_ko": "러닝하기 무난한 컨디션입니다 🙂",
-      "advice_short_en": "Decent conditions for running 🙂",
-      "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
-      "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "yeongheung-forest-park",
       "name_ko": "영흥숲공원",
       "name_en": "Yeongheung Forest Park",
       "name": "영흥숲공원",
-      "updated_at": "2025-12-23T15:58:21+09:00",
+      "updated_at": "2025-12-23T16:25:59+09:00",
       "lat": 37.261067,
       "lon": 127.07047,
       "temperature": 3.1,
@@ -495,7 +495,7 @@
       "wind_direction": 315.0,
       "rain_now": 1.8,
       "snow_now": 0.0,
-      "recent_rain_3h": 5.0,
+      "recent_rain_3h": 6.0,
       "recent_snow_3h": 0.0,
       "wet_badge": {
         "level": "wet",
@@ -526,15 +526,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     },
     {
       "id": "majung-park",
       "name_ko": "마중공원",
       "name_en": "Majung Park",
       "name": "마중공원",
-      "updated_at": "2025-12-23T15:58:28+09:00",
+      "updated_at": "2025-12-23T16:26:07+09:00",
       "lat": 37.236832,
       "lon": 127.020592,
       "temperature": 3.1,
@@ -543,7 +543,7 @@
       "wind_direction": 315.0,
       "rain_now": 1.8,
       "snow_now": 0.0,
-      "recent_rain_3h": 5.0,
+      "recent_rain_3h": 6.0,
       "recent_snow_3h": 0.0,
       "wet_badge": {
         "level": "wet",
@@ -574,8 +574,8 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 젖어 있어 미끄러운 구간이 있을 수 있습니다. 페이스를 약간 낮추고, 특히 내리막·코너 구간에서 발 조심해 주세요. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. The surface is wet, and some sections may be slippery. Slightly lower your pace and take extra care on downhills and corners. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 26.0,
-      "pm25": 14.0
+      "pm10": 23.0,
+      "pm25": 13.0
     }
   ]
 }
