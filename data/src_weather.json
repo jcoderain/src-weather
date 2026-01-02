@@ -1,18 +1,72 @@
 {
-  "generated_at": "2026-01-02T17:51:19.340849+09:00",
+  "generated_at": "2026-01-02T18:21:07.524427+09:00",
   "courses": [
     {
-      "id": "gwanggyo-lake-park",
-      "name_ko": "광교호수공원",
-      "name_en": "Gwanggyo Lake Park",
-      "name": "광교호수공원",
-      "updated_at": "2026-01-02T17:51:06+09:00",
-      "lat": 37.283439,
-      "lon": 127.065989,
+      "id": "woncheon-stream-sindong",
+      "name_ko": "원천리천(신동)",
+      "name_en": "Woncheon Stream (Sindong)",
+      "name": "원천리천(신동)",
+      "updated_at": "2026-01-02T18:20:36+09:00",
+      "lat": 37.248469,
+      "lon": 127.041965,
+      "temperature": -6.0,
+      "apparent_temperature": -10.022923356700428,
+      "wind_speed": 2.4,
+      "wind_direction": 312.0,
+      "rain_now": 0.0,
+      "snow_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "recent_snow_3h": 0.0,
+      "wet_badge": {
+        "level": "good",
+        "text_ko": "노면 건조",
+        "text_en": "Dry surface"
+      },
+      "run_score": 40,
+      "temp_score": 15,
+      "wind_score": 80,
+      "wet_score": 100,
+      "surface_score": 100,
+      "air_score": 100,
+      "risk_flags_ko": [
+        "혹한 주의"
+      ],
+      "risk_flags_en": [
+        "Extreme cold"
+      ],
+      "tags_ko": [
+        "매우 추움",
+        "약한 바람",
+        "노면 건조",
+        "공기질 좋음",
+        "혹한 주의"
+      ],
+      "tags_en": [
+        "Very cold",
+        "Light breeze",
+        "Dry surface",
+        "Good air",
+        "Extreme cold"
+      ],
+      "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_short_en": "Okay to run with some caution ⚠️",
+      "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Light breeze with little impact on running. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": null,
+      "pm25": 13.0
+    },
+    {
+      "id": "gwanggyo-mountain",
+      "name_ko": "광교산",
+      "name_en": "Gwanggyo Mountain",
+      "name": "광교산",
+      "updated_at": "2026-01-02T18:20:44+09:00",
+      "lat": 37.328633,
+      "lon": 127.038172,
       "temperature": -5.8,
       "apparent_temperature": -5.8,
       "wind_speed": 0.5,
-      "wind_direction": 281.0,
+      "wind_direction": 270.0,
       "rain_now": 0.0,
       "snow_now": 0.0,
       "recent_rain_3h": 0.0,
@@ -46,6 +100,108 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "꽤 춥습니다. 긴팔+긴바지에 방풍 자켓을 더해 주는 것이 좋습니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "It is quite cold. Long sleeves, tights, and a windproof jacket are recommended. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": null,
+      "pm25": 13.0
+    },
+    {
+      "id": "dongtan-yeoul-park",
+      "name_ko": "동탄여울공원",
+      "name_en": "Dongtan Yeoul Park",
+      "name": "동탄여울공원",
+      "updated_at": "2026-01-02T18:20:52+09:00",
+      "lat": 37.198689,
+      "lon": 127.086609,
+      "temperature": -6.5,
+      "apparent_temperature": -6.5,
+      "wind_speed": 1.1,
+      "wind_direction": 301.0,
+      "rain_now": 0.0,
+      "snow_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "recent_snow_3h": 0.0,
+      "wet_badge": {
+        "level": "good",
+        "text_ko": "노면 건조",
+        "text_en": "Dry surface"
+      },
+      "run_score": 58,
+      "temp_score": 30,
+      "wind_score": 100,
+      "wet_score": 100,
+      "surface_score": 100,
+      "air_score": 100,
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
+      "tags_ko": [
+        "추움",
+        "바람 거의 없음",
+        "노면 건조",
+        "공기질 좋음"
+      ],
+      "tags_en": [
+        "Cold",
+        "Calm",
+        "Dry surface",
+        "Good air"
+      ],
+      "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_short_en": "Okay to run with some caution ⚠️",
+      "advice_detail_ko": "꽤 춥습니다. 긴팔+긴바지에 방풍 자켓을 더해 주는 것이 좋습니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "It is quite cold. Long sleeves, tights, and a windproof jacket are recommended. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Adjust intensity based on how you feel and check your condition more often than usual.",
+      "pm10": null,
+      "pm25": 13.0
+    },
+    {
+      "id": "yeongheung-forest-park",
+      "name_ko": "영흥숲공원",
+      "name_en": "Yeongheung Forest Park",
+      "name": "영흥숲공원",
+      "updated_at": "2026-01-02T18:20:59+09:00",
+      "lat": 37.261067,
+      "lon": 127.07047,
+      "temperature": -6.0,
+      "apparent_temperature": -10.022923356700428,
+      "wind_speed": 2.4,
+      "wind_direction": 312.0,
+      "rain_now": 0.0,
+      "snow_now": 0.0,
+      "recent_rain_3h": 0.0,
+      "recent_snow_3h": 0.0,
+      "wet_badge": {
+        "level": "good",
+        "text_ko": "노면 건조",
+        "text_en": "Dry surface"
+      },
+      "run_score": 40,
+      "temp_score": 15,
+      "wind_score": 80,
+      "wet_score": 100,
+      "surface_score": 100,
+      "air_score": 100,
+      "risk_flags_ko": [
+        "혹한 주의"
+      ],
+      "risk_flags_en": [
+        "Extreme cold"
+      ],
+      "tags_ko": [
+        "매우 추움",
+        "약한 바람",
+        "노면 건조",
+        "공기질 좋음",
+        "혹한 주의"
+      ],
+      "tags_en": [
+        "Very cold",
+        "Light breeze",
+        "Dry surface",
+        "Good air",
+        "Extreme cold"
+      ],
+      "advice_short_ko": "주의하면서 뛰면 괜찮은 컨디션입니다 ⚠️",
+      "advice_short_en": "Okay to run with some caution ⚠️",
+      "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
+      "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Light breeze with little impact on running. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
       "pm10": null,
       "pm25": 13.0
     }
