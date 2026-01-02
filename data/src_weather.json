@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-01-02T13:57:47.307419+09:00",
+  "generated_at": "2026-01-02T14:27:45.619428+09:00",
   "courses": [
     {
-      "id": "suwon-stream",
-      "name_ko": "수원천",
-      "name_en": "Suwoncheon Stream",
-      "name": "수원천",
-      "updated_at": "2026-01-02T13:57:38+09:00",
-      "lat": 37.266571,
-      "lon": 127.015022,
+      "id": "majung-park",
+      "name_ko": "마중공원",
+      "name_en": "Majung Park",
+      "name": "마중공원",
+      "updated_at": "2026-01-02T14:27:38+09:00",
+      "lat": 37.236832,
+      "lon": 127.020592,
       "temperature": -4.8,
       "apparent_temperature": -9.181447158964735,
       "wind_speed": 2.9,
@@ -53,7 +53,7 @@
       "advice_detail_ko": "꽤 춥습니다. 긴팔+긴바지에 방풍 자켓을 더해 주는 것이 좋습니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "It is quite cold. Long sleeves, tights, and a windproof jacket are recommended. Light breeze with little impact on running. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
       "pm10": null,
-      "pm25": 9.0
+      "pm25": 13.0
     }
   ]
 }
