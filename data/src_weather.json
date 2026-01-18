@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-01-18T20:15:27.772465+09:00",
+  "generated_at": "2026-01-18T20:38:25.685111+09:00",
   "courses": [
     {
       "id": "seoho-park",
       "name_ko": "서호공원",
       "name_en": "Seoho Park",
       "name": "서호공원",
-      "updated_at": "2026-01-18T20:13:45+09:00",
+      "updated_at": "2026-01-18T20:36:50+09:00",
       "lat": 37.280325,
       "lon": 126.990396,
       "temperature": 2.2,
@@ -46,15 +46,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 36.0,
-      "pm25": 21.0
+      "pm10": 38.0,
+      "pm25": 27.0
     },
     {
       "id": "youth-center",
       "name_ko": "청소년문화센터",
       "name_en": "Youth Culture Center",
       "name": "청소년문화센터",
-      "updated_at": "2026-01-18T20:13:54+09:00",
+      "updated_at": "2026-01-18T20:36:59+09:00",
       "lat": 37.274248,
       "lon": 127.034519,
       "temperature": 3.0,
@@ -94,15 +94,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 36.0,
-      "pm25": 21.0
+      "pm10": 38.0,
+      "pm25": 27.0
     },
     {
       "id": "gwanggyo-lake-park",
       "name_ko": "광교호수공원",
       "name_en": "Gwanggyo Lake Park",
       "name": "광교호수공원",
-      "updated_at": "2026-01-18T20:14:03+09:00",
+      "updated_at": "2026-01-18T20:37:07+09:00",
       "lat": 37.283439,
       "lon": 127.065989,
       "temperature": 2.8,
@@ -142,15 +142,15 @@
       "advice_short_en": "Decent conditions for running 🙂",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Almost no wind, good for maintaining your pace. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 36.0,
-      "pm25": 21.0
+      "pm10": 38.0,
+      "pm25": 27.0
     },
     {
       "id": "skku",
       "name_ko": "성균관대학교",
       "name_en": "Sungkyunkwan Univ. (Suwon)",
       "name": "성균관대학교",
-      "updated_at": "2026-01-18T20:14:13+09:00",
+      "updated_at": "2026-01-18T20:37:15+09:00",
       "lat": 37.293788,
       "lon": 126.974365,
       "temperature": 2.2,
@@ -198,7 +198,7 @@
       "name_ko": "원천리천(신동)",
       "name_en": "Woncheon Stream (Sindong)",
       "name": "원천리천(신동)",
-      "updated_at": "2026-01-18T20:14:21+09:00",
+      "updated_at": "2026-01-18T20:37:25+09:00",
       "lat": 37.248469,
       "lon": 127.041965,
       "temperature": 3.0,
@@ -246,7 +246,7 @@
       "name_ko": "팔달산(수원화성, 행궁동)",
       "name_en": "Paldalsan Fortress Area",
       "name": "팔달산(수원화성, 행궁동)",
-      "updated_at": "2026-01-18T20:14:30+09:00",
+      "updated_at": "2026-01-18T20:37:32+09:00",
       "lat": 37.277614,
       "lon": 127.01065,
       "temperature": 3.0,
@@ -294,7 +294,7 @@
       "name_ko": "수원천",
       "name_en": "Suwoncheon Stream",
       "name": "수원천",
-      "updated_at": "2026-01-18T20:14:37+09:00",
+      "updated_at": "2026-01-18T20:37:41+09:00",
       "lat": 37.266571,
       "lon": 127.015022,
       "temperature": 3.0,
@@ -342,7 +342,7 @@
       "name_ko": "광교산",
       "name_en": "Gwanggyo Mountain",
       "name": "광교산",
-      "updated_at": "2026-01-18T20:14:46+09:00",
+      "updated_at": "2026-01-18T20:37:49+09:00",
       "lat": 37.328633,
       "lon": 127.038172,
       "temperature": 2.8,
@@ -390,7 +390,7 @@
       "name_ko": "수원월드컵경기장",
       "name_en": "Suwon World Cup Stadium",
       "name": "수원월드컵경기장",
-      "updated_at": "2026-01-18T20:14:54+09:00",
+      "updated_at": "2026-01-18T20:37:56+09:00",
       "lat": 37.286545,
       "lon": 127.036871,
       "temperature": 2.8,
@@ -438,7 +438,7 @@
       "name_ko": "동탄여울공원",
       "name_en": "Dongtan Yeoul Park",
       "name": "동탄여울공원",
-      "updated_at": "2026-01-18T20:15:04+09:00",
+      "updated_at": "2026-01-18T20:38:03+09:00",
       "lat": 37.198689,
       "lon": 127.086609,
       "temperature": 2.5,
@@ -486,7 +486,7 @@
       "name_ko": "영흥숲공원",
       "name_en": "Yeongheung Forest Park",
       "name": "영흥숲공원",
-      "updated_at": "2026-01-18T20:15:13+09:00",
+      "updated_at": "2026-01-18T20:38:11+09:00",
       "lat": 37.261067,
       "lon": 127.07047,
       "temperature": 3.0,
@@ -526,15 +526,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 39.0,
-      "pm25": 30.0
+      "pm10": 38.0,
+      "pm25": 27.0
     },
     {
       "id": "majung-park",
       "name_ko": "마중공원",
       "name_en": "Majung Park",
       "name": "마중공원",
-      "updated_at": "2026-01-18T20:15:21+09:00",
+      "updated_at": "2026-01-18T20:38:19+09:00",
       "lat": 37.236832,
       "lon": 127.020592,
       "temperature": 3.0,
@@ -574,8 +574,8 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "조금 쌀쌀하지만 러닝하기 좋은 편입니다. 가벼운 레이어링이 잘 어울립니다. 약한 바람으로 러닝에 큰 지장은 없습니다. 노면에 눈이 조금 쌓이거나 녹은 물이 있어 미끄러울 수 있습니다. 가능하면 트레일 러닝화나 접지 좋은 러닝화를 착용해 주세요. 공기질이 보통 수준입니다. 미세먼지에 민감하다면 마스크를 고려해도 좋습니다. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "A bit chilly but good for running. Light layering works well. Light breeze with little impact on running. Some snow or meltwater on the surface may cause slipperiness. Trail running shoes or shoes with good grip are recommended. Air quality is moderate. Consider a mask if you are sensitive to fine dust. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 39.0,
-      "pm25": 30.0
+      "pm10": 38.0,
+      "pm25": 27.0
     }
   ]
 }
