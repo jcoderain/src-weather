@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-01-25T06:16:20.958399+09:00",
+  "generated_at": "2026-01-25T06:39:31.408076+09:00",
   "courses": [
     {
       "id": "seoho-park",
       "name_ko": "서호공원",
       "name_en": "Seoho Park",
       "name": "서호공원",
-      "updated_at": "2026-01-25T06:14:44+09:00",
+      "updated_at": "2026-01-25T06:37:54+09:00",
       "lat": 37.280325,
       "lon": 126.990396,
       "temperature": -9.6,
@@ -52,15 +52,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "꽤 춥습니다. 긴팔+긴바지에 방풍 자켓을 더해 주는 것이 좋습니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "It is quite cold. Long sleeves, tights, and a windproof jacket are recommended. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "youth-center",
       "name_ko": "청소년문화센터",
       "name_en": "Youth Culture Center",
       "name": "청소년문화센터",
-      "updated_at": "2026-01-25T06:14:52+09:00",
+      "updated_at": "2026-01-25T06:38:02+09:00",
       "lat": 37.274248,
       "lon": 127.034519,
       "temperature": -8.4,
@@ -106,15 +106,15 @@
       "advice_short_en": "Consider reducing intensity/duration or avoiding outdoor running 🚨",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "gwanggyo-lake-park",
       "name_ko": "광교호수공원",
       "name_en": "Gwanggyo Lake Park",
       "name": "광교호수공원",
-      "updated_at": "2026-01-25T06:14:59+09:00",
+      "updated_at": "2026-01-25T06:38:10+09:00",
       "lat": 37.283439,
       "lon": 127.065989,
       "temperature": -10.2,
@@ -160,15 +160,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "skku",
       "name_ko": "성균관대학교",
       "name_en": "Sungkyunkwan Univ. (Suwon)",
       "name": "성균관대학교",
-      "updated_at": "2026-01-25T06:15:10+09:00",
+      "updated_at": "2026-01-25T06:38:20+09:00",
       "lat": 37.293788,
       "lon": 126.974365,
       "temperature": -9.6,
@@ -214,15 +214,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "꽤 춥습니다. 긴팔+긴바지에 방풍 자켓을 더해 주는 것이 좋습니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "It is quite cold. Long sleeves, tights, and a windproof jacket are recommended. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "woncheon-stream-sindong",
       "name_ko": "원천리천(신동)",
       "name_en": "Woncheon Stream (Sindong)",
       "name": "원천리천(신동)",
-      "updated_at": "2026-01-25T06:15:17+09:00",
+      "updated_at": "2026-01-25T06:38:30+09:00",
       "lat": 37.248469,
       "lon": 127.041965,
       "temperature": -8.4,
@@ -268,15 +268,15 @@
       "advice_short_en": "Consider reducing intensity/duration or avoiding outdoor running 🚨",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "paldalsan-hwaseong",
       "name_ko": "팔달산(수원화성, 행궁동)",
       "name_en": "Paldalsan Fortress Area",
       "name": "팔달산(수원화성, 행궁동)",
-      "updated_at": "2026-01-25T06:15:25+09:00",
+      "updated_at": "2026-01-25T06:38:38+09:00",
       "lat": 37.277614,
       "lon": 127.01065,
       "temperature": -8.4,
@@ -322,15 +322,15 @@
       "advice_short_en": "Consider reducing intensity/duration or avoiding outdoor running 🚨",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "suwon-stream",
       "name_ko": "수원천",
       "name_en": "Suwoncheon Stream",
       "name": "수원천",
-      "updated_at": "2026-01-25T06:15:35+09:00",
+      "updated_at": "2026-01-25T06:38:46+09:00",
       "lat": 37.266571,
       "lon": 127.015022,
       "temperature": -8.4,
@@ -376,15 +376,15 @@
       "advice_short_en": "Consider reducing intensity/duration or avoiding outdoor running 🚨",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "gwanggyo-mountain",
       "name_ko": "광교산",
       "name_en": "Gwanggyo Mountain",
       "name": "광교산",
-      "updated_at": "2026-01-25T06:15:42+09:00",
+      "updated_at": "2026-01-25T06:38:53+09:00",
       "lat": 37.328633,
       "lon": 127.038172,
       "temperature": -10.2,
@@ -430,15 +430,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "suwon-worldcup",
       "name_ko": "수원월드컵경기장",
       "name_en": "Suwon World Cup Stadium",
       "name": "수원월드컵경기장",
-      "updated_at": "2026-01-25T06:15:49+09:00",
+      "updated_at": "2026-01-25T06:39:01+09:00",
       "lat": 37.286545,
       "lon": 127.036871,
       "temperature": -10.2,
@@ -484,15 +484,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "dongtan-yeoul-park",
       "name_ko": "동탄여울공원",
       "name_en": "Dongtan Yeoul Park",
       "name": "동탄여울공원",
-      "updated_at": "2026-01-25T06:15:57+09:00",
+      "updated_at": "2026-01-25T06:39:10+09:00",
       "lat": 37.198689,
       "lon": 127.086609,
       "temperature": -10.4,
@@ -538,15 +538,15 @@
       "advice_short_en": "Okay to run with some caution ⚠️",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "yeongheung-forest-park",
       "name_ko": "영흥숲공원",
       "name_en": "Yeongheung Forest Park",
       "name": "영흥숲공원",
-      "updated_at": "2026-01-25T06:16:04+09:00",
+      "updated_at": "2026-01-25T06:39:17+09:00",
       "lat": 37.261067,
       "lon": 127.07047,
       "temperature": -8.4,
@@ -592,15 +592,15 @@
       "advice_short_en": "Consider reducing intensity/duration or avoiding outdoor running 🚨",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     },
     {
       "id": "majung-park",
       "name_ko": "마중공원",
       "name_en": "Majung Park",
       "name": "마중공원",
-      "updated_at": "2026-01-25T06:16:13+09:00",
+      "updated_at": "2026-01-25T06:39:24+09:00",
       "lat": 37.236832,
       "lon": 127.020592,
       "temperature": -8.4,
@@ -646,8 +646,8 @@
       "advice_short_en": "Consider reducing intensity/duration or avoiding outdoor running 🚨",
       "advice_detail_ko": "상당히 강한 한기입니다. 장시간 야외 러닝은 추천하지 않으며, 짧고 가벼운 러닝 위주로 가져가는 편이 안전합니다. 바람이 거의 없어 페이스 유지에 유리합니다. 노면이 건조해서 미끄럼 위험이 적습니다. 공기질이 좋아 러닝에 거의 지장이 없습니다. 추가 주의 요인: 혹한 주의. 컨디션에 따라 강도를 조절하고, 평소보다 몸 상태를 더 자주 점검해 주세요.",
       "advice_detail_en": "Very cold. Long outdoor runs are not recommended; stick to shorter, lighter runs if you go out. Almost no wind, good for maintaining your pace. Surface is dry with low risk of slipping. Air quality is good with little impact on running. Extra cautions: Extreme cold. Adjust intensity based on how you feel and check your condition more often than usual.",
-      "pm10": 17.0,
-      "pm25": 11.0
+      "pm10": 14.0,
+      "pm25": 5.0
     }
   ]
 }
