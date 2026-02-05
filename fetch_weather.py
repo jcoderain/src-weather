@@ -267,6 +267,59 @@ def build_kma_url(base_url: str, service_key: str) -> str:
     return f"{base_url}?serviceKey={encoded_key}"
 
 
+def parse_iso_datetime(raw: Any) -> Optional[datetime]:
+    """ISO datetime 문자열을 datetime으로 파싱합니다."""
+    if raw is None:
+        return None
+    text = str(raw).strip()
+    if not text:
+        return None
+    if text.endswith("Z"):
+        text = f"{text[:-1]}+00:00"
+    try:
+        dt = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=KST)
+    return dt
+
+
+def estimate_snow_melt_rate_mm_h(temp_c: float, rain_mm_h: float) -> float:
+    """
+    기온/강수량을 기반으로 시간당 눈 융해량(mm/h)을 단순 추정합니다.
+    - 영하에서는 거의 녹지 않는다고 가정
+    - 영상으로 갈수록 융해율 증가
+    - 비가 오면 융해를 가속
+    """
+    if temp_c <= 0:
+        base_melt = 0.0
+    elif temp_c <= 2:
+        base_melt = 0.3
+    elif temp_c <= 5:
+        base_melt = 0.8
+    else:
+        base_melt = 1.5
+    return base_melt + (max(0.0, rain_mm_h) * 0.2)
+
+
+def estimate_snow_memory_mm(
+    prev_snow_memory_mm: float,
+    dt_h: float,
+    current_snow_mm_h: float,
+    temp_c: float,
+    rain_mm_h: float,
+) -> float:
+    """
+    잔설 추정치(mm) = 이전 잔설 + (현재 눈 유입) - (융해량)
+    """
+    safe_prev = max(0.0, min(30.0, prev_snow_memory_mm))
+    safe_dt = max(0.0, min(12.0, dt_h))
+    snow_in_mm = max(0.0, current_snow_mm_h) * safe_dt
+    melt_mm = estimate_snow_melt_rate_mm_h(temp_c, rain_mm_h) * safe_dt
+    return max(0.0, min(30.0, safe_prev + snow_in_mm - melt_mm))
+
+
 def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, Any]]:
     """
     기상청 초단기실황 + 초단기예보를 조회해 summarize_course_weather가 기대하는
@@ -328,12 +381,13 @@ def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, An
     rain_mm = precip_mm if pty_val in ("1", "2", "5", "6") else 0.0
     apparent = calc_apparent_temperature(temp_c or 0.0, wind_ms, humidity)
 
-    # 초단기예보로 앞으로 3시간 강수 예측값을 가져와 최근 강수량 근사에 사용
+    # 초단기예보로 앞으로 3시간 강수/기온 예측값을 가져와 노면 판단 보조값으로 사용
     forecast_params = dict(common_params)
     forecast_params["numOfRows"] = 200
 
     forecast_rain: Dict[str, float] = {}
     forecast_pty: Dict[str, str] = {}
+    forecast_temp: Dict[str, float] = {}
     try:
         fcst_url = build_kma_url(KMA_ULTRA_FCST_URL, service_key)
         fcst_resp = requests.get(fcst_url, params=forecast_params, timeout=10)
@@ -345,6 +399,11 @@ def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, An
                 forecast_rain[time_key] = parse_precip_value(item["fcstValue"])
             elif item["category"] == "PTY":
                 forecast_pty[time_key] = str(item["fcstValue"])
+            elif item["category"] == "T1H":
+                try:
+                    forecast_temp[time_key] = float(item["fcstValue"])
+                except (TypeError, ValueError):
+                    pass
     except (Timeout, ReadTimeout) as e:
         print(f"[WARN] KMA forecast timeout for {course.name_ko} ({course.lat}, {course.lon}): {e}")
     except HTTPError as e:
@@ -358,15 +417,21 @@ def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, An
 
     hourly_precip: List[float] = []
     hourly_rain: List[float] = []
-    sorted_times = sorted(forecast_rain.keys())
-    if not sorted_times:
-        sorted_times = sorted(forecast_pty.keys())
+    hourly_temp: List[float] = []
+    sorted_times = sorted(
+        set(forecast_rain.keys()) |
+        set(forecast_pty.keys()) |
+        set(forecast_temp.keys())
+    )
 
     for time_key in sorted_times[:3]:
         rn1 = forecast_rain.get(time_key, 0.0)
         pty = forecast_pty.get(time_key, "0")
+        t1h = forecast_temp.get(time_key)
         hourly_precip.append(rn1)
         hourly_rain.append(rn1 if pty in ("1", "2", "5", "6") else 0.0)
+        if t1h is not None:
+            hourly_temp.append(t1h)
 
     current_time = kst_now().replace(microsecond=0).isoformat()
     return {
@@ -382,6 +447,7 @@ def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, An
         "hourly": {
             "precipitation": hourly_precip,
             "rain": hourly_rain,
+            "temperature_2m": hourly_temp,
         },
     }
 
@@ -498,6 +564,7 @@ def summarize_course_weather(
     course: Course,
     raw_weather: Dict[str, Any],
     raw_air: Optional[Dict[str, Any]] = None,
+    prev_state: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     current = raw_weather["current"]
     hourly = raw_weather["hourly"]
@@ -506,6 +573,23 @@ def summarize_course_weather(
     risk_flags_en: List[str] = []
     hard_caps: List[int] = []
     penalty_factor = 1.0
+    current_temp = float(current["temperature_2m"])
+    current_time_dt = parse_iso_datetime(current.get("time")) or kst_now()
+
+    prev_snow_memory_mm = 0.0
+    prev_time_dt: Optional[datetime] = None
+    if prev_state:
+        try:
+            prev_snow_memory_mm = float(prev_state.get("snow_memory_mm", 0.0) or 0.0)
+        except (TypeError, ValueError):
+            prev_snow_memory_mm = 0.0
+        prev_snow_memory_mm = max(0.0, min(30.0, prev_snow_memory_mm))
+        prev_time_dt = parse_iso_datetime(prev_state.get("updated_at"))
+
+    delta_hours = 0.5  # 워크플로우 기본 주기(30분) 기준
+    if prev_time_dt and current_time_dt > prev_time_dt:
+        delta_hours = (current_time_dt - prev_time_dt).total_seconds() / 3600.0
+    delta_hours = max(0.25, min(12.0, delta_hours))
 
     # -----------------------------
     # 1) 강수/노면 상태 (비 + 눈)
@@ -519,6 +603,23 @@ def summarize_course_weather(
     recent_rain = float(sum(recent_rain_list))                  # 최근 3시간 비
     recent_precip = float(sum(recent_precip_list))              # 최근 3시간 비+눈
     recent_snow = max(recent_precip - recent_rain, 0.0)         # 최근 3시간 눈
+
+    snow_memory_mm = estimate_snow_memory_mm(
+        prev_snow_memory_mm=prev_snow_memory_mm,
+        dt_h=delta_hours,
+        current_snow_mm_h=current_snow,
+        temp_c=current_temp,
+        rain_mm_h=current_rain,
+    )
+    hourly_temp_list = hourly.get("temperature_2m", []) or []
+    temp_window: List[float] = [current_temp]
+    for v in hourly_temp_list[:3]:
+        try:
+            temp_window.append(float(v))
+        except (TypeError, ValueError):
+            continue
+    subzero_persistent = all(t <= 0.0 for t in temp_window) if temp_window else (current_temp <= 0.0)
+    freeze_surface_risk = snow_memory_mm >= 1.0 and subzero_persistent
 
     if current_precip >= 4.0 or recent_precip >= 8.0:
         hard_caps.append(30)  # 짧은 시간 강수량이 많으면 러닝 강도 제한
@@ -648,6 +749,45 @@ def summarize_course_weather(
                     "Rain is at a heavy or torrential level, making the surface very poor. "
                     "Indoor running or rest is recommended instead of outdoor running."
                 )
+
+    if freeze_surface_risk:
+        if snow_memory_mm >= 3.0:
+            surface_score = min(surface_score, 20)
+            wet_badge = {
+                "level": "bad",
+                "text_ko": "잔설/결빙 우려",
+                "text_en": "Persistent snow/ice risk",
+            }
+            wet_tag_ko = "잔설/결빙 우려"
+            wet_tag_en = "Snow/ice risk"
+            penalty_factor *= 0.8
+            hard_caps.append(25)
+        else:
+            surface_score = min(surface_score, 45)
+            wet_badge = {
+                "level": "wet",
+                "text_ko": "잔설 가능",
+                "text_en": "Possible residual snow",
+            }
+            wet_tag_ko = "잔설 가능"
+            wet_tag_en = "Residual snow"
+            penalty_factor *= 0.9
+            hard_caps.append(35)
+
+        freeze_comment_ko = (
+            "영하가 이어져 내린 눈이 잘 녹지 않아 그늘·코너·내리막 구간에서 "
+            "잔설 또는 얇은 결빙이 남아 있을 수 있습니다."
+        )
+        freeze_comment_en = (
+            "Sub-zero temperatures may keep snow from melting, so residual snow or thin ice can remain "
+            "on shaded, cornering, or downhill sections."
+        )
+        wet_comment_ko = f"{wet_comment_ko} {freeze_comment_ko}".strip()
+        wet_comment_en = f"{wet_comment_en} {freeze_comment_en}".strip()
+        if "잔설/결빙 주의" not in risk_flags_ko:
+            risk_flags_ko.append("잔설/결빙 주의")
+        if "Residual snow/ice caution" not in risk_flags_en:
+            risk_flags_en.append("Residual snow/ice caution")
 
     # -----------------------------
     # 2) 온도 점수 (체감온도, 한국 기준)
@@ -1072,6 +1212,8 @@ def summarize_course_weather(
         "wind_direction": wind_dir,
         "rain_now": current_rain,
         "snow_now": current_snow,
+        "snow_memory_mm": round(snow_memory_mm, 2),
+        "freeze_surface_risk": freeze_surface_risk,
         "recent_rain_3h": recent_rain,
         "recent_snow_3h": recent_snow,
         "wet_badge": wet_badge,
@@ -1194,6 +1336,33 @@ def call_chatgpt_coach(
 # === 6. JSON 파일로 저장 ===
 
 
+def load_previous_course_states(path: Path) -> Dict[str, Dict[str, Any]]:
+    """
+    이전 src_weather.json에서 코스별 상태를 읽어 id 기준으로 매핑합니다.
+    """
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"[WARN] Failed to read previous weather json: {e}")
+        return {}
+
+    courses = payload.get("courses")
+    if not isinstance(courses, list):
+        return {}
+
+    out: Dict[str, Dict[str, Any]] = {}
+    for item in courses:
+        if not isinstance(item, dict):
+            continue
+        cid = item.get("id")
+        if not cid:
+            continue
+        out[str(cid)] = item
+    return out
+
+
 def main() -> None:
     parser = build_arg_parser()
     args = parser.parse_args()
@@ -1211,6 +1380,8 @@ def main() -> None:
         print("[WARN] --with-coach가 설정되었지만 OpenAI API 키가 없습니다. 코치 생성은 건너뜁니다.")
         enable_coach = False
 
+    out_path = Path("data") / "src_weather.json"
+    previous_states = load_previous_course_states(out_path)
     results: List[Dict[str, Any]] = []
 
     for course in COURSES:
@@ -1235,7 +1406,12 @@ def main() -> None:
             print(f"[WARN] Failed to fetch air quality for {course.name_ko}: {e}")
             raw_air = None
 
-        summary = summarize_course_weather(course, raw_weather, raw_air)
+        summary = summarize_course_weather(
+            course,
+            raw_weather,
+            raw_air,
+            prev_state=previous_states.get(course.id),
+        )
         if enable_coach:
             coach = call_chatgpt_coach(
                 course=course,
@@ -1256,7 +1432,6 @@ def main() -> None:
         "courses": results,
     }
 
-    out_path = Path("data") / "src_weather.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(
         json.dumps(output, ensure_ascii=False, indent=2),
