@@ -325,7 +325,7 @@ function renderSummaryShortcuts() {
     const chip = document.createElement("button");
     chip.className = "shortcut-chip";
 
-    const name = currentLang === "ko" ? (c.name_ko || c.name) : (c.name_en || c.name);
+    const name = currentLang === "ko" ? (c.name_ko || c.name) : (c.name_en_short || c.name_en || c.name);
     const score = c.run_score ?? 0;
     const gradeInfo = getScoreGrade(score, c.run_grade);
 
