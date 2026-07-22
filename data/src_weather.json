@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-22T23:33:21.099496+09:00",
+  "generated_at": "2026-07-22T23:41:34.203765+09:00",
   "courses": [
     {
       "id": "seoho-park",
@@ -8,7 +8,7 @@
       "name": "서호공원",
       "location_ko": "수원시 권선구 서둔동",
       "location_en": "Seodun-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.280325,
       "lon": 126.990396,
       "temperature": 25.5,
@@ -39,25 +39,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -71,7 +65,7 @@
       "name": "청소년문화센터",
       "location_ko": "수원시 팔달구 인계동",
       "location_en": "Ingye-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.274248,
       "lon": 127.034519,
       "temperature": 25.3,
@@ -102,25 +96,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -134,7 +122,7 @@
       "name": "광교호수공원",
       "location_ko": "수원시 영통구 하동",
       "location_en": "Ha-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.283439,
       "lon": 127.065989,
       "temperature": 25.4,
@@ -165,25 +153,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -197,7 +179,7 @@
       "name": "성균관대학교",
       "location_ko": "수원시 장안구 율전동",
       "location_en": "Yuljeon-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.293788,
       "lon": 126.974365,
       "temperature": 25.4,
@@ -228,25 +210,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -260,7 +236,7 @@
       "name": "원천리천(신동)",
       "location_ko": "수원시 영통구 신동",
       "location_en": "Sin-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.248469,
       "lon": 127.041965,
       "temperature": 25.6,
@@ -291,25 +267,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -323,7 +293,7 @@
       "name": "팔달산(수원화성, 행궁동)",
       "location_ko": "수원시 팔달구 행궁동",
       "location_en": "Haenggung-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.277614,
       "lon": 127.01065,
       "temperature": 24.9,
@@ -380,7 +350,7 @@
       "name": "수원천",
       "location_ko": "수원시 팔달구 지동",
       "location_en": "Ji-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.266571,
       "lon": 127.015022,
       "temperature": 25.4,
@@ -411,25 +381,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily cushion trainers, carbon-plated racing shoes, or light trainers",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "노면 건조",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Dry surface",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -443,7 +407,7 @@
       "name": "광교산",
       "location_ko": "수원시 장안구 하광교동",
       "location_en": "Hagwanggyo-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.328633,
       "lon": 127.038172,
       "temperature": 23.4,
@@ -500,7 +464,7 @@
       "name": "수원월드컵경기장",
       "location_ko": "수원시 팔달구 우만동",
       "location_en": "Uman-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.286545,
       "lon": 127.036871,
       "temperature": 25.5,
@@ -531,25 +495,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -563,7 +521,7 @@
       "name": "동탄여울공원",
       "location_ko": "화성시 동탄 오산동",
       "location_en": "Osan-dong, Dongtan",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.198689,
       "lon": 127.086609,
       "temperature": 25.5,
@@ -594,25 +552,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -626,7 +578,7 @@
       "name": "영흥숲공원",
       "location_ko": "수원시 영통구 원천동",
       "location_en": "Woncheon-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.261067,
       "lon": 127.07047,
       "temperature": 25.3,
@@ -657,25 +609,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "살짝 젖음",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Slightly wet",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",
@@ -689,7 +635,7 @@
       "name": "마중공원",
       "location_ko": "수원시 권선구 세류동",
       "location_en": "Seryu-dong, Suwon",
-      "updated_at": "2026-07-22T23:33:21.099496+09:00",
+      "updated_at": "2026-07-22T23:41:34.203765+09:00",
       "lat": 37.236832,
       "lon": 127.020592,
       "temperature": 25.4,
@@ -720,25 +666,19 @@
       "outfit_en": "👕 Singlet & ultra-light shorts (Reflective gear recommended 🌙) | 👟 Shoes: Daily cushion trainers, carbon-plated racing shoes, or light trainers",
       "pace_tip_ko": "☀️ [무더위/고습도] 체온 조절이 힘든 고습도 기온입니다. 목표 페이스보다 20~30초 낮추고 15분마다 이온음료 수분을 필수 섭취하세요. 🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.",
       "pace_tip_en": "☀️ [High Heat & Humidity] Lower target pace by 20-30s and drink electrolyte fluids every 15 minutes. 🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.",
-      "risk_flags_ko": [
-        "고습도 찜통 더위 💦"
-      ],
-      "risk_flags_en": [
-        "High Humid Heat 💦"
-      ],
+      "risk_flags_ko": [],
+      "risk_flags_en": [],
       "tags_ko": [
-        "무덥고 끈적임",
+        "고습도 찜통더위 💦",
         "약한 바람",
         "노면 건조",
-        "공기질 좋음",
-        "고습도 찜통 더위 💦"
+        "공기질 좋음"
       ],
       "tags_en": [
-        "Warm & Humid",
+        "Humid Heat 💦",
         "Light breeze",
         "Dry surface",
-        "Good Air",
-        "High Humid Heat 💦"
+        "Good Air"
       ],
       "advice_short_ko": "주의하면서 뛰기 좋은 컨디션입니다 🙂",
       "advice_short_en": "Decent running condition 🙂",

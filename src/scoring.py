@@ -139,9 +139,7 @@ def summarize_course_weather(
     if apparent >= 28 and humidity >= 85:
         temp_score = 30
         hard_caps.append(50)
-        risk_flags_ko.append("고습도 찜통 더위 💦")
-        risk_flags_en.append("High Humid Heat 💦")
-        temp_tag_ko, temp_tag_en = "무덥고 끈적임", "Warm & Humid"
+        temp_tag_ko, temp_tag_en = "고습도 찜통더위 💦", "Humid Heat 💦"
     elif apparent > 24:
         temp_score = 50
         temp_tag_ko, temp_tag_en = "조금 더움", "Warm"
