@@ -19,15 +19,17 @@
   --metric-bg: #f8fafc;
   --metric-border: #e2e8f0;
   
-  --outfit-bg: #ecfdf5;
-  --outfit-border: #10b981;
-  --outfit-text: #065f46;
-  --outfit-title: #047857;
+  /* 추천 복장 가이드 (스카이블루 톤 & 좌측 하이라이트) */
+  --outfit-bg: #f0f9ff;
+  --outfit-border: #0284c7;
+  --outfit-text: #0c4a6e;
+  --outfit-title: #0369a1;
 
-  --pace-bg: #f0f9ff;
-  --pace-border: #0284c7;
-  --pace-text: #0c4a6e;
-  --pace-title: #0369a1;
+  /* 러닝 페이스 & 안전 팁 (녹색 톤 & 좌측 녹색 하이라이트) */
+  --pace-bg: #ecfdf5;
+  --pace-border: #10b981;
+  --pace-text: #065f46;
+  --pace-title: #047857;
 
   --map-btn-bg: #0f172a;
   --map-btn-text: #ffffff;
@@ -58,15 +60,17 @@
   --metric-bg: #0f172a;
   --metric-border: #334155;
   
-  --outfit-bg: rgba(6, 78, 59, 0.4);
-  --outfit-border: #10b981;
-  --outfit-text: #a7f3d0;
-  --outfit-title: #34d399;
+  /* 추천 복장 가이드 다크모드 (스카이블루 톤 & 좌측 하이라이트) */
+  --outfit-bg: rgba(12, 74, 110, 0.4);
+  --outfit-border: #38bdf8;
+  --outfit-text: #bae6fd;
+  --outfit-title: #7dd3fc;
 
-  --pace-bg: rgba(12, 74, 110, 0.4);
-  --pace-border: #38bdf8;
-  --pace-text: #bae6fd;
-  --pace-title: #7dd3fc;
+  /* 러닝 페이스 & 안전 팁 다크모드 (녹색 톤 & 좌측 녹색 하이라이트) */
+  --pace-bg: rgba(6, 78, 59, 0.4);
+  --pace-border: #10b981;
+  --pace-text: #a7f3d0;
+  --pace-title: #34d399;
 
   --map-btn-bg: #334155;
   --map-btn-text: #ffffff;
