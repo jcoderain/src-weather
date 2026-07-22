@@ -249,9 +249,13 @@ function renderCourseCard(info) {
       <div class="tags-group">
         ${safeTags.map(t => {
           let extraClass = "";
-          if (t.includes("좋음") || t.includes("최적") || t.includes("Good") || t.includes("Optimal")) extraClass = "tag-great";
-          else if (t.includes("주의") || t.includes("Caution") || t.includes("젖음")) extraClass = "tag-caution";
-          else if (t.includes("위험") || t.includes("나쁨") || t.includes("Extreme")) extraClass = "tag-risk";
+          if (t.includes("좋음") || t.includes("최적") || t.includes("건조") || t.includes("쾌적") || t.includes("Good") || t.includes("Optimal")) {
+            extraClass = "tag-great";
+          } else if (t.includes("보통") || t.includes("다소") || t.includes("젖음") || t.includes("더움") || t.includes("Moderate") || t.includes("Slightly") || t.includes("Warm")) {
+            extraClass = "tag-caution";
+          } else if (t.includes("위험") || t.includes("나쁨") || t.includes("폭우") || t.includes("빙판") || t.includes("찜통") || t.includes("폭염") || t.includes("혹한") || t.includes("강한") || t.includes("Warning") || t.includes("Hazard")) {
+            extraClass = "tag-risk";
+          }
           return `<span class="badge-tag ${extraClass}">${t}</span>`;
         }).join("")}
       </div>
