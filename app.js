@@ -130,17 +130,17 @@ function windDirectionToText(deg) {
 function getScoreGrade(score, explicitGrade) {
   if (explicitGrade && ["A", "B", "C", "D", "E"].includes(explicitGrade.toUpperCase())) {
     const g = explicitGrade.toUpperCase();
-    if (g === "A") return { grade: "A", color: "#10b981", bgClass: "score-grade-a" };
-    if (g === "B") return { grade: "B", color: "#3b82f6", bgClass: "score-grade-b" };
-    if (g === "C") return { grade: "C", color: "#8b5cf6", bgClass: "score-grade-c" };
+    if (g === "A") return { grade: "A", color: "#3b82f6", bgClass: "score-grade-a" };
+    if (g === "B") return { grade: "B", color: "#10b981", bgClass: "score-grade-b" };
+    if (g === "C") return { grade: "C", color: "#eab308", bgClass: "score-grade-c" };
     if (g === "D") return { grade: "D", color: "#f59e0b", bgClass: "score-grade-d" };
     return { grade: "E", color: "#ef4444", bgClass: "score-grade-e" };
   }
 
   const s = Number(score) || 0;
-  if (s >= 80) return { grade: "A", color: "#10b981", bgClass: "score-grade-a" };
-  if (s >= 65) return { grade: "B", color: "#3b82f6", bgClass: "score-grade-b" };
-  if (s >= 50) return { grade: "C", color: "#8b5cf6", bgClass: "score-grade-c" };
+  if (s >= 80) return { grade: "A", color: "#3b82f6", bgClass: "score-grade-a" };
+  if (s >= 65) return { grade: "B", color: "#10b981", bgClass: "score-grade-b" };
+  if (s >= 50) return { grade: "C", color: "#eab308", bgClass: "score-grade-c" };
   if (s >= 35) return { grade: "D", color: "#f59e0b", bgClass: "score-grade-d" };
   return { grade: "E", color: "#ef4444", bgClass: "score-grade-e" };
 }

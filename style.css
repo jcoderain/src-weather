@@ -313,9 +313,10 @@ body {
   text-align: center;
 }
 
-.score-grade-a { background: rgba(16, 185, 129, 0.15); color: #10b981; }
-.score-grade-b { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
-.score-grade-c { background: rgba(139, 92, 246, 0.15); color: #8b5cf6; }
+.score-grade-a { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.score-grade-b { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.score-grade-c { background: rgba(234, 179, 8, 0.18); color: #ca8a04; }
+html[data-theme="dark"] .score-grade-c { color: #facc15; }
 .score-grade-d { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
 .score-grade-e { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
 
