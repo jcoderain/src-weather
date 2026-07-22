@@ -5,6 +5,9 @@ from datetime import timezone, timedelta
 
 KST = timezone(timedelta(hours=9))
 
+DEFAULT_PROVIDER = "kma"
+SUPPORTED_PROVIDERS = ("kma", "open-meteo")
+
 @dataclass
 class Course:
     id: str

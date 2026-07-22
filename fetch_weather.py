@@ -13,16 +13,22 @@ from src.config import (
     DEFAULT_OPENAI_MODEL,
     KST,
 )
-from src.kma_api import fetch_kma_weather, fetch_air_quality_kma, kst_now
+from src.kma_api import (
+    fetch_kma_weather,
+    fetch_air_quality_kma,
+    fetch_open_meteo_weather,
+    fetch_open_meteo_air_quality,
+    kst_now,
+)
 from src.scoring import summarize_course_weather
 from src.advisor import call_chatgpt_coach
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Fetch running weather data from KMA.")
+    parser = argparse.ArgumentParser(description="Fetch running weather data.")
     parser.add_argument("--provider", choices=list(SUPPORTED_PROVIDERS), default=DEFAULT_PROVIDER)
     parser.add_argument("--kma-service-key", dest="kma_service_key", default=os.getenv("KMA_SERVICE_KEY"))
-    parser.add_argument("--air-provider", choices=("kma",), default="kma")
+    parser.add_argument("--air-provider", choices=list(SUPPORTED_PROVIDERS), default="kma")
     parser.add_argument("--kma-air-sido-name", dest="kma_air_sido_name", default=DEFAULT_KMA_AIR_SIDO)
     parser.add_argument("--with-coach", action="store_true")
     parser.add_argument("--openai-api-key", dest="openai_api_key", default=os.getenv("OPENAI_API_KEY"))
@@ -34,8 +40,8 @@ def load_previous_course_states(path: Path) -> Dict[str, Dict[str, Any]]:
     if not path.exists():
         return {}
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        courses = payload.get("courses")
+        data = json.loads(path.read_text(encoding="utf-8"))
+        courses = data.get("courses", [])
         if not isinstance(courses, list):
             return {}
         return {str(item["id"]): item for item in courses if isinstance(item, dict) and "id" in item}
@@ -48,26 +54,42 @@ def main() -> None:
     parser = build_arg_parser()
     args = parser.parse_args()
 
+    provider = args.provider
+    air_provider = args.air_provider
     kma_service_key = args.kma_service_key
-    if not kma_service_key:
-        print("[ERROR] KMA_SERVICE_KEY가 필요합니다.")
-        return
+
+    # 키가 없는 경우 open-meteo로 자동 전환
+    if (provider == "kma" or air_provider == "kma") and not kma_service_key:
+        print("[WARN] KMA_SERVICE_KEY가 없습니다. Open-Meteo로 자동 전환합니다.")
+        provider = "open-meteo"
+        air_provider = "open-meteo"
 
     out_path = Path("data") / "src_weather.json"
     previous_states = load_previous_course_states(out_path)
     results: List[Dict[str, Any]] = []
 
     for course in COURSES:
-        print(f"[INFO] Fetching weather (KMA) for {course.name_ko}")
-        raw_weather = fetch_kma_weather(course, kma_service_key)
+        print(f"[INFO] Fetching weather ({provider}) for {course.name_ko}")
+        raw_weather = None
+        if provider == "kma" and kma_service_key:
+            raw_weather = fetch_kma_weather(course, kma_service_key)
+        
         if raw_weather is None:
+            raw_weather = fetch_open_meteo_weather(course)
+
+        if raw_weather is None:
+            print(f"[ERROR] Failed to fetch weather for {course.name_ko}")
             continue
 
         raw_air = None
-        try:
-            raw_air = fetch_air_quality_kma(course, kma_service_key, args.kma_air_sido_name)
-        except Exception as e:
-            print(f"[WARN] Failed air quality fetch for {course.name_ko}: {e}")
+        if air_provider == "kma" and kma_service_key:
+            try:
+                raw_air = fetch_air_quality_kma(course, kma_service_key, args.kma_air_sido_name)
+            except Exception as e:
+                print(f"[WARN] Failed KMA air fetch for {course.name_ko}: {e}")
+
+        if raw_air is None:
+            raw_air = fetch_open_meteo_air_quality(course)
 
         summary = summarize_course_weather(
             course, raw_weather, raw_air, prev_state=previous_states.get(course.id)
@@ -81,7 +103,7 @@ def main() -> None:
                 summary["coach_advice"] = coach
 
         results.append(summary)
-        time.sleep(1)
+        time.sleep(0.5)
 
     output = {
         "generated_at": kst_now().isoformat(),

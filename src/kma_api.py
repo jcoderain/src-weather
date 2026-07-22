@@ -96,7 +96,7 @@ def build_kma_url(base_url: str, service_key: str) -> str:
 
 def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, Any]]:
     if not service_key:
-        raise ValueError("KMA 서비스 키가 필요합니다.")
+        return None
 
     base_date, base_time = kma_base_datetime()
     nx, ny = latlon_to_kma_xy(course.lat, course.lon)
@@ -214,3 +214,45 @@ def fetch_air_quality_kma(
     except Exception as e:
         print(f"[WARN] Air quality fetch error: {e}")
     return None
+
+def fetch_open_meteo_weather(course: Course) -> Optional[Dict[str, Any]]:
+    url = f"https://api.open-meteo.com/v1/forecast?latitude={course.lat}&longitude={course.lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,wind_speed_10m,wind_direction_10m&hourly=precipitation,rain,temperature_2m&timezone=Asia%2FTokyo"
+    try:
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+        data = resp.json()
+        curr = data.get("current", {})
+        hourly = data.get("hourly", {})
+        return {
+            "current": {
+                "time": kst_now().isoformat(),
+                "temperature_2m": float(curr.get("temperature_2m", 20.0)),
+                "apparent_temperature": float(curr.get("apparent_temperature", 20.0)),
+                "relative_humidity_2m": float(curr.get("relative_humidity_2m", 60.0)),
+                "precipitation": float(curr.get("precipitation", 0.0)),
+                "rain": float(curr.get("rain", 0.0)),
+                "wind_speed_10m": float(curr.get("wind_speed_10m", 5.0)),
+                "wind_direction_10m": float(curr.get("wind_direction_10m", 0.0)),
+            },
+            "hourly": {
+                "precipitation": hourly.get("precipitation", [])[:3],
+                "rain": hourly.get("rain", [])[:3],
+                "temperature_2m": hourly.get("temperature_2m", [])[:3],
+            }
+        }
+    except Exception as e:
+        print(f"[WARN] Open-Meteo weather fetch error for {course.name_ko}: {e}")
+        return None
+
+def fetch_open_meteo_air_quality(course: Course) -> Optional[Dict[str, Any]]:
+    url = f"https://air-quality-api.open-meteo.com/v1/air-quality?latitude={course.lat}&longitude={course.lon}&current=pm10,pm2_5&timezone=Asia%2FTokyo"
+    try:
+        resp = requests.get(url, timeout=10)
+        resp.raise_for_status()
+        curr = resp.json().get("current", {})
+        pm10 = parse_pm_value(curr.get("pm10"))
+        pm25 = parse_pm_value(curr.get("pm2_5"))
+        return {"current": {"time": kst_now().isoformat(), "pm10": pm10, "pm2_5": pm25}}
+    except Exception as e:
+        print(f"[WARN] Open-Meteo air quality fetch error for {course.name_ko}: {e}")
+        return None

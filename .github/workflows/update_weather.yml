@@ -78,7 +78,6 @@ jobs:
 
           git add data/src_weather.json
 
-          # 변경사항이 없으면 commit이 실패하니까, 실패해도 무시하도록 처리
           git commit -m "Update Suwon weather data" || echo "No changes to commit"
-
+          git pull --rebase origin main || true
           git push origin HEAD:main
