@@ -107,69 +107,86 @@ body {
 
 /* 헤더 스타일 */
 .app-header {
-  padding: 16px 0 14px;
+  padding: 14px 0;
   border-bottom: 1px solid var(--card-border);
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .header-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+  width: 100%;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .src-logo img {
-  height: 52px;
+  height: 42px;
+  max-height: 42px;
   width: auto;
   display: block;
+  object-fit: contain;
 }
 
 .pulse-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   background-color: var(--pulse-color);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--pulse-color);
+  box-shadow: 0 0 8px var(--pulse-color);
   animation: pulse 2s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
   0% { transform: scale(0.95); opacity: 1; }
-  50% { transform: scale(1.15); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 0.7; }
   100% { transform: scale(0.95); opacity: 1; }
 }
 
-/* 우측 설정 타일 바 */
+/* 우측 설정 타일 바 (가로 1줄 고정, 크기/높이 완벽 매칭) */
 .settings-tile-bar {
   display: flex;
   align-items: center;
-  gap: 6px;
+  flex-wrap: nowrap;
+  gap: 4px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  padding: 4px 6px;
-  border-radius: 24px;
+  padding: 3px 5px;
+  border-radius: 30px;
   box-shadow: var(--card-shadow);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
+/* 완벽한 1:1 비율 원형 테마 버튼 */
 .theme-btn {
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 1px solid var(--card-border);
   background: var(--metric-bg);
   color: var(--text-primary);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
@@ -180,8 +197,11 @@ body {
 
 .lang-switch {
   display: flex;
+  align-items: center;
   background: transparent;
   gap: 2px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .lang-btn {
@@ -189,11 +209,16 @@ body {
   background: transparent;
   color: var(--text-secondary);
   border-radius: 14px;
-  padding: 3px 9px;
+  padding: 4px 9px;
   font-size: 0.76rem;
   font-weight: 700;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .lang-btn.active {
