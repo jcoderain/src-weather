@@ -299,9 +299,24 @@ function renderCourseCard(info) {
   return div;
 }
 
+function getSortedCourses() {
+  if (!LAST_DATA || !Array.isArray(LAST_DATA.courses)) return [];
+  return [...LAST_DATA.courses]
+    .map((course, idx) => ({ course, idx }))
+    .sort((a, b) => {
+      const scoreA = Number(a.course.run_score) || 0;
+      const scoreB = Number(b.course.run_score) || 0;
+      if (scoreB !== scoreA) {
+        return scoreB - scoreA;
+      }
+      return a.idx - b.idx;
+    })
+    .map(item => item.course);
+}
+
 function renderSummaryShortcuts() {
   if (!summaryShortcutsEl || !LAST_DATA || !LAST_DATA.courses) return;
-  const courses = LAST_DATA.courses;
+  const courses = getSortedCourses();
 
   const gridDiv = document.createElement("div");
   gridDiv.className = "shortcut-grid";
@@ -335,7 +350,7 @@ function renderSummaryShortcuts() {
 
 function renderAllCourses() {
   if (!coursesEl || !LAST_DATA || !LAST_DATA.courses) return;
-  const courses = LAST_DATA.courses;
+  const courses = getSortedCourses();
   coursesEl.innerHTML = "";
 
   courses.forEach((info) => {
