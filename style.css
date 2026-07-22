@@ -136,7 +136,7 @@ body {
   object-fit: contain;
 }
 
-/* 우측 설정 타일 바 (가로 1줄 고정, 크기/높이 완벽 매칭) */
+/* 우측 설정 타일 바 */
 .settings-tile-bar {
   display: flex;
   align-items: center;
@@ -210,19 +210,13 @@ body {
   color: var(--bg-color);
 }
 
-.src-logo img {
-  height: 42px;
-  width: auto;
-  display: block;
-}
-
 /* 현황 요약 배너 */
 .status-banner {
   background: var(--banner-bg);
   border: 1px solid var(--card-border);
   border-radius: 14px;
   padding: 14px 20px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -243,6 +237,74 @@ body {
   color: var(--location-color);
   font-weight: 600;
 }
+
+/* 12개 코스 요약 & 숏컷 타일 스타일 */
+.shortcut-tile-container {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 24px;
+  box-shadow: var(--card-shadow);
+}
+
+.shortcut-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .shortcut-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .shortcut-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.shortcut-chip {
+  background: var(--metric-bg);
+  border: 1px solid var(--metric-border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.shortcut-chip:hover {
+  border-color: var(--card-hover-border);
+  transform: translateY(-2px);
+}
+
+.shortcut-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shortcut-score {
+  font-size: 0.82rem;
+  font-weight: 800;
+  font-family: "Outfit", sans-serif;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.score-great-bg { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+.score-good-bg { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+.score-caution-bg { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+.score-risk-bg { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
 
 /* 코스 그리드 (2열 반응형) */
 .course-grid {

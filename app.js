@@ -6,6 +6,7 @@ const statusEl = document.getElementById("status");
 const coursesEl = document.getElementById("courses");
 const appTitleEl = document.getElementById("app-title");
 const courseListUpdatedEl = document.getElementById("course-list-updated");
+const summaryShortcutsEl = document.getElementById("summary-shortcuts");
 
 // 다중 앤드포인트 URL (GitHub Raw는 CORS 완전 허용 및 Push 즉시 반영됨)
 const JSON_URLS = [
@@ -78,6 +79,7 @@ function applyLanguage() {
 
   renderStatus();
   renderUpdatedAt();
+  renderSummaryShortcuts();
   renderAllCourses();
 }
 
@@ -167,6 +169,9 @@ function renderCourseCard(info) {
 
   const div = document.createElement("div");
   div.className = "course-card";
+  if (info.id) {
+    div.id = `course-card-${info.id}`;
+  }
 
   const displayName = currentLang === "ko" ? (info.name_ko || info.name || "코스") : (info.name_en || info.name || "Course");
   const windDirText = windDirectionToText(info.wind_direction);
@@ -280,6 +285,45 @@ function renderCourseCard(info) {
   return div;
 }
 
+function renderSummaryShortcuts() {
+  if (!summaryShortcutsEl || !LAST_DATA || !LAST_DATA.courses) return;
+  const courses = LAST_DATA.courses;
+
+  const gridDiv = document.createElement("div");
+  gridDiv.className = "shortcut-grid";
+
+  courses.forEach((c) => {
+    const chip = document.createElement("button");
+    chip.className = "shortcut-chip";
+
+    const name = currentLang === "ko" ? (c.name_ko || c.name) : (c.name_en || c.name);
+    const score = c.run_score ?? 0;
+
+    let scoreClass = "score-caution-bg";
+    if (score >= 80) scoreClass = "score-great-bg";
+    else if (score >= 60) scoreClass = "score-good-bg";
+    else if (score >= 40) scoreClass = "score-caution-bg";
+    else scoreClass = "score-risk-bg";
+
+    chip.innerHTML = `
+      <span class="shortcut-name">${name}</span>
+      <span class="shortcut-score ${scoreClass}">${score}</span>
+    `;
+
+    chip.addEventListener("click", () => {
+      const cardEl = document.getElementById(`course-card-${c.id}`);
+      if (cardEl) {
+        cardEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+
+    gridDiv.appendChild(chip);
+  });
+
+  summaryShortcutsEl.innerHTML = "";
+  summaryShortcutsEl.appendChild(gridDiv);
+}
+
 function renderAllCourses() {
   if (!coursesEl || !LAST_DATA || !LAST_DATA.courses) return;
   const courses = LAST_DATA.courses;
@@ -353,6 +397,7 @@ async function init() {
 
     renderStatus();
     renderUpdatedAt();
+    renderSummaryShortcuts();
     renderAllCourses();
   } catch (err) {
     console.error("Failed to load weather data:", err);
