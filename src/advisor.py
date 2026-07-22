@@ -116,9 +116,12 @@ def get_pace_and_running_tip(
         tips_ko.append("🌙 [야간 러닝 시야] 어두운 밤 러닝 시 야간 시야 확보와 차량 유의를 위해 발광 밴드/반사 조끼를 착용하세요.")
         tips_en.append("🌙 [Night Running Safety] Wear reflective gear or LED band for visibility and traffic safety.")
 
-    if air_score <= 55:
-        tips_ko.append("😷 공기질 나쁨 수준입니다. 대량의 호흡이 필요한 인터벌/빌드업 훈련은 자제하는 편이 좋습니다.")
-        tips_en.append("😷 Poor air quality. Avoid high-intensity interval workouts causing heavy breathing.")
+    if air_score <= 20:
+        tips_ko.append("🚨 [황사/미세먼지 경보] 황사 및 미세먼지 농도가 '매우 나쁨' 수준입니다. 마스크 없는 야외 러닝 시 폐/호흡기 손상 위험이 크므로 야외 러닝을 금지하고 실내 운동(트레드밀)을 권장합니다.")
+        tips_en.append("🚨 [Severe Dust Warning] Air quality is 'Very Bad'. Avoid outdoor running to prevent respiratory risk; train indoors.")
+    elif air_score <= 50:
+        tips_ko.append("😷 [공기질 나쁨] 미세먼지가 유입된 상태입니다. 호흡수가 급증하는 고강도 인터벌/빌드업 훈련은 자제하는 것이 좋습니다.")
+        tips_en.append("😷 [Poor Air Quality] High PM concentrations. Avoid high-intensity interval workouts causing heavy breathing.")
 
     return " ".join(tips_ko), " ".join(tips_en)
 

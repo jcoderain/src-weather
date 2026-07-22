@@ -162,7 +162,7 @@ def summarize_course_weather(
         risk_flags_en.append("Strong Wind")
         wind_tag_ko, wind_tag_en = "강한 바람", "Strong wind"
 
-    # 4) 공기질
+    # 4) 공기질 (에어코리아/KMA 환경부 미세먼지·황사 기준)
     pm10 = None
     pm25 = None
     if raw_air and "current" in raw_air:
@@ -170,14 +170,29 @@ def summarize_course_weather(
         pm10 = float(air_curr.get("pm10")) if air_curr.get("pm10") is not None else None
         pm25 = float(air_curr.get("pm2_5")) if air_curr.get("pm2_5") is not None else None
 
-    score_pm10 = 100 if (pm10 is None or pm10 <= 30) else (80 if pm10 <= 80 else 50)
-    score_pm25 = 100 if (pm25 is None or pm25 <= 15) else (80 if pm25 <= 35 else 50)
-    air_score = min(score_pm10, score_pm25)
-    air_tag_ko, air_tag_en = ("공기질 좋음", "Good air") if air_score >= 80 else ("공기질 보통", "Moderate air")
+    # PM10 / PM2.5 환경부 기준 세분화
+    if (pm10 is not None and pm10 > 150) or (pm25 is not None and pm25 > 75):
+        air_score = 15
+        hard_caps.append(25)
+        air_tag_ko, air_tag_en = "🚨 황사/미세먼지 매우나쁨", "🚨 Severe Dust Warning"
+        risk_flags_ko.append("황사/미세먼지 경보 🚨")
+        risk_flags_en.append("Yellow Dust Warning 🚨")
+    elif (pm10 is not None and pm10 > 80) or (pm25 is not None and pm25 > 35):
+        air_score = 40
+        hard_caps.append(50)
+        air_tag_ko, air_tag_en = "😷 공기질 나쁨", "😷 Bad Air Quality"
+        risk_flags_ko.append("미세먼지 나쁨 😷")
+        risk_flags_en.append("Bad Air Quality 😷")
+    elif (pm10 is not None and pm10 > 30) or (pm25 is not None and pm25 > 15):
+        air_score = 75
+        air_tag_ko, air_tag_en = "공기질 보통", "Moderate Air"
+    else:
+        air_score = 100
+        air_tag_ko, air_tag_en = "공기질 좋음", "Good Air"
 
     # 종합점수 산출 & 안전 상한선(hard cap) 적용
     base_score = (temp_score * 0.45 + wind_score * 0.25 + surface_score * 0.30)
-    factor_air = 1.0 if air_score >= 80 else (0.9 if air_score >= 60 else 0.7)
+    factor_air = 1.0 if air_score >= 80 else (0.75 if air_score >= 40 else 0.4)
     run_score = base_score * factor_air
 
     if hard_caps:
@@ -185,6 +200,8 @@ def summarize_course_weather(
 
     dt_now = parse_iso_datetime(current.get("time")) or datetime.now(tz=KST)
     is_night = dt_now.hour >= 19 or dt_now.hour < 6
+
+    run_score = int(round(max(0, min(100, run_score))))
 
     outfit_ko, outfit_en = get_outfit_recommendation(
         current_temp, apparent, current_rain, current_snow, wind_speed, surface_score, freeze_surface_risk, is_night=is_night
@@ -196,6 +213,9 @@ def summarize_course_weather(
     if freeze_surface_risk:
         advice_short_ko = "🚨 빙판길 결빙 위험 - 야외 러닝 금지 및 실내 운동 권장!"
         advice_short_en = "🚨 Ice hazard! Outdoor running prohibited."
+    elif air_score <= 20:
+        advice_short_ko = "🚨 황사/미세먼지 매우나쁨 - 야외 러닝 금지 및 실내 운동 권장!"
+        advice_short_en = "🚨 Severe dust hazard! Indoor running recommended."
     elif run_score >= 80:
         advice_short_ko = "러닝하기 아주 좋은 컨디션입니다 😄"
         advice_short_en = "Great running condition 😄"
@@ -203,7 +223,7 @@ def summarize_course_weather(
         advice_short_ko = "주의하면서 뛰기 좋은 컨디션입니다 🙂"
         advice_short_en = "Decent running condition 🙂"
     else:
-        advice_short_ko = "🚨 기상/노면 불량 - 야외 러닝을 자제하고 실내 운동을 권장합니다."
+        advice_short_ko = "🚨 기상/공기질 불량 - 야외 러닝을 자제하고 실내 운동을 권장합니다."
         advice_short_en = "🚨 Poor conditions! Reduce intensity or train indoors."
 
     tags_ko = [temp_tag_ko, wind_tag_ko, wet_tag_ko, air_tag_ko] + risk_flags_ko
