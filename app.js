@@ -303,6 +303,11 @@ function getSortedCourses() {
   return [...LAST_DATA.courses]
     .map((course, idx) => ({ course, idx }))
     .sort((a, b) => {
+      const scoreA = Number(a.course.run_score ?? 0);
+      const scoreB = Number(b.course.run_score ?? 0);
+      if (scoreB !== scoreA) {
+        return scoreB - scoreA;
+      }
       if (currentLang === "ko") {
         const nameA = String(a.course.name_ko || a.course.name || "");
         const nameB = String(b.course.name_ko || b.course.name || "");
