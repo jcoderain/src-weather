@@ -1,8 +1,7 @@
 from typing import Tuple, Dict, Any, List
 import json
 import requests
-from requests.exceptions import Timeout, ReadTimeout, RequestException, HTTPError
-from src.config import Course, DEFAULT_OPENAI_MODEL, OPENAI_API_URL
+from src.config import Course
 
 def get_outfit_recommendation(
     temp_c: float,
@@ -107,34 +106,3 @@ def get_pace_and_running_tip(
         tips_en.append("😷 [Poor Air Quality] High PM concentrations. Avoid high-intensity interval workouts causing heavy breathing.")
 
     return " ".join(tips_ko), " ".join(tips_en)
-
-
-def call_chatgpt_coach(
-    course: Course,
-    summary: Dict[str, Any],
-    raw_weather: Dict[str, Any],
-    raw_air: Any,
-    api_key: str,
-    model: str = DEFAULT_OPENAI_MODEL,
-    timeout: int = 30,
-) -> Any:
-    if not api_key:
-        return None
-
-    payload = {
-        "course": {"id": course.id, "name_ko": course.name_ko, "name_en": course.name_en},
-        "summary": summary,
-    }
-    messages = [
-        {"role": "system", "content": "You are a concise running coach fluent in Korean and English."},
-        {"role": "user", "content": json.dumps(payload, ensure_ascii=False)},
-    ]
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-
-    try:
-        resp = requests.post(OPENAI_API_URL, headers=headers, json={"model": model, "messages": messages}, timeout=timeout)
-        resp.raise_for_status()
-        return resp.json()["choices"][0]["message"]["content"]
-    except Exception as e:
-        print(f"[WARN] Coach call failed: {e}")
-        return None

@@ -10,7 +10,6 @@ from src.config import (
     DEFAULT_PROVIDER,
     SUPPORTED_PROVIDERS,
     DEFAULT_KMA_AIR_SIDO,
-    DEFAULT_OPENAI_MODEL,
     KST,
 )
 from src.kma_api import (
@@ -21,7 +20,6 @@ from src.kma_api import (
     kst_now,
 )
 from src.scoring import summarize_course_weather
-from src.advisor import call_chatgpt_coach
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -30,9 +28,6 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--kma-service-key", dest="kma_service_key", default=os.getenv("KMA_SERVICE_KEY"))
     parser.add_argument("--air-provider", choices=list(SUPPORTED_PROVIDERS), default="kma")
     parser.add_argument("--kma-air-sido-name", dest="kma_air_sido_name", default=DEFAULT_KMA_AIR_SIDO)
-    parser.add_argument("--with-coach", action="store_true")
-    parser.add_argument("--openai-api-key", dest="openai_api_key", default=os.getenv("OPENAI_API_KEY"))
-    parser.add_argument("--openai-model", dest="openai_model", default=DEFAULT_OPENAI_MODEL)
     return parser
 
 
@@ -94,13 +89,6 @@ def main() -> None:
         summary = summarize_course_weather(
             course, raw_weather, raw_air, prev_state=previous_states.get(course.id)
         )
-
-        if args.with_coach and args.openai_api_key:
-            coach = call_chatgpt_coach(
-                course, summary, raw_weather, raw_air, args.openai_api_key, args.openai_model
-            )
-            if coach:
-                summary["coach_advice"] = coach
 
         results.append(summary)
         time.sleep(0.5)
