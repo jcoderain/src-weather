@@ -1,9 +1,8 @@
 import math
 from datetime import datetime, timedelta, timezone
-from typing import Tuple, Optional, Dict, Any, List
+from typing import Tuple, Optional, Dict, Any
 from urllib.parse import quote_plus
 import requests
-from requests.exceptions import Timeout, ReadTimeout, RequestException, HTTPError
 
 from src.config import (
     KST,
