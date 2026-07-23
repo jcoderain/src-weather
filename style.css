@@ -185,6 +185,21 @@ body {
   border-color: var(--text-muted);
 }
 
+#theme-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.svg-theme-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
 .lang-switch {
   display: flex;
   align-items: center;
