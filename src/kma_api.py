@@ -91,7 +91,11 @@ def parse_pm_value(raw: Any) -> Optional[float]:
         return None
 
 def build_kma_url(base_url: str, service_key: str) -> str:
-    encoded_key = service_key if "%" in service_key else quote_plus(service_key)
+    if not service_key:
+        return base_url
+    from urllib.parse import unquote
+    raw_key = unquote(service_key)
+    encoded_key = quote_plus(raw_key)
     return f"{base_url}?serviceKey={encoded_key}"
 
 def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, Any]]:
@@ -114,9 +118,14 @@ def fetch_kma_weather(course: Course, service_key: str) -> Optional[Dict[str, An
         obs_url = build_kma_url(KMA_ULTRA_NCST_URL, service_key)
         obs_resp = requests.get(obs_url, params=common_params, timeout=10)
         obs_resp.raise_for_status()
+        if "OpenAPI_ServiceResponse" in obs_resp.text or "<errMsg>" in obs_resp.text:
+            print(f"[WARN] KMA API returned XML Error for {course.name_ko}: {obs_resp.text[:250]}")
+            return None
         obs_items = obs_resp.json()["response"]["body"]["items"]["item"]
     except Exception as e:
         print(f"[WARN] KMA obs fetch failed for {course.name_ko}: {e}")
+        if 'obs_resp' in locals() and hasattr(obs_resp, 'text'):
+            print(f"[WARN] KMA raw response snippet: {obs_resp.text[:300]}")
         return None
 
     obs_map = {item["category"]: item.get("obsrValue") for item in obs_items}
