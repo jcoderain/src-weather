@@ -19,12 +19,13 @@ def kst_now() -> datetime:
 
 def kma_base_datetime(now_kst: Optional[datetime] = None) -> Tuple[str, str]:
     now = now_kst or kst_now()
-    base_dt = now - timedelta(minutes=40)
-    base_dt = base_dt.replace(
-        minute=(base_dt.minute // 30) * 30,
-        second=0,
-        microsecond=0,
-    )
+    # 기상청 초단기실황(getUltraSrtNcst)은 매시 10분 이후 정시(HH00) 데이터가 제공됩니다.
+    # 40분 미만 시점에는 이전 시간 정시(HH-1:00) 데이터를 요청해야 NO_DATA 오류가 발생하지 않습니다.
+    if now.minute < 40:
+        base_dt = now - timedelta(hours=1)
+    else:
+        base_dt = now
+    base_dt = base_dt.replace(minute=0, second=0, microsecond=0)
     return base_dt.strftime("%Y%m%d"), base_dt.strftime("%H%M")
 
 def latlon_to_kma_xy(lat: float, lon: float) -> Tuple[int, int]:
