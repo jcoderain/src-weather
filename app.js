@@ -10,9 +10,9 @@ const summaryShortcutsEl = document.getElementById("summary-shortcuts");
 
 // 다중 앤드포인트 URL (GitHub Raw는 CORS 완전 허용 및 Push 즉시 반영됨)
 const JSON_URLS = [
+  "./data/src_weather.json",
   "https://raw.githubusercontent.com/jcoderain/src-weather/main/data/src_weather.json",
-  "https://jcoderain.github.io/src-weather/data/src_weather.json",
-  "./data/src_weather.json"
+  "https://jcoderain.github.io/src-weather/data/src_weather.json"
 ];
 
 const uiText = {
