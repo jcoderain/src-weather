@@ -23,7 +23,7 @@ def get_outfit_recommendation(
     sun_gear_ko = " (야간 반사 밴드/리플렉티브 의류 🌙)" if is_night else " (선크림·햇빛 차단 모자 필수 ☀️)"
     sun_gear_en = " (Reflective gear recommended 🌙)" if is_night else " (Sunscreen & cap required ☀️)"
 
-    # 2) 상하의 복장 추천
+    # 2) 상하의 복장 및 장갑/방한 용품 추천 (러닝화 제외)
     if t >= 27:
         parts_ko.append(f"👕 싱글렛/민소매 + 초경량 러닝 숏츠{sun_gear_ko}")
         parts_en.append(f"👕 Singlet & ultra-light shorts{sun_gear_en}")
@@ -32,37 +32,20 @@ def get_outfit_recommendation(
         day_sun_en = " (Sunscreen recommended ☀️)" if not is_night else " (Reflective band 🌙)"
         parts_ko.append(f"👕 통풍 좋은 반팔 T셔츠 + 러닝 숏츠{day_sun_ko}")
         parts_en.append(f"👕 Breathable short-sleeve T-shirt & running shorts{day_sun_en}")
-    elif t >= 13:
+    elif t >= 14:
         parts_ko.append("👕 반팔 또는 얇은 긴팔 + 러닝 숏츠 (러닝 최적 복장)")
         parts_en.append("👕 Short/thin long sleeves & shorts (Optimal running gear)")
-    elif t >= 7:
-        parts_ko.append("👕 긴팔 T셔츠 + 러닝 타이츠/팬츠 (얇은 바람막이 지참 권장)")
-        parts_en.append("👕 Long sleeves & tights (Light windbreaker recommended)")
-    elif t >= 1:
-        parts_ko.append("👕 기모 긴팔 + 방풍 자켓 + 롱타이츠 (얇은 장갑/모자)")
-        parts_en.append("👕 Thermal long sleeves, windproof jacket, tights, gloves & beanie")
+    elif t >= 8:
+        parts_ko.append("👕 긴팔 T셔츠 + 러닝 타이츠/팬츠 (쌀쌀한 날씨: 손 체온 보호용 얇은 러닝 장갑 지참 권장 🧤)")
+        parts_en.append("👕 Long sleeves & tights (Cool weather: Light running gloves recommended 🧤)")
+    elif t >= 2:
+        parts_ko.append("👕 기모 긴팔 + 방풍 자켓 + 롱타이츠 + 러닝 장갑 필수 🧤 (손 체온 보호 및 보온)")
+        parts_en.append("👕 Thermal long sleeves, windproof jacket, tights & running gloves required 🧤")
     else:
-        parts_ko.append("👕 방한 자켓 + 방풍 타이츠 + 귀마개·장갑·넥워머 필수")
-        parts_en.append("👕 Thermal jacket, windproof tights, gloves, beanie & neck warmer")
+        parts_ko.append("👕 방한 자켓 + 방풍 타이츠 + 두꺼운 방한 러닝 장갑 필수 🧤 (손 시림 방지) + 넥워머·귀마개 모자")
+        parts_en.append("👕 Thermal jacket, windproof tights, heavy running gloves 🧤 & neck warmer")
 
-    # 3) 상황별 러닝화(Shoes) 및 전용 용품 추천
-    if freeze_risk:
-        parts_ko.append("👟 추천 러닝화: 트레일러닝화(Trail shoes) 또는 아이젠/접지 강화화 (카본 레이싱화 절대 금지 🚨)")
-        parts_en.append("👟 Shoes: Trail running shoes or high-traction shoes (AVOID carbon racing shoes 🚨)")
-    elif rain_mm >= 4.0 or surface_score <= 30:
-        parts_ko.append("👟 추천 러닝화: 방수/고어텍스(GORE-TEX) 러닝화 또는 젖어도 되는 데일리 트레이너 + 챙모자")
-        parts_en.append("👟 Shoes: Waterproof GORE-TEX or daily trainers with wet-grip outsoles + cap")
-    elif rain_mm > 0.2 or surface_score <= 70:
-        parts_ko.append("👟 추천 러닝화: 아웃솔 접지력(Grip) 뛰어난 데일리 러닝화 (미끄러운 우레탄/보도블럭 주의)")
-        parts_en.append("👟 Shoes: Daily trainers with high-traction rubber outsole (Caution on wet pavements)")
-    elif t <= 2:
-        parts_ko.append("👟 추천 러닝화: 방풍/도톰한 어퍼 러닝화 + 도톰한 스포츠 양말")
-        parts_en.append("👟 Shoes: Windproof upper trainers + warm running socks")
-    else:
-        parts_ko.append("👟 추천 러닝화: 일반 데일리 쿠션화, 레이싱화, 카본화 자유 착용")
-        parts_en.append("👟 Shoes: Daily cushion trainers, carbon-plated racing shoes, or light trainers")
-
-    return " | ".join(parts_ko), " | ".join(parts_en)
+    return " ".join(parts_ko), " ".join(parts_en)
 
 
 def get_pace_and_running_tip(

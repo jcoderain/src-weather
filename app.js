@@ -198,6 +198,14 @@ const titleIcons = {
   pace: `<svg class="svg-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
 };
 
+function formatPaceTipHtml(tipStr) {
+  if (!tipStr) return "";
+  const clean = stripEmojis(tipStr);
+  return clean.replace(/(\s*)(?=\[[^\]]+\])/g, (match, offset) => {
+    return offset > 0 ? "<br>" : "";
+  });
+}
+
 function renderCourseCard(info) {
   if (!info) return document.createElement("div");
 
@@ -229,7 +237,7 @@ function renderCourseCard(info) {
     : (info.pace_tip_en || info.advice_detail_en || "Adjust pace according to weather conditions.");
 
   const outfit = stripEmojis(rawOutfit);
-  const paceTip = stripEmojis(rawPaceTip);
+  const paceTipHtml = formatPaceTipHtml(rawPaceTip);
 
   const rawTags = currentLang === "ko" ? (info.tags_ko || []) : (info.tags_en || []);
   const safeTags = Array.isArray(rawTags) ? rawTags.filter(t => typeof t === "string" && t.trim() !== "") : [];
@@ -308,7 +316,7 @@ function renderCourseCard(info) {
         </div>
         <div class="advice-card advice-pace">
           <div class="advice-title">${titleIcons.pace} ${uiText.paceTitle[currentLang]}</div>
-          <div>${paceTip}</div>
+          <div>${paceTipHtml}</div>
         </div>
       </div>
     </div>
