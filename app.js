@@ -183,7 +183,9 @@ function classifyAirQualityText(pm10, pm25) {
 
 function stripEmojis(str) {
   if (!str || typeof str !== "string") return "";
-  return str.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, "").trim();
+  return str
+    .replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{FE00}-\u{FE0F}]|[\u{200D}]/gu, "")
+    .trim();
 }
 
 const metricIcons = {
@@ -201,15 +203,15 @@ const titleIcons = {
 function formatPaceTipHtml(tipStr) {
   if (!tipStr) return "";
   const clean = stripEmojis(tipStr).trim();
-  const parts = clean.split("[").filter(p => p.trim().length > 0);
+  const rawParts = clean.split("[").map(p => p.trim()).filter(Boolean);
+  const validParts = rawParts.filter(p => p.includes("]"));
   
-  if (parts.length <= 1) {
+  if (!validParts.length) {
     return clean;
   }
 
-  return parts.map(part => {
-    const itemText = part.trim();
-    return `<div class="pace-tip-item" style="margin-bottom: 6px; line-height: 1.45;">[${itemText}</div>`;
+  return validParts.map(part => {
+    return `<div class="pace-tip-item" style="margin-bottom: 6px; line-height: 1.45;">[${part}</div>`;
   }).join("");
 }
 
