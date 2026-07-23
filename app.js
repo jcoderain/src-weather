@@ -303,10 +303,16 @@ function getSortedCourses() {
   return [...LAST_DATA.courses]
     .map((course, idx) => ({ course, idx }))
     .sort((a, b) => {
-      const scoreA = Number(a.course.run_score) || 0;
-      const scoreB = Number(b.course.run_score) || 0;
-      if (scoreB !== scoreA) {
-        return scoreB - scoreA;
+      if (currentLang === "ko") {
+        const nameA = String(a.course.name_ko || a.course.name || "");
+        const nameB = String(b.course.name_ko || b.course.name || "");
+        const comp = nameA.localeCompare(nameB, "ko");
+        if (comp !== 0) return comp;
+      } else {
+        const nameA = String(a.course.name_en || a.course.name_en_short || a.course.name || "");
+        const nameB = String(b.course.name_en || b.course.name_en_short || b.course.name || "");
+        const comp = nameA.localeCompare(nameB, "en", { sensitivity: "base" });
+        if (comp !== 0) return comp;
       }
       return a.idx - b.idx;
     })
