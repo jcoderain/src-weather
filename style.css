@@ -292,6 +292,13 @@ body {
   transform: translateY(-2px);
 }
 
+.shortcut-chip.active {
+  border-color: var(--location-color);
+  background: var(--card-bg);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.25);
+  transform: translateY(-2px);
+}
+
 .shortcut-name {
   font-size: 0.78rem;
   font-weight: 700;
@@ -446,8 +453,23 @@ html[data-theme="dark"] .score-grade-c { color: #facc15; }
   gap: 10px;
 }
 
-.metric-icon {
-  font-size: 1.2rem;
+.metric-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--location-color);
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--metric-border);
+  border-radius: 8px;
+}
+
+.svg-metric-icon {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
 }
 
 .metric-data {
@@ -530,9 +552,19 @@ html[data-theme="dark"] .badge-tag.tag-risk { color: #fca5a5; }
 }
 
 .advice-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   margin-bottom: 4px;
+}
+
+.svg-title-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  flex-shrink: 0;
 }
 
 /* 지도 버튼 & 하단 액션 */

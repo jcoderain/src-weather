@@ -25,26 +25,26 @@ const uiText = {
     en: "Loading weather data…",
   },
   statusLoaded: (count) => ({
-    ko: `SRC 주요 ${count}개 코스 현황 모니터링 중 🏃‍♂️`,
-    en: `Monitoring ${count} major SRC courses 🏃‍♂️`,
+    ko: `SRC 주요 ${count}개 코스 현황 모니터링 중`,
+    en: `Monitoring ${count} major SRC courses`,
   }),
   fail: {
     ko: "코스 데이터를 불러오는데 실패했습니다. 잠시 후 다시 시도해 주세요.",
     en: "Failed to load course data. Please try again later.",
   },
   outfitTitle: {
-    ko: "👕 추천 복장 가이드",
-    en: "👕 Outfit Guide",
+    ko: "추천 복장 가이드",
+    en: "Outfit Guide",
   },
   paceTitle: {
-    ko: "⏱️ 러닝 페이스 & 안전 팁",
-    en: "⏱️ Pace & Safety Tip",
+    ko: "러닝 페이스 & 안전 팁",
+    en: "Pace & Safety Tip",
   },
   tempLabel: { ko: "기온 / 체감", en: "Air / Feels" },
   windLabel: { ko: "바람", en: "Wind" },
   precipLabel: { ko: "습도 / 예보강수", en: "Hum / Rain" },
   airLabel: { ko: "공기질 (PM)", en: "Air Quality" },
-  openMap: { ko: "구글맵 지점 보기 📍", en: "Google Maps 📍" },
+  openMap: { ko: "구글맵 지점 보기", en: "Google Maps" },
 };
 
 function applyTheme() {
@@ -178,6 +178,23 @@ function classifyAirQualityText(pm10, pm25) {
   return res || "-";
 }
 
+function stripEmojis(str) {
+  if (!str || typeof str !== "string") return "";
+  return str.replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, "").trim();
+}
+
+const metricIcons = {
+  temp: `<svg class="svg-metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/><path d="M12 9v4"/></svg>`,
+  wind: `<svg class="svg-metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>`,
+  precip: `<svg class="svg-metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/></svg>`,
+  air: `<svg class="svg-metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>`
+};
+
+const titleIcons = {
+  outfit: `<svg class="svg-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>`,
+  pace: `<svg class="svg-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
+};
+
 function renderCourseCard(info) {
   if (!info) return document.createElement("div");
 
@@ -200,13 +217,16 @@ function renderCourseCard(info) {
   
   const airText = classifyAirQualityText(info.pm10, info.pm25);
 
-  const outfit = currentLang === "ko" 
+  const rawOutfit = currentLang === "ko" 
     ? (info.outfit_ko || "통풍 좋은 반팔 T셔츠 + 러닝 숏츠") 
     : (info.outfit_en || "Breathable short-sleeve T-shirt & running shorts");
 
-  const paceTip = currentLang === "ko"
+  const rawPaceTip = currentLang === "ko"
     ? (info.pace_tip_ko || info.advice_detail_ko || "컨디션에 따라 페이스를 조절하세요.")
     : (info.pace_tip_en || info.advice_detail_en || "Adjust pace according to weather conditions.");
+
+  const outfit = stripEmojis(rawOutfit);
+  const paceTip = stripEmojis(rawPaceTip);
 
   const rawTags = currentLang === "ko" ? (info.tags_ko || []) : (info.tags_en || []);
   const safeTags = Array.isArray(rawTags) ? rawTags.filter(t => typeof t === "string" && t.trim() !== "") : [];
@@ -232,7 +252,7 @@ function renderCourseCard(info) {
 
       <div class="metrics-grid">
         <div class="metric-item">
-          <span class="metric-icon">🌡️</span>
+          <span class="metric-icon-wrap">${metricIcons.temp}</span>
           <div class="metric-data">
             <span class="metric-label">${uiText.tempLabel[currentLang]}</span>
             <span class="metric-val">${temp}°C <span style="font-weight:400; font-size:0.75rem; color:var(--text-muted);">(${apparent}°C)</span></span>
@@ -240,7 +260,7 @@ function renderCourseCard(info) {
         </div>
 
         <div class="metric-item">
-          <span class="metric-icon">💨</span>
+          <span class="metric-icon-wrap">${metricIcons.wind}</span>
           <div class="metric-data">
             <span class="metric-label">${uiText.windLabel[currentLang]}</span>
             <span class="metric-val">${windDirText} ${windSpeedText}</span>
@@ -248,7 +268,7 @@ function renderCourseCard(info) {
         </div>
 
         <div class="metric-item">
-          <span class="metric-icon">💧</span>
+          <span class="metric-icon-wrap">${metricIcons.precip}</span>
           <div class="metric-data">
             <span class="metric-label">${uiText.precipLabel[currentLang]}</span>
             <span class="metric-val">${humidity} · ${forecastRain}</span>
@@ -256,7 +276,7 @@ function renderCourseCard(info) {
         </div>
 
         <div class="metric-item">
-          <span class="metric-icon">😷</span>
+          <span class="metric-icon-wrap">${metricIcons.air}</span>
           <div class="metric-data">
             <span class="metric-label">${uiText.airLabel[currentLang]}</span>
             <span class="metric-val">${airText}</span>
@@ -280,11 +300,11 @@ function renderCourseCard(info) {
 
       <div class="advice-section">
         <div class="advice-card advice-outfit">
-          <div class="advice-title">${uiText.outfitTitle[currentLang]}</div>
+          <div class="advice-title">${titleIcons.outfit} ${uiText.outfitTitle[currentLang]}</div>
           <div>${outfit}</div>
         </div>
         <div class="advice-card advice-pace">
-          <div class="advice-title">${uiText.paceTitle[currentLang]}</div>
+          <div class="advice-title">${titleIcons.pace} ${uiText.paceTitle[currentLang]}</div>
           <div>${paceTip}</div>
         </div>
       </div>
@@ -324,16 +344,23 @@ function getSortedCourses() {
     .map(item => item.course);
 }
 
+let selectedCourseId = null;
+
 function renderSummaryShortcuts() {
   if (!summaryShortcutsEl || !LAST_DATA || !LAST_DATA.courses) return;
   const courses = getSortedCourses();
+  if (!courses.length) return;
+
+  if (!selectedCourseId || !courses.find(c => c.id === selectedCourseId)) {
+    selectedCourseId = courses[0].id;
+  }
 
   const gridDiv = document.createElement("div");
   gridDiv.className = "shortcut-grid";
 
   courses.forEach((c) => {
     const chip = document.createElement("button");
-    chip.className = "shortcut-chip";
+    chip.className = `shortcut-chip ${c.id === selectedCourseId ? "active" : ""}`;
 
     const name = currentLang === "ko" ? (c.name_ko || c.name) : (c.name_en_short || c.name_en || c.name);
     const score = c.run_score ?? 0;
@@ -345,10 +372,10 @@ function renderSummaryShortcuts() {
     `;
 
     chip.addEventListener("click", () => {
-      const cardEl = document.getElementById(`course-card-${c.id}`);
-      if (cardEl) {
-        cardEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      selectedCourseId = c.id;
+      document.querySelectorAll(".shortcut-chip").forEach((ch) => ch.classList.remove("active"));
+      chip.classList.add("active");
+      renderAllCourses();
     });
 
     gridDiv.appendChild(chip);
@@ -361,15 +388,20 @@ function renderSummaryShortcuts() {
 function renderAllCourses() {
   if (!coursesEl || !LAST_DATA || !LAST_DATA.courses) return;
   const courses = getSortedCourses();
+  if (!courses.length) return;
+
+  if (!selectedCourseId || !courses.find(c => c.id === selectedCourseId)) {
+    selectedCourseId = courses[0].id;
+  }
+
+  const selectedCourse = courses.find(c => c.id === selectedCourseId) || courses[0];
   coursesEl.innerHTML = "";
 
-  courses.forEach((info) => {
-    try {
-      coursesEl.appendChild(renderCourseCard(info));
-    } catch (e) {
-      console.error("Error rendering course card:", e, info);
-    }
-  });
+  try {
+    coursesEl.appendChild(renderCourseCard(selectedCourse));
+  } catch (e) {
+    console.error("Error rendering course card:", e, selectedCourse);
+  }
 }
 
 function renderStatus() {
